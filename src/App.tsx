@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Toaster } from 'react-hot-toast';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -18,6 +19,29 @@ function App() {
 
   return (
     <div className="min-h-screen bg-slate-900">
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: '#1e293b',
+            color: '#e2e8f0',
+            border: '1px solid rgba(34, 211, 238, 0.2)',
+          },
+          success: {
+            iconTheme: {
+              primary: '#22d3ee',
+              secondary: '#1e293b',
+            },
+          },
+          error: {
+            iconTheme: {
+              primary: '#ef4444',
+              secondary: '#1e293b',
+            },
+          },
+        }}
+      />
       <Navigation />
       <Hero />
       <About />
