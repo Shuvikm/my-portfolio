@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
+import Lenis from 'lenis';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -7,49 +8,58 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Journey from './components/Journey';
 import Contact from './components/Contact';
-import Footer from './components/Footer';
+import MangaTimer from './components/MangaTimer';
 
 function App() {
   useEffect(() => {
-    document.documentElement.style.scrollBehavior = 'smooth';
+    // Initialize Lenis smooth scroll
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      smoothTouch: false,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
     return () => {
-      document.documentElement.style.scrollBehavior = 'auto';
+      lenis.destroy();
     };
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-manga-black">
       <Toaster
         position="top-right"
         toastOptions={{
           duration: 3000,
           style: {
-            background: '#1e293b',
-            color: '#e2e8f0',
-            border: '1px solid rgba(34, 211, 238, 0.2)',
-          },
-          success: {
-            iconTheme: {
-              primary: '#22d3ee',
-              secondary: '#1e293b',
-            },
-          },
-          error: {
-            iconTheme: {
-              primary: '#ef4444',
-              secondary: '#1e293b',
-            },
+            background: '#1a1a1a',
+            color: '#fafaff',
+            border: '2px solid #fbbf24',
+            fontWeight: 'bold',
           },
         }}
       />
       <Navigation />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Journey />
-      <Contact />
-      <Footer />
+
+      {/* Manga Page Container */}
+      <main className="manga-page">
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Journey />
+        <Contact />
+      </main>
+
+      {/* Manga Reading Timer */}
+      <MangaTimer />
     </div>
   );
 }

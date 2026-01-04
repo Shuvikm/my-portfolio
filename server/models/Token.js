@@ -10,6 +10,10 @@ const tokenSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  subject: {
+    type: String,
+    default: null
+  },
   type: {
     type: String,
     enum: ['visitor', 'user', 'refresh'],

@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/api';
+export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/api';
 
 export interface ContactFormData {
   name: string;
@@ -23,11 +23,11 @@ export interface Project {
 // Get JWT token for form submission
 export const getVisitorToken = async (): Promise<string> => {
   const response = await fetch(`${API_BASE_URL}/auth/token`);
-  
+
   if (!response.ok) {
     throw new Error('Failed to get authentication token');
   }
-  
+
   const data = await response.json();
   return data.token;
 };
@@ -36,7 +36,7 @@ export const getVisitorToken = async (): Promise<string> => {
 export const submitContactForm = async (data: ContactFormData) => {
   // First get a visitor token
   const token = await getVisitorToken();
-  
+
   const response = await fetch(`${API_BASE_URL}/contact`, {
     method: 'POST',
     headers: {
@@ -45,33 +45,33 @@ export const submitContactForm = async (data: ContactFormData) => {
     },
     body: JSON.stringify(data),
   });
-  
+
   if (!response.ok) {
     const errorData = await response.json();
     throw new Error(errorData.error || 'Failed to submit contact form');
   }
-  
+
   return response.json();
 };
 
 // Projects API
 export const getProjects = async (): Promise<Project[]> => {
   const response = await fetch(`${API_BASE_URL}/projects`);
-  
+
   if (!response.ok) {
     throw new Error('Failed to fetch projects');
   }
-  
+
   return response.json();
 };
 
 export const getFeaturedProjects = async (): Promise<Project[]> => {
   const response = await fetch(`${API_BASE_URL}/projects/featured`);
-  
+
   if (!response.ok) {
     throw new Error('Failed to fetch featured projects');
   }
-  
+
   return response.json();
 };
 
@@ -117,17 +117,17 @@ export const signup = async (data: SignupData): Promise<AuthResponse> => {
     },
     body: JSON.stringify(data),
   });
-  
+
   const result = await response.json();
-  
+
   if (!response.ok) {
     throw new Error(result.error || 'Failed to sign up');
   }
-  
+
   // Store token in localStorage
   localStorage.setItem('token', result.token);
   localStorage.setItem('user', JSON.stringify(result.user));
-  
+
   return result;
 };
 
@@ -140,17 +140,17 @@ export const login = async (data: LoginData): Promise<AuthResponse> => {
     },
     body: JSON.stringify(data),
   });
-  
+
   const result = await response.json();
-  
+
   if (!response.ok) {
     throw new Error(result.error || 'Failed to login');
   }
-  
+
   // Store token in localStorage
   localStorage.setItem('token', result.token);
   localStorage.setItem('user', JSON.stringify(result.user));
-  
+
   return result;
 };
 
@@ -184,22 +184,22 @@ export const isLoggedIn = (): boolean => {
 // Get user profile from server
 export const getUserProfile = async (): Promise<User> => {
   const token = getStoredToken();
-  
+
   if (!token) {
     throw new Error('No authentication token');
   }
-  
+
   const response = await fetch(`${API_BASE_URL}/auth/me`, {
     headers: {
       'Authorization': `Bearer ${token}`,
     },
   });
-  
+
   const result = await response.json();
-  
+
   if (!response.ok) {
     throw new Error(result.error || 'Failed to get profile');
   }
-  
+
   return result.user;
 };

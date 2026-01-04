@@ -14,10 +14,19 @@
     "install:all": "npm install && cd server && npm install"
   },
   "dependencies": {
+    "@react-three/drei": "^9.108.3",
+    "@react-three/fiber": "^8.16.8",
+    "@types/animejs": "^3.1.13",
+    "@types/three": "^0.182.0",
+    "animejs": "^4.2.2",
+    "gsap": "^3.14.2",
+    "lenis": "^1.3.16",
     "lucide-react": "^0.344.0",
+    "maath": "^0.10.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-hot-toast": "^2.6.0"
+    "react-hot-toast": "^2.6.0",
+    "three": "^0.165.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",

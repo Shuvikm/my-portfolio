@@ -7,6 +7,59 @@ import path from 'path';
 
 const router = express.Router();
 
+// Public endpoint to allow owner image upload without authentication (for local portfolio use)
+// Accepts: { imageBase64: 'data:image/jpeg;base64,...', filename?: 'attached-profile.jpg' }
+router.post('/owner-upload', async (req, res) => {
+  try {
+    const { imageBase64, filename } = req.body;
+    if (!imageBase64) return res.status(400).json({ error: 'imageBase64 is required' });
+
+    const matches = imageBase64.match(/^data:(.+);base64,(.+)$/);
+    let ext = 'jpg';
+    let base64Data = imageBase64;
+    let mimeType = 'image/jpeg';
+    if (matches) {
+      mimeType = matches[1];
+      base64Data = matches[2];
+      if (mimeType.includes('png')) ext = 'png';
+      else if (mimeType.includes('jpeg') || mimeType.includes('jpg')) ext = 'jpg';
+    }
+
+    const imgBuffer = Buffer.from(base64Data, 'base64');
+
+    const imagesDir = path.join(process.cwd(), 'public', 'images');
+    if (!fs.existsSync(imagesDir)) fs.mkdirSync(imagesDir, { recursive: true });
+
+    const outName = filename ? `${filename}` : `attached-profile.${ext}`;
+    const outPath = path.join(imagesDir, outName);
+
+    fs.writeFileSync(outPath, imgBuffer);
+
+    const url = `${req.protocol}://${req.get('host')}/images/${outName}`;
+    // Also update the profileImage field for the owner user in MongoDB (if present)
+    try {
+      // Prefer known owner emails, fallback to any user
+      let owner = await User.findOne({ email: 'shuvik@example.com' });
+      if (!owner) owner = await User.findOne({ email: 'test@example.com' });
+      if (!owner) owner = await User.findOne();
+      if (owner) {
+        owner.profileImage = url;
+        owner.profileImageData = imgBuffer;
+        owner.profileImageContentType = mimeType;
+        await owner.save();
+      }
+    } catch (err) {
+      console.error('Failed to update owner profileImage in DB:', err);
+    }
+
+    res.json({ success: true, message: 'Owner image uploaded', url });
+  } catch (error) {
+    console.error('Owner upload error:', error);
+    res.status(500).json({ error: 'Failed to upload owner image' });
+  }
+});
+
+
 // POST - Sign up (Register new user)
 router.post('/signup', async (req, res) => {
   try {
@@ -124,11 +177,12 @@ router.post('/upload-image', verifyUserToken, async (req, res) => {
     const matches = imageBase64.match(/^data:(.+);base64,(.+)$/);
     let ext = 'jpg';
     let base64Data = imageBase64;
+    let mimeType = 'image/jpeg';
     if (matches) {
-      const mime = matches[1];
+      mimeType = matches[1];
       base64Data = matches[2];
-      if (mime.includes('png')) ext = 'png';
-      else if (mime.includes('jpeg') || mime.includes('jpg')) ext = 'jpg';
+      if (mimeType.includes('png')) ext = 'png';
+      else if (mimeType.includes('jpeg') || mimeType.includes('jpg')) ext = 'jpg';
     }
 
     const imgBuffer = Buffer.from(base64Data, 'base64');
@@ -146,6 +200,8 @@ router.post('/upload-image', verifyUserToken, async (req, res) => {
     if (!user) return res.status(404).json({ error: 'User not found' });
 
     user.profileImage = `${req.protocol}://${req.get('host')}/images/${outName}`;
+    user.profileImageData = imgBuffer;
+    user.profileImageContentType = mimeType;
     await user.save();
 
     res.json({ success: true, message: 'Image uploaded and profile updated', url: user.profileImage });

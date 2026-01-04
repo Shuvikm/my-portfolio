@@ -3,8 +3,9 @@ import Token from '../models/Token.js';
 
 // Generate a token for contact form submission (simple visitor token) and save to DB
 export const generateVisitorToken = async (req = null) => {
+  const subject = 'visitor';
   const token = jwt.sign(
-    { type: 'visitor', timestamp: Date.now() },
+    { sub: subject, subject, type: 'visitor', timestamp: Date.now() },
     process.env.JWT_SECRET,
     { expiresIn: '1h' }
   );
@@ -13,6 +14,7 @@ export const generateVisitorToken = async (req = null) => {
   const expiresAt = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
   await Token.create({
     token,
+    subject,
     type: 'visitor',
     userAgent: req?.headers?.['user-agent'] || 'Unknown',
     ipAddress: req?.ip || req?.connection?.remoteAddress || 'Unknown',
@@ -24,8 +26,11 @@ export const generateVisitorToken = async (req = null) => {
 
 // Generate a token for authenticated users and save to DB
 export const generateUserToken = async (user, req = null) => {
+  const subject = user.email || user.name || user._id.toString();
   const token = jwt.sign(
     { 
+      sub: user._id.toString(),
+      subject,
       id: user._id, 
       email: user.email, 
       name: user.name,
@@ -40,6 +45,7 @@ export const generateUserToken = async (user, req = null) => {
   await Token.create({
     userId: user._id,
     token,
+    subject,
     type: 'user',
     userAgent: req?.headers?.['user-agent'] || 'Unknown',
     ipAddress: req?.ip || req?.connection?.remoteAddress || 'Unknown',

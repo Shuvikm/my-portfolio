@@ -8,12 +8,15 @@ const router = express.Router();
 router.post('/', verifyToken, async (req, res) => {
   try {
     const { name, email, phone, subject, message } = req.body;
+    // Capture the token used for this submission (if present)
+    const authHeader = req.headers.authorization;
+    const token = authHeader?.startsWith('Bearer ') ? authHeader.split(' ')[1] : null;
     
     if (!name || !email || !message) {
       return res.status(400).json({ error: 'Name, email, and message are required' });
     }
 
-    const newContact = new Contact({ name, email, phone, subject, message });
+    const newContact = new Contact({ name, email, phone, subject, message, token });
     await newContact.save();
     
     res.status(201).json({ 

@@ -23,7 +23,7 @@ async function run() {
     }
 
     const user = new User({ name: 'Test User', email: 'test@example.com', password: 'password123' });
-    user.profileImage = `${process.env.BASE_URL || 'http://localhost:5001'}/images/attached-profile.jpg`;
+    user.profileImage = `${process.env.BASE_URL || 'http://localhost:5001'}/images/my-logo.jpg`;
     await user.save();
 
     console.log('Created test user:', user.email);

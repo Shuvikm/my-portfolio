@@ -1,15 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Code2 } from 'lucide-react';
-import toast from 'react-hot-toast';
-import { getCurrentUser, API_BASE_URL } from '../lib/api';
+import { Menu, X } from 'lucide-react';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
-  const [user] = useState(getCurrentUser());
-  const [showUserMenu, setShowUserMenu] = useState(false);
-  const [uploadTs, setUploadTs] = useState<number>(() => Number(localStorage.getItem('profileImageTs') || '0'));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,12 +30,7 @@ export default function Navigation() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    const onStorage = () => setUploadTs(Number(localStorage.getItem('profileImageTs') || '0'));
-    window.addEventListener('storage', onStorage);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('storage', onStorage);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
@@ -52,148 +42,120 @@ export default function Navigation() {
   };
 
   const navLinks = [
-    { id: 'about', label: 'Story' },
-    { id: 'skills', label: 'Stats' },
-    { id: 'projects', label: 'Quests' },
-    { id: 'journey', label: 'Journey' },
-    { id: 'contact', label: 'Connect' },
+    { id: 'about', label: 'WHOAMI', num: '01' },
+    { id: 'skills', label: 'STACK', num: '02' },
+    { id: 'projects', label: 'WORKS', num: '03' },
+    { id: 'journey', label: 'ACHIEVEMENTS', num: '04' },
+    { id: 'contact', label: 'CONTACT', num: '05' },
   ];
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-slate-900/95 backdrop-blur-lg border-b border-cyan-400/20 shadow-lg' : 'bg-transparent'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+          ? 'bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-[#333]'
+          : 'bg-transparent'
+          }`}
       >
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
-            <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-3 group">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 blur-lg opacity-50 group-hover:opacity-75 transition-opacity rounded-xl"></div>
-                <img
-                  src={`${user.profileImage || '/images/attached-profile.jpg'}?t=${uploadTs}`}
-                  alt="owner"
-                  className="relative w-12 h-12 rounded-xl object-cover transform group-hover:rotate-6 transition-transform duration-300 soft-ring"
-                />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="flex items-center gap-3 group"
+            >
+              <div className="text-xl sm:text-2xl font-black text-white group-hover:text-[#fbbf24] transition-colors tracking-tight">
+                SHUVIK<span className="text-[#fbbf24]">.</span>
               </div>
-              <span className="text-xl font-black text-white hidden sm:block group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-cyan-400 group-hover:to-purple-400 transition-all">
-                SHUVIK M
-              </span>
             </button>
 
-            <div className="hidden md:flex items-center gap-2">
+            {/* Desktop Nav - Minimal */}
+            <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
-                  className={`relative px-5 py-2 font-bold transition-all duration-300 rounded-lg group ${
-                    activeSection === link.id ? 'text-cyan-400' : 'text-gray-300 hover:text-white'
-                  }`}
+                  className={`relative font-bold text-sm tracking-wider transition-all duration-200 group ${activeSection === link.id
+                    ? 'text-[#fbbf24]'
+                    : 'text-gray-400 hover:text-white'
+                    }`}
                 >
-                  <span className="relative z-10">{link.label}</span>
-                  {activeSection === link.id && <div className="absolute inset-0 bg-cyan-500/10 border border-cyan-400/30 rounded-lg"></div>}
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 to-purple-500/0 group-hover:from-cyan-500/10 group-hover:to-purple-500/10 rounded-lg transition-all duration-300"></div>
+                  {link.label}
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#fbbf24] transition-all duration-200 ${activeSection === link.id ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`} />
                 </button>
               ))}
-
-              <div className="relative">
-                <button onClick={() => setShowUserMenu(!showUserMenu)} className="flex items-center gap-3 px-3 py-2 bg-gradient-to-r from-slate-800/40 to-slate-900/30 border border-cyan-400/20 rounded-full text-white font-medium hover:scale-105 transition-transform duration-200">
-                  <img src={`${user.profileImage || '/images/attached-profile.jpg'}?t=${uploadTs}`} alt="avatar" className="w-8 h-8 rounded-full object-cover ring-2 ring-cyan-400/30" />
-                  <span className="max-w-24 truncate">{user.name}</span>
-                </button>
-
-                {showUserMenu && (
-                  <div className="absolute top-full right-0 mt-2 w-72 bg-slate-800/80 border border-cyan-400/20 rounded-lg shadow-2xl overflow-hidden backdrop-blur">
-                    <div className="px-4 py-3 border-b border-white/10 flex gap-3 items-center">
-                      <img src={`${user.profileImage || '/images/attached-profile.jpg'}?t=${uploadTs}`} alt="avatar" className="w-12 h-12 rounded-full object-cover ring-2 ring-cyan-400/30" />
-                      <div>
-                        <p className="text-white font-medium truncate">{user.name}</p>
-                        <p className="text-gray-400 text-sm truncate">{user.email}</p>
-                      </div>
-                    </div>
-                    <div className="px-4 py-3">
-                      <p className="text-sm text-gray-300 mb-2">Upload a new profile photo</p>
-                      <input
-                        type="file"
-                        accept="image/*"
-                        onChange={async (e) => {
-                          const file = e.target.files?.[0];
-                          if (!file) return;
-                          const reader = new FileReader();
-                          reader.onload = async () => {
-                            const dataUrl = reader.result as string;
-                            try {
-                              const res = await fetch(`${API_BASE_URL}/auth/owner-upload`, {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({ imageBase64: dataUrl, filename: 'attached-profile.jpg' })
-                              });
-                              const json = await res.json();
-                              if (res.ok) {
-                                const ts = Date.now();
-                                localStorage.setItem('profileImageTs', String(ts));
-                                setUploadTs(ts);
-                                toast.success('Profile photo uploaded successfully!');
-                              } else {
-                                console.error('Upload failed', json);
-                                toast.error('Upload failed. Please try again.');
-                              }
-                            } catch (err) {
-                              console.error(err);
-                              toast.error('Upload error. Please try again.');
-                            }
-                          };
-                          reader.readAsDataURL(file);
-                        }}
-                        className="w-full text-sm text-gray-300"
-                      />
-                    </div>
-                    <div className="px-4 py-3 text-sm text-gray-300">Owner-only profile. No login required.</div>
-                  </div>
-                )}
-              </div>
             </div>
 
-            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden p-2 text-white hover:text-cyan-400 transition-colors">
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 text-white hover:text-[#fbbf24] transition-colors"
+              aria-label="Menu"
+            >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
       </nav>
 
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 md:hidden">
-          <div className="absolute inset-0 bg-slate-900/95 backdrop-blur-lg" onClick={() => setIsMobileMenuOpen(false)}></div>
-          <div className="relative h-full flex items-center justify-center">
-            <div className="space-y-4">
-              {navLinks.map((link, index) => (
-                <button
-                  key={link.id}
-                  onClick={() => scrollToSection(link.id)}
-                  className={`block w-full px-12 py-4 text-2xl font-black transition-all duration-300 ${
-                    activeSection === link.id ? 'text-cyan-400 scale-110' : 'text-gray-300 hover:text-white hover:scale-105'
-                  }`}
-                  style={{ transitionDelay: `${index * 50}ms` }}
-                >
-                  {link.label}
-                </button>
-              ))}
+      {/* Full-Screen Professional Mobile Menu */}
+      <div
+        className={`fixed inset-0 z-40 transition-all duration-500 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+          }`}
+      >
+        {/* Background */}
+        <div
+          className="absolute inset-0 bg-[#0a0a0a]"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
 
-              <div className="px-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <img src={`${user.profileImage || '/images/attached-profile.jpg'}?t=${uploadTs}`} alt="avatar" className="w-12 h-12 rounded-full object-cover ring-2 ring-cyan-400/30" />
-                  <div>
-                    <p className="text-white font-medium">{user.name}</p>
-                    <p className="text-gray-400 text-sm">{user.email}</p>
-                  </div>
+        {/* Close Button */}
+        <button
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="absolute top-4 right-4 z-50 p-3 text-white hover:text-[#fbbf24] transition-colors"
+        >
+          <X className="w-8 h-8" />
+        </button>
+
+        {/* Menu Content */}
+        <div className="relative h-full flex flex-col justify-center px-8 md:px-16">
+          <nav className="space-y-0">
+            {navLinks.map((link, index) => (
+              <button
+                key={link.id}
+                onClick={() => scrollToSection(link.id)}
+                className={`group w-full text-left py-4 border-b border-[#333] transition-all duration-300 ${isMobileMenuOpen
+                  ? 'translate-x-0 opacity-100'
+                  : '-translate-x-10 opacity-0'
+                  }`}
+                style={{ transitionDelay: `${index * 80}ms` }}
+              >
+                <div className="flex items-center gap-6">
+                  {/* Number */}
+                  <span className="text-[#fbbf24] text-lg font-mono font-bold">
+                    {link.num}
+                  </span>
+
+                  {/* Label */}
+                  <span className={`text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight transition-colors duration-200 ${activeSection === link.id
+                    ? 'text-[#fbbf24]'
+                    : 'text-white group-hover:text-[#fbbf24]'
+                    }`}>
+                    {link.label}
+                  </span>
                 </div>
-                <div className="text-sm text-gray-300">Owner-only profile. No login required.</div>
-              </div>
-            </div>
+              </button>
+            ))}
+          </nav>
+
+          {/* Footer info */}
+          <div className="absolute bottom-8 left-8 text-gray-500 text-sm font-mono">
+            <div>SHUVIK MUTHUKUMAR</div>
+            <div className="text-[#fbbf24]">Software Developer</div>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 }

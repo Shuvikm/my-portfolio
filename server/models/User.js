@@ -23,7 +23,14 @@ const userSchema = new mongoose.Schema({
   },
   profileImage: {
     type: String,
-    default: '/images/attached-profile.jpg'
+    default: '/images/my-logo.jpg'
+  },
+  // Optional: store binary image data and mime type in DB
+  profileImageData: {
+    type: Buffer,
+  },
+  profileImageContentType: {
+    type: String,
   },
   createdAt: {
     type: Date,
