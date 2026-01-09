@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Trophy, Users, ZoomIn, Medal, X, Maximize2 } from 'lucide-react';
+import { Trophy, ZoomIn, Medal, X, Maximize2 } from 'lucide-react';
 import CertificateModal from './CertificateModal';
 
 const achievements = [
@@ -141,7 +141,7 @@ export default function Journey() {
       <div className="manga-panel manga-panel-dark p-5">
         <div className="flex items-center gap-3 mb-3">
           <div className="p-2 bg-[#fbbf24]">
-            <Users className="w-5 h-5 text-[#1a1a1a]" />
+            <Trophy className="w-5 h-5 text-[#1a1a1a]" />
           </div>
           <h3 className="font-black uppercase text-[#fbbf24]">Activities</h3>
         </div>

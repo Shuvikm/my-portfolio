@@ -9,6 +9,7 @@ import Projects from './components/Projects';
 import Journey from './components/Journey';
 import Contact from './components/Contact';
 import MangaTimer from './components/MangaTimer';
+import MangaScene3D from './components/MangaScene3D';
 
 function App() {
   useEffect(() => {
@@ -17,7 +18,6 @@ function App() {
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      smoothTouch: false,
     });
 
     function raf(time: number) {
@@ -33,7 +33,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-manga-black">
+    <div className="min-h-screen relative" style={{ background: '#f5f5f5' }}>
       <Toaster
         position="top-right"
         toastOptions={{
@@ -46,16 +46,52 @@ function App() {
           },
         }}
       />
+
+      {/* Three.js Manga Effects Background */}
+      <MangaScene3D />
+
       <Navigation />
 
-      {/* Manga Page Container */}
+      {/* Hero Section with Parallax */}
+      <div className="parallax parallax-hero">
+        <div className="manga-page">
+          <Hero />
+        </div>
+      </div>
+
+      {/* Content Sections - Aligned */}
       <main className="manga-page">
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Journey />
-        <Contact />
+        <div className="content-section">
+          <About />
+          <Skills />
+        </div>
+
+        {/* Parallax Divider with Manga Style */}
+        <div className="parallax parallax-projects">
+          <div className="parallax-content">
+            <h3 className="manga-title text-4xl text-center" style={{ textShadow: '2px 2px 0 white, 4px 4px 0 #1a1a1a' }}>
+              ⚡ ACTION ⚡
+            </h3>
+          </div>
+        </div>
+
+        <div className="content-section">
+          <Projects />
+          <Journey />
+        </div>
+
+        {/* Parallax Divider with Manga Style */}
+        <div className="parallax parallax-contact">
+          <div className="parallax-content">
+            <h3 className="manga-title text-4xl text-center" style={{ textShadow: '2px 2px 0 white, 4px 4px 0 #1a1a1a' }}>
+              💬 CONTACT 💬
+            </h3>
+          </div>
+        </div>
+
+        <div className="content-section">
+          <Contact />
+        </div>
       </main>
 
       {/* Manga Reading Timer */}

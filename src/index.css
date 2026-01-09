@@ -1479,3 +1479,114 @@ body {
 		transform: scale(1.02);
 	}
 }
+
+/* ===== PARALLAX EFFECT (W3Schools Style) ===== */
+.parallax {
+	/* The image used */
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	min-height: 400px;
+	border-top: 6px solid #1a1a1a;
+	border-bottom: 6px solid #1a1a1a;
+	box-shadow: inset 0 4px 0 rgba(0, 0, 0, 0.1), inset 0 -4px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Parallax sections with manga texture overlay */
+.parallax::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: repeating-linear-gradient(0deg,
+			transparent,
+			transparent 2px,
+			rgba(0, 0, 0, 0.03) 2px,
+			rgba(0, 0, 0, 0.03) 4px);
+	z-index: 1;
+}
+
+.parallax>* {
+	position: relative;
+	z-index: 2;
+}
+
+/* Centered content in parallax */
+.parallax-content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 400px;
+	padding: 60px 20px;
+}
+
+.parallax-content h3 {
+	color: #1a1a1a;
+	letter-spacing: 0.2em;
+	font-weight: 900;
+}
+
+/* Hero parallax - One Piece adventure manga style */
+.parallax-hero {
+	background-color: #f5f5f5;
+	background-image:
+		url('/onepiece-bg.png'),
+		radial-gradient(circle, #1a1a1a 1px, transparent 1px),
+		radial-gradient(circle, #1a1a1a 1px, transparent 1px);
+	background-size: cover, 20px 20px, 20px 20px;
+	background-position: center, 0 0, 10px 10px;
+	background-blend-mode: multiply, normal, normal;
+	min-height: 600px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Projects parallax - Speed lines manga effect */
+.parallax-projects {
+	background-color: #fafaff;
+	background-image:
+		repeating-linear-gradient(45deg,
+			transparent,
+			transparent 10px,
+			rgba(251, 191, 36, 0.1) 10px,
+			rgba(251, 191, 36, 0.1) 11px),
+		repeating-linear-gradient(-45deg,
+			transparent,
+			transparent 10px,
+			rgba(251, 191, 36, 0.1) 10px,
+			rgba(251, 191, 36, 0.1) 11px);
+	min-height: 300px;
+}
+
+/* Contact parallax - Comic book dots pattern */
+.parallax-contact {
+	background-color: #f5f5f5;
+	background-image:
+		radial-gradient(circle at 25% 25%, rgba(251, 191, 36, 0.15) 2px, transparent 2px),
+		radial-gradient(circle at 75% 75%, rgba(251, 191, 36, 0.15) 2px, transparent 2px),
+		radial-gradient(circle at 25% 75%, #1a1a1a 1px, transparent 1px),
+		radial-gradient(circle at 75% 25%, #1a1a1a 1px, transparent 1px);
+	background-size: 30px 30px, 30px 30px, 30px 30px, 30px 30px;
+	background-position: 0 0, 15px 15px, 0 15px, 15px 0;
+	min-height: 300px;
+}
+
+/* Smooth content sections - Consistent alignment */
+.content-section {
+	background-color: #f5f5f5;
+	padding: 0;
+	position: relative;
+	z-index: 3;
+}
+
+/* Ensure manga-page alignment */
+.manga-page {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
