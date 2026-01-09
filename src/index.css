@@ -1591,16 +1591,22 @@ body {
 	padding: 0 20px;
 }
 
-/* ===== PARALLAX EFFECT (W3Schools Style) ===== */
+/* ===== PARALLAX EFFECT (W3Schools Style) - FULL SCREEN ===== */
 
-/* Base parallax container */
+/* Base parallax container - Full screen with proper aspect ratio */
 .parallax {
 	position: relative;
-	min-height: 400px;
+	height: 100vh;
+	/* Full viewport height */
+	width: 100vw;
+	/* Full viewport width */
+	margin-left: calc(-50vw + 50%);
+	/* Center full width */
 	background-attachment: fixed;
-	background-position: center;
+	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
+	/* Cover entire viewport while maintaining aspect ratio */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -1609,73 +1615,140 @@ body {
 	border-bottom: 5px solid var(--manga-ink);
 }
 
-/* Dark overlay for better text readability */
+/* Dark overlay for better text readability and drama */
 .parallax::before {
 	content: '';
 	position: absolute;
 	inset: 0;
-	background: rgba(0, 0, 0, 0.4);
+	background: rgba(0, 0, 0, 0.5);
+	/* Slightly darker for full screen */
 	z-index: 1;
+	animation: overlayPulse 3s ease-in-out infinite;
 }
 
-/* Content container */
+@keyframes overlayPulse {
+
+	0%,
+	100% {
+		opacity: 0.5;
+	}
+
+	50% {
+		opacity: 0.4;
+	}
+}
+
+/* Content container - Enhanced for full screen */
 .parallax-content {
 	position: relative;
 	z-index: 2;
 	text-align: center;
-	padding: 40px 20px;
-	background: rgba(255, 255, 255, 0.95);
-	border: 5px solid var(--manga-ink);
-	box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.9);
-	max-width: 600px;
+	padding: 60px 40px;
+	background: rgba(255, 255, 255, 0.97);
+	border: 6px solid var(--manga-ink);
+	box-shadow: 15px 15px 0 rgba(0, 0, 0, 0.9);
+	max-width: 700px;
 	margin: 0 auto;
+	transform: scale(1);
+	transition: all 0.3s ease;
 }
 
-/* Hero parallax - Action spiral */
+.parallax-content:hover {
+	transform: scale(1.02);
+	box-shadow: 20px 20px 0 rgba(0, 0, 0, 0.9);
+}
+
+/* Hero parallax - Action spiral - Full screen */
 .parallax-hero {
 	background-image: url('/images/manga-parallax-action.png');
-	min-height: 600px;
+	height: 100vh;
 }
 
-/* Projects parallax - Burst explosion */
+/* Projects parallax - Burst explosion - Full screen */
 .parallax-projects {
 	background-image: url('/images/manga-parallax-burst.png');
-	min-height: 350px;
+	height: 100vh;
 }
 
-/* Contact parallax - Speed lines */
+/* Contact parallax - Speed lines - Full screen */
 .parallax-contact {
 	background-image: url('/images/manga-parallax-speed.png');
-	min-height: 350px;
+	height: 100vh;
 }
 
-/* Manga title styling for parallax sections */
+/* Manga title styling for parallax sections - Enhanced */
 .manga-title {
 	font-weight: 900;
 	text-transform: uppercase;
-	letter-spacing: 0.1em;
+	letter-spacing: 0.15em;
 	color: var(--manga-ink);
 	margin: 0;
 	padding: 0;
+	font-size: 3.5rem;
+	text-shadow:
+		3px 3px 0 white,
+		6px 6px 0 var(--manga-ink);
+	animation: titlePop 0.5s ease-out;
 }
 
-/* Mobile: Remove parallax effect for performance */
+@keyframes titlePop {
+	0% {
+		transform: scale(0.8);
+		opacity: 0;
+	}
+
+	50% {
+		transform: scale(1.1);
+	}
+
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+/* Tablet: Adjust for medium screens */
+@media (max-width: 1024px) {
+	.manga-title {
+		font-size: 2.5rem;
+	}
+
+	.parallax-content {
+		padding: 50px 30px;
+		max-width: 600px;
+	}
+}
+
+/* Mobile: Adjust for performance and readability */
 @media (max-width: 768px) {
 	.parallax {
 		background-attachment: scroll;
-		min-height: 300px;
+		/* Better performance on mobile */
+		height: 70vh;
+		/* Slightly smaller on mobile */
+		margin-left: 0;
+		width: 100%;
 	}
 
 	.parallax-hero {
-		min-height: 400px;
+		height: 80vh;
+		/* Keep hero larger */
 	}
 
 	.parallax-projects,
 	.parallax-contact {
-		min-height: 250px;
+		height: 60vh;
 	}
 
 	.parallax-content {
-		padding: 30px 15px;
+		padding: 40px 20px;
+		max-width: 90%;
+	}
+
+	.manga-title {
+		font-size: 2rem;
+		text-shadow:
+			2px 2px 0 white,
+			4px 4px 0 var(--manga-ink);
 	}
 }
