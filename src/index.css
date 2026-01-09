@@ -1590,3 +1590,92 @@ body {
 	margin: 0 auto;
 	padding: 0 20px;
 }
+
+/* ===== PARALLAX EFFECT (W3Schools Style) ===== */
+
+/* Base parallax container */
+.parallax {
+	position: relative;
+	min-height: 400px;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	border-top: 5px solid var(--manga-ink);
+	border-bottom: 5px solid var(--manga-ink);
+}
+
+/* Dark overlay for better text readability */
+.parallax::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.4);
+	z-index: 1;
+}
+
+/* Content container */
+.parallax-content {
+	position: relative;
+	z-index: 2;
+	text-align: center;
+	padding: 40px 20px;
+	background: rgba(255, 255, 255, 0.95);
+	border: 5px solid var(--manga-ink);
+	box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.9);
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+/* Hero parallax - Action spiral */
+.parallax-hero {
+	background-image: url('/images/manga-parallax-action.png');
+	min-height: 600px;
+}
+
+/* Projects parallax - Burst explosion */
+.parallax-projects {
+	background-image: url('/images/manga-parallax-burst.png');
+	min-height: 350px;
+}
+
+/* Contact parallax - Speed lines */
+.parallax-contact {
+	background-image: url('/images/manga-parallax-speed.png');
+	min-height: 350px;
+}
+
+/* Manga title styling for parallax sections */
+.manga-title {
+	font-weight: 900;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: var(--manga-ink);
+	margin: 0;
+	padding: 0;
+}
+
+/* Mobile: Remove parallax effect for performance */
+@media (max-width: 768px) {
+	.parallax {
+		background-attachment: scroll;
+		min-height: 300px;
+	}
+
+	.parallax-hero {
+		min-height: 400px;
+	}
+
+	.parallax-projects,
+	.parallax-contact {
+		min-height: 250px;
+	}
+
+	.parallax-content {
+		padding: 30px 15px;
+	}
+}
