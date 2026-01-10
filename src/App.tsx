@@ -13,11 +13,13 @@ import MangaScene3D from './components/MangaScene3D';
 
 function App() {
   useEffect(() => {
-    // Initialize Lenis smooth scroll
+    // Initialize Lenis smooth scroll with enhanced settings
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 1.5, // Smoother, longer scroll duration
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Exponential easing
       smoothWheel: true,
+      wheelMultiplier: 1.2, // Slightly faster wheel scrolling
+      touchMultiplier: 2, // Better touch responsiveness
     });
 
     function raf(time: number) {
@@ -27,8 +29,30 @@ function App() {
 
     requestAnimationFrame(raf);
 
+    // Smooth scroll for anchor links
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest('a[href^="#"]');
+      if (anchor) {
+        e.preventDefault();
+        const href = anchor.getAttribute('href');
+        if (href) {
+          const element = document.querySelector(href);
+          if (element) {
+            lenis.scrollTo(element as HTMLElement, {
+              offset: -80, // Account for fixed navigation
+              duration: 1.5,
+            });
+          }
+        }
+      }
+    };
+
+    document.addEventListener('click', handleAnchorClick);
+
     return () => {
       lenis.destroy();
+      document.removeEventListener('click', handleAnchorClick);
     };
   }, []);
 
