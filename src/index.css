@@ -1658,21 +1658,21 @@ body {
 	box-shadow: 20px 20px 0 rgba(0, 0, 0, 0.9);
 }
 
-/* Hero parallax - Action spiral - Full screen */
+/* Hero parallax - JJK Domain Expansion Style - Full screen */
 .parallax-hero {
-	background-image: url('/images/manga-parallax-action.png');
+	background-image: url('/images/manga-jjk-style.png');
 	height: 100vh;
 }
 
-/* Projects parallax - Burst explosion - Full screen */
+/* Projects parallax - Cowboy Bebop Jazz Noir - Full screen */
 .parallax-projects {
-	background-image: url('/images/manga-parallax-burst.png');
+	background-image: url('/images/manga-bebop-style.png');
 	height: 100vh;
 }
 
-/* Contact parallax - Speed lines - Full screen */
+/* Contact parallax - JoJo Menacing Style - Full screen */
 .parallax-contact {
-	background-image: url('/images/manga-parallax-speed.png');
+	background-image: url('/images/manga-jojo-style.png');
 	height: 100vh;
 }
 
