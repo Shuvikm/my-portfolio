@@ -6,8 +6,8 @@ export default function About() {
       {/* Section Header */}
       <div className="manga-panel p-6 mb-4">
         <div className="flex items-center gap-4">
-          <div className="exclaim-box">01</div>
-          <h2 className="manga-title text-3xl sm:text-4xl text-[#1a1a1a]">WHOAMI</h2>
+          <div className="exclaim-box" style={{ background: '#fbbf24', color: '#1a1a1a' }}>01</div>
+          <h2 className="manga-title text-3xl sm:text-4xl text-[#fbbf24]">WHOAMI</h2>
         </div>
       </div>
 

@@ -1664,26 +1664,26 @@ body {
 	height: 100vh;
 }
 
-/* Projects parallax - Cowboy Bebop Jazz Noir - Full screen - More transparent */
+/* Projects/ACTION parallax - JJK Style - Full screen - Very transparent */
 .parallax-projects {
-	background-image: url('/images/manga-bebop-style.png');
+	background-image: url('/images/manga-jjk-style.png');
 	height: 100vh;
 }
 
 .parallax-projects::before {
-	background: rgba(0, 0, 0, 0.25) !important;
-	/* More transparent overlay */
+	background: rgba(0, 0, 0, 0.1) !important;
+	/* Very transparent - see manga background clearly */
 }
 
-/* Contact parallax - JoJo Menacing Style - Full screen - More transparent */
+/* Contact parallax - JoJo Menacing Style - Full screen - Very transparent */
 .parallax-contact {
 	background-image: url('/images/manga-jojo-style.png');
 	height: 100vh;
 }
 
 .parallax-contact::before {
-	background: rgba(0, 0, 0, 0.25) !important;
-	/* More transparent overlay */
+	background: rgba(0, 0, 0, 0.1) !important;
+	/* Very transparent - see manga background clearly */
 }
 
 /* Manga title styling for parallax sections - Enhanced */
