@@ -31,7 +31,7 @@ export default function Hero() {
 
             {/* Name */}
             <h1 className="manga-title text-5xl sm:text-6xl lg:text-7xl text-white text-outline-thick mb-6">
-              SHUVIK <span className="text-[#fbbf24]">M</span>
+              <span className="text-[#fbbf24]">SHUVIK</span> <span className="text-[#fbbf24]">M</span>
             </h1>
 
             {/* Description - Thought Bubble */}

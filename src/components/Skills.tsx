@@ -14,8 +14,8 @@ export default function Skills() {
       <div className="manga-panel manga-panel-dark p-6 mb-4 relative overflow-hidden">
         <div className="screentone" style={{ opacity: 0.2 }} />
         <div className="relative z-10 flex items-center gap-4">
-          <div className="exclaim-box">02</div>
-          <h2 className="manga-title text-3xl sm:text-4xl text-white">STACK</h2>
+          <div className="exclaim-box" style={{ background: '#fbbf24', color: '#1a1a1a' }}>02</div>
+          <h2 className="manga-title text-3xl sm:text-4xl text-[#fbbf24]">STACK</h2>
         </div>
       </div>
 
