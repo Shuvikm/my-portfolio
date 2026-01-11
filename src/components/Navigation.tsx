@@ -10,7 +10,7 @@ export default function Navigation() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      const sections = ['about', 'skills', 'projects', 'journey', 'contact'];
+      const sections = ['manga-gallery', 'about', 'skills', 'projects', 'journey', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
@@ -42,6 +42,7 @@ export default function Navigation() {
   };
 
   const navLinks = [
+    { id: 'manga-gallery', label: 'MANGA', num: '00' },
     { id: 'about', label: 'WHOAMI', num: '01' },
     { id: 'skills', label: 'STACK', num: '02' },
     { id: 'projects', label: 'WORKS', num: '03' },

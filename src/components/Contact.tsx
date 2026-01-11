@@ -93,17 +93,17 @@ export default function Contact() {
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-bold text-[#1a1a1a] mb-1">Name</label>
-                <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Your name" className="w-full px-4 py-3 border-4 border-[#1a1a1a] focus:outline-none focus:border-[#fbbf24]" required />
+                <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Your name" className="w-full px-4 py-3 border-4 border-[#1a1a1a] focus:outline-none focus:border-[#fbbf24] bg-white text-black" required />
               </div>
               <div>
                 <label className="block text-sm font-bold text-[#1a1a1a] mb-1">Email</label>
-                <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="your@email.com" className="w-full px-4 py-3 border-4 border-[#1a1a1a] focus:outline-none focus:border-[#fbbf24]" required />
+                <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="your@email.com" className="w-full px-4 py-3 border-4 border-[#1a1a1a] focus:outline-none focus:border-[#fbbf24] bg-white text-black" required />
               </div>
             </div>
 
             <div>
               <label className="block text-sm font-bold text-[#1a1a1a] mb-1">Message</label>
-              <textarea name="message" value={formData.message} onChange={handleInputChange} placeholder="Tell me about your project..." rows={4} className="w-full px-4 py-3 border-4 border-[#1a1a1a] focus:outline-none focus:border-[#fbbf24] resize-none" required />
+              <textarea name="message" value={formData.message} onChange={handleInputChange} placeholder="Tell me about your project..." rows={4} className="w-full px-4 py-3 border-4 border-[#1a1a1a] focus:outline-none focus:border-[#fbbf24] resize-none bg-white text-black" required />
             </div>
 
             {formStatus.type !== 'idle' && (
@@ -163,7 +163,7 @@ export default function Contact() {
           "Let's turn ideas into reality, one line of code at a time."
         </div>
         <div className="text-sm text-[#fbbf24] font-bold">
-          © 2024 SHUVIK M — All Rights Reserved
+          Shuvik M
         </div>
       </div>
     </section>

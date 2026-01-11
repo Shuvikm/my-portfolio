@@ -11,6 +11,7 @@ import Contact from './components/Contact';
 import MangaTimer from './components/MangaTimer';
 import MangaScene3D from './components/MangaScene3D';
 import MangaIntro from './components/MangaIntro';
+import MangaGallery from './components/MangaGallery';
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -91,6 +92,11 @@ function App() {
 
       {/* Content Sections - Aligned */}
       <main className="manga-page">
+        {/* Manga Gallery - Browse favorite panels */}
+        <div className="content-section">
+          <MangaGallery />
+        </div>
+
         <div className="content-section">
           <About />
           <Skills />

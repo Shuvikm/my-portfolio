@@ -60,11 +60,10 @@ export default function Journey() {
   return (
     <section id="journey" className="manga-section">
       {/* Section Header */}
-      <div className="manga-panel manga-panel-dark p-6 mb-4 relative overflow-hidden">
-        <div className="screentone" style={{ opacity: 0.2 }} />
+      <div className="manga-panel p-6 mb-4 relative overflow-hidden">
         <div className="relative z-10 flex items-center gap-4">
           <div className="exclaim-box" style={{ background: '#fbbf24', color: '#1a1a1a' }}>04</div>
-          <h2 className="manga-title text-3xl sm:text-4xl text-[#fbbf24]">ACHIEVEMENTS</h2>
+          <h2 className="manga-title text-3xl sm:text-4xl text-[#1a1a1a]">ACHIEVEMENTS</h2>
         </div>
       </div>
 
