@@ -16,7 +16,7 @@ const achievements = [
     title: 'Interzone Handball',
     desc: '4th place in Interzone Handball competition',
     icon: Medal,
-    highlight: false,
+    highlight: true,  // Highlight with orange accent
     image: null,
   },
   {

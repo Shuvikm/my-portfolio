@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import Lenis from 'lenis';
 import Navigation from './components/Navigation';
@@ -10,8 +10,11 @@ import Journey from './components/Journey';
 import Contact from './components/Contact';
 import MangaTimer from './components/MangaTimer';
 import MangaScene3D from './components/MangaScene3D';
+import MangaIntro from './components/MangaIntro';
 
 function App() {
+  const [showIntro, setShowIntro] = useState(true);
+
   useEffect(() => {
     // Initialize Lenis smooth scroll with enhanced settings
     const lenis = new Lenis({
@@ -58,6 +61,9 @@ function App() {
 
   return (
     <div className="min-h-screen relative" style={{ background: '#f5f5f5' }}>
+      {/* Manga Intro Slideshow */}
+      {showIntro && <MangaIntro onComplete={() => setShowIntro(false)} />}
+
       <Toaster
         position="top-right"
         toastOptions={{

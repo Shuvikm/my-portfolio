@@ -44,7 +44,7 @@ export default function Skills() {
             <div className="p-2 bg-[#fbbf24]">
               <Palette className="w-5 h-5 text-[#1a1a1a]" />
             </div>
-            <h3 className="font-black uppercase text-[#1a1a1a] text-sm">Frontend</h3>
+            <h3 className="font-black uppercase text-[#fbbf24] text-sm">Frontend</h3>
           </div>
           <div className="flex flex-wrap gap-2">
             {skills.frontend.map((skill) => (
