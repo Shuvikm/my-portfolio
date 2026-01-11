@@ -1762,3 +1762,120 @@ body {
 			4px 4px 0 var(--manga-ink);
 	}
 }
+
+/* ===== SECTION-SPECIFIC MANGA BACKGROUNDS ===== */
+
+/* About/WHOAMI Section - Gojo vs Sukuna */
+#about {
+	position: relative;
+}
+
+#about::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: url('/images/manga-gojo-sukuna.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	opacity: 0.15;
+	z-index: 0;
+	pointer-events: none;
+}
+
+#about>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Skills/STACK Section - DIO vs Jotaro */
+#skills {
+	position: relative;
+}
+
+#skills::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: url('/images/manga-dio-jotaro.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	opacity: 0.15;
+	z-index: 0;
+	pointer-events: none;
+}
+
+#skills>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Projects/WORK Section - Vegeta vs Goku */
+#projects {
+	position: relative;
+}
+
+#projects::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: url('/images/manga-vegeta-goku.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	opacity: 0.15;
+	z-index: 0;
+	pointer-events: none;
+}
+
+#projects>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Journey/ACHIEVEMENTS Section - All Might vs All For One */
+#journey {
+	position: relative;
+}
+
+#journey::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: url('/images/manga-allmight-afo.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	opacity: 0.15;
+	z-index: 0;
+	pointer-events: none;
+}
+
+#journey>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Contact Section - Gojo vs Sukuna (alternate) */
+#contact {
+	position: relative;
+}
+
+#contact::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: url('/images/manga-gojo-sukuna.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	opacity: 0.12;
+	z-index: 0;
+	pointer-events: none;
+}
+
+#contact>* {
+	position: relative;
+	z-index: 1;
+}
