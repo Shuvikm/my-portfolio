@@ -92,13 +92,17 @@ export default function Projects() {
                 <a
                   href={proj.gameLink}
                   className="manga-button manga-button-dark w-full py-2 text-sm flex items-center justify-center gap-2"
+                  aria-label={`Play ${proj.title} game`}
                 >
-                  <Gamepad2 className="w-4 h-4" />
+                  <Gamepad2 className="w-4 h-4" aria-hidden="true" />
                   <span>Play Game</span>
                 </a>
               ) : (
-                <button className="manga-button w-full py-2 text-sm flex items-center justify-center gap-2">
-                  <ExternalLink className="w-4 h-4" />
+                <button
+                  className="manga-button w-full py-2 text-sm flex items-center justify-center gap-2"
+                  aria-label={`View details for ${proj.title}`}
+                >
+                  <ExternalLink className="w-4 h-4" aria-hidden="true" />
                   <span>View Quest</span>
                 </button>
               )}
