@@ -290,13 +290,6 @@ export default function MangaPanelPortfolio() {
             {/* Manga Divider */}
             <div className="manga-divider" />
 
-            {/* Decorative Manga Panels Row */}
-            <div className="panel-row-triple" style={{ marginBottom: '1.5rem' }}>
-                <div className="manga-panel-decorative" />
-                <div className="manga-panel-decorative" style={{ minHeight: '80px' }} />
-                <div className="manga-panel-decorative" />
-            </div>
-
             {/* ROW 1: WHOAMI + STACK (Angular) */}
             <div className="panel-row-angled">
                 {/* WHOAMI Panel */}
