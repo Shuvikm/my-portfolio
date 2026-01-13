@@ -156,6 +156,16 @@ export default function MangaPanelPortfolio() {
                 </div>
             </div>
 
+            {/* Manga Divider */}
+            <div className="manga-divider" />
+
+            {/* Decorative Manga Panels Row */}
+            <div className="panel-row-triple" style={{ marginBottom: '1.5rem' }}>
+                <div className="manga-panel-decorative" />
+                <div className="manga-panel-decorative" style={{ minHeight: '80px' }} />
+                <div className="manga-panel-decorative" />
+            </div>
+
             {/* ROW 1: WHOAMI + STACK (Angular) */}
             <div className="panel-row-angled">
                 {/* WHOAMI Panel */}
@@ -277,6 +287,12 @@ export default function MangaPanelPortfolio() {
                         </div>
                     ))}
                 </div>
+            </div>
+
+            {/* Second Decorative Manga Panels Row */}
+            <div className="panel-row-angled" style={{ marginBottom: '1.5rem' }}>
+                <div className="manga-panel-decorative" style={{ minHeight: '100px' }} />
+                <div className="manga-panel-decorative" style={{ minHeight: '100px' }} />
             </div>
 
             {/* ROW 3: ACHIEVEMENTS (Full Width) */}
