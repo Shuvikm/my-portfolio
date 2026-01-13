@@ -18,7 +18,7 @@ html {
     position: relative;
 }
 
-/* Parallax background effect */
+/* Clean parallax container */
 .manga-page-layout::before {
     content: '';
     position: fixed;
@@ -26,12 +26,25 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
-    background:
-        radial-gradient(ellipse at 20% 30%, rgba(251, 191, 36, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 70%, rgba(251, 191, 36, 0.05) 0%, transparent 50%),
-        linear-gradient(180deg, rgba(245, 245, 240, 0.9) 0%, rgba(232, 232, 224, 0.95) 100%);
+    background: #f5f5f0;
     pointer-events: none;
     z-index: -1;
+}
+
+/* Parallax scrolling wrapper for sections */
+.parallax-section {
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+/* Parallax depth layers */
+.parallax-layer-back {
+    transform: translateZ(-100px) scale(1.1);
+}
+
+.parallax-layer-front {
+    transform: translateZ(50px) scale(0.95);
 }
 
 /* iPhone Mirror / Glassmorphism effect for panels */
@@ -299,14 +312,14 @@ html {
 
 /* Decorative empty manga panel with parallax */
 .manga-panel-decorative {
-    background: linear-gradient(135deg, #f8f8f6 0%, #fff 50%, #f5f5f0 100%);
+    background: #fff;
     border: 3px solid #1a1a1a;
     position: relative;
     min-height: 120px;
     box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.15);
     transform: translateZ(0);
     will-change: transform;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Inner double border frame effect */
@@ -881,4 +894,52 @@ html {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* ========================================
+   MANGA READING POPUP EFFECT
+   Sequential panel popup animation
+   ======================================== */
+
+/* Active panel - pops up and highlighted */
+.panel-popup-active {
+    animation: mangaPopup 0.5s ease forwards;
+    z-index: 50;
+    position: relative;
+}
+
+@keyframes mangaPopup {
+    0% {
+        transform: scale(1);
+        box-shadow: 6px 6px 0 #1a1a1a;
+    }
+
+    50% {
+        transform: scale(1.03) translateY(-10px);
+        box-shadow: 12px 20px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    100% {
+        transform: scale(1.02) translateY(-5px);
+        box-shadow: 10px 15px 25px rgba(0, 0, 0, 0.25);
+    }
+}
+
+/* Inactive panels - dimmed */
+.panel-popup-inactive {
+    opacity: 0.4;
+    filter: grayscale(50%);
+    transform: scale(0.98);
+    transition: all 0.5s ease;
+}
+
+/* Panel returning to normal */
+.manga-panel-frame {
+    transition: all 0.5s ease;
+}
+
+/* Parallax scroll effect for all panels */
+.manga-panel-frame.parallax-panel {
+    will-change: transform;
+    transform: translateZ(0);
 }

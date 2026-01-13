@@ -1,5 +1,5 @@
 import { Github, Linkedin, Mail, Code2, ExternalLink, Trophy, Medal, ZoomIn, GraduationCap, School, Target, Code, Database, Wrench, Palette, Phone, MessageSquare } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CertificateModal from './CertificateModal';
 
 // Data from existing components
@@ -90,11 +90,82 @@ const contactLinks = [
 export default function MangaPanelPortfolio() {
     const [showCertModal, setShowCertModal] = useState(false);
     const [selectedCert, setSelectedCert] = useState({ image: '', title: '' });
+    const [activePanel, setActivePanel] = useState<number | null>(null);
+    const [isReading, setIsReading] = useState(false);
+
+    // Panel IDs for the reading effect
+    const panelIds = ['home', 'about', 'skills', 'projects', 'journey', 'contact'];
+
+    // Start the manga reading effect
+    const startReadingEffect = () => {
+        setIsReading(true);
+        setActivePanel(0);
+    };
+
+    // Sequential popup effect - each panel for 5 seconds
+    useEffect(() => {
+        if (!isReading || activePanel === null) return;
+
+        const timer = setTimeout(() => {
+            if (activePanel < panelIds.length - 1) {
+                setActivePanel(activePanel + 1);
+            } else {
+                // Reading complete, reset
+                setActivePanel(null);
+                setIsReading(false);
+            }
+        }, 5000); // 5 seconds per panel
+
+        // Scroll to active panel smoothly
+        const element = document.getElementById(panelIds[activePanel]);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        return () => clearTimeout(timer);
+    }, [activePanel, isReading, panelIds]);
+
+    // Get panel class based on active state
+    const getPanelClass = (panelId: string) => {
+        const panelIndex = panelIds.indexOf(panelId);
+        if (activePanel === panelIndex) {
+            return 'panel-popup-active';
+        }
+        if (isReading && activePanel !== panelIndex) {
+            return 'panel-popup-inactive';
+        }
+        return '';
+    };
 
     return (
         <div className="manga-page-layout">
+            {/* Reading Mode Button */}
+            <button
+                className="manga-reading-btn"
+                onClick={startReadingEffect}
+                disabled={isReading}
+                style={{
+                    position: 'fixed',
+                    top: '5rem',
+                    right: '2rem',
+                    zIndex: 100,
+                    padding: '0.75rem 1.5rem',
+                    background: isReading ? '#4a4a4a' : '#fbbf24',
+                    color: '#1a1a1a',
+                    border: '3px solid #1a1a1a',
+                    boxShadow: '4px 4px 0 #1a1a1a',
+                    fontWeight: 900,
+                    textTransform: 'uppercase',
+                    fontSize: '0.75rem',
+                    cursor: isReading ? 'not-allowed' : 'pointer',
+                    transition: 'all 0.2s ease'
+                }}
+            >
+                📖 {isReading ? 'Reading...' : 'Start Reading'}
+            </button>
+
             {/* HERO PANEL */}
-            <div id="home" className="manga-panel-frame panel-hero">
+            <div id="home" className={`manga-panel-frame panel-hero ${getPanelClass('home')}`}>
                 <div className="hero-content">
                     {/* Profile Image */}
                     <div className="profile-frame">
@@ -169,7 +240,7 @@ export default function MangaPanelPortfolio() {
             {/* ROW 1: WHOAMI + STACK (Angular) */}
             <div className="panel-row-angled">
                 {/* WHOAMI Panel */}
-                <div id="about" className="manga-panel-frame section-panel panel-angled-left">
+                <div id="about" className={`manga-panel-frame section-panel panel-angled-left ${getPanelClass('about')}`}>
                     <div className="section-header">
                         <div className="section-number">01</div>
                         <h2 className="section-title">WHOAMI</h2>
@@ -215,7 +286,7 @@ export default function MangaPanelPortfolio() {
                 </div>
 
                 {/* STACK Panel */}
-                <div id="skills" className="manga-panel-frame section-panel panel-angled-right panel-dark">
+                <div id="skills" className={`manga-panel-frame section-panel panel-angled-right panel-dark ${getPanelClass('skills')}`}>
                     <div className="section-header">
                         <div className="section-number">02</div>
                         <h2 className="section-title">STACK</h2>
@@ -263,7 +334,7 @@ export default function MangaPanelPortfolio() {
             </div>
 
             {/* ROW 2: WORKS (Full Width) */}
-            <div id="projects" className="manga-panel-frame section-panel panel-full">
+            <div id="projects" className={`manga-panel-frame section-panel panel-full ${getPanelClass('projects')}`}>
                 <div className="section-header">
                     <div className="section-number">03</div>
                     <h2 className="section-title">WORKS</h2>
@@ -296,7 +367,7 @@ export default function MangaPanelPortfolio() {
             </div>
 
             {/* ROW 3: ACHIEVEMENTS (Full Width) */}
-            <div id="journey" className="manga-panel-frame section-panel panel-full">
+            <div id="journey" className={`manga-panel-frame section-panel panel-full ${getPanelClass('journey')}`}>
                 <div className="section-header">
                     <div className="section-number">04</div>
                     <h2 className="section-title">ACHIEVEMENTS</h2>
@@ -405,7 +476,7 @@ export default function MangaPanelPortfolio() {
             </div>
 
             {/* ROW 4: CONTACT */}
-            <div id="contact" className="manga-panel-frame section-panel panel-full panel-dark">
+            <div id="contact" className={`manga-panel-frame section-panel panel-full panel-dark ${getPanelClass('contact')}`}>
                 <div className="section-header">
                     <div className="section-number">05</div>
                     <h2 className="section-title">CONTACT</h2>
