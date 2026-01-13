@@ -297,20 +297,48 @@ html {
     clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
 }
 
-/* Decorative empty manga panel */
+/* Decorative empty manga panel with parallax */
 .manga-panel-decorative {
     background: linear-gradient(135deg, #f8f8f6 0%, #fff 50%, #f5f5f0 100%);
     border: 3px solid #1a1a1a;
     position: relative;
     min-height: 120px;
     box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.15);
+    transform: translateZ(0);
+    will-change: transform;
+    transition: transform 0.3s ease;
 }
 
+/* Inner double border frame effect */
 .manga-panel-decorative::before {
     content: '';
     position: absolute;
-    inset: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    inset: 6px;
+    border: 2px solid #1a1a1a;
+    pointer-events: none;
+}
+
+/* Second inner border for depth */
+.manga-panel-decorative::after {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    pointer-events: none;
+}
+
+/* Parallax effect on scroll */
+@supports (background-attachment: fixed) {
+    .manga-panel-decorative {
+        background-attachment: fixed;
+        background-size: cover;
+    }
+}
+
+/* Hover parallax effect */
+.manga-panel-decorative:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 6px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* Manga divider line between sections */
