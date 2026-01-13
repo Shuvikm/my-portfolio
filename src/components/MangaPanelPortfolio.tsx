@@ -94,7 +94,7 @@ export default function MangaPanelPortfolio() {
     return (
         <div className="manga-page-layout">
             {/* HERO PANEL */}
-            <div className="manga-panel-frame panel-hero">
+            <div id="home" className="manga-panel-frame panel-hero">
                 <div className="hero-content">
                     {/* Profile Image */}
                     <div className="profile-frame">
@@ -159,7 +159,7 @@ export default function MangaPanelPortfolio() {
             {/* ROW 1: WHOAMI + STACK (Angular) */}
             <div className="panel-row-angled">
                 {/* WHOAMI Panel */}
-                <div className="manga-panel-frame section-panel panel-angled-left">
+                <div id="about" className="manga-panel-frame section-panel panel-angled-left">
                     <div className="section-header">
                         <div className="section-number">01</div>
                         <h2 className="section-title">WHOAMI</h2>
@@ -205,7 +205,7 @@ export default function MangaPanelPortfolio() {
                 </div>
 
                 {/* STACK Panel */}
-                <div className="manga-panel-frame section-panel panel-angled-right panel-dark">
+                <div id="skills" className="manga-panel-frame section-panel panel-angled-right panel-dark">
                     <div className="section-header">
                         <div className="section-number">02</div>
                         <h2 className="section-title">STACK</h2>
@@ -253,7 +253,7 @@ export default function MangaPanelPortfolio() {
             </div>
 
             {/* ROW 2: WORKS (Full Width) */}
-            <div className="manga-panel-frame section-panel panel-full">
+            <div id="projects" className="manga-panel-frame section-panel panel-full">
                 <div className="section-header">
                     <div className="section-number">03</div>
                     <h2 className="section-title">WORKS</h2>
@@ -280,7 +280,7 @@ export default function MangaPanelPortfolio() {
             </div>
 
             {/* ROW 3: ACHIEVEMENTS (Full Width) */}
-            <div className="manga-panel-frame section-panel panel-full">
+            <div id="journey" className="manga-panel-frame section-panel panel-full">
                 <div className="section-header">
                     <div className="section-number">04</div>
                     <h2 className="section-title">ACHIEVEMENTS</h2>
@@ -297,7 +297,10 @@ export default function MangaPanelPortfolio() {
                                     setShowCertModal(true);
                                 }
                             }}
-                            style={{ cursor: ach.image ? 'pointer' : 'default' }}
+                            style={{
+                                cursor: ach.image ? 'pointer' : 'default',
+                                transition: 'all 0.3s ease'
+                            }}
                         >
                             <div className="achievement-icon">
                                 <ach.icon className="w-5 h-5" />
@@ -309,64 +312,48 @@ export default function MangaPanelPortfolio() {
                                 </h4>
                                 <p style={{ fontSize: '0.875rem', color: '#4a4a4a' }}>{ach.desc}</p>
                                 {ach.image && (
-                                    <span style={{ fontSize: '0.75rem', color: '#fbbf24', fontWeight: 'bold' }}>
-                                        📷 Click to view!
-                                    </span>
-                                )}
-                            </div>
-                            {/* Show small thumbnail if image exists */}
-                            {ach.image && (
-                                <div style={{ display: 'flex', gap: '0.5rem' }}>
-                                    <div
-                                        style={{
-                                            width: '60px',
-                                            height: '60px',
-                                            border: '2px solid #1a1a1a',
-                                            overflow: 'hidden',
-                                            boxShadow: '2px 2px 0 #1a1a1a'
-                                        }}
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            setSelectedCert({ image: ach.image!, title: `${ach.title} - Trophy` });
-                                            setShowCertModal(true);
-                                        }}
-                                    >
-                                        <img
-                                            src={ach.image}
-                                            alt="Trophy"
-                                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                        />
-                                    </div>
-                                    {ach.teamImage && (
-                                        <div
+                                    <div style={{ marginTop: '0.5rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                                        <span
                                             style={{
-                                                width: '60px',
-                                                height: '60px',
-                                                border: '2px solid #1a1a1a',
-                                                overflow: 'hidden',
-                                                boxShadow: '2px 2px 0 #1a1a1a'
-                                            }}
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                setSelectedCert({ image: ach.teamImage!, title: `${ach.title} - Team` });
-                                                setShowCertModal(true);
+                                                fontSize: '0.75rem',
+                                                color: '#fbbf24',
+                                                fontWeight: 'bold',
+                                                background: '#1a1a1a',
+                                                padding: '0.25rem 0.5rem',
+                                                borderRadius: '4px'
                                             }}
                                         >
-                                            <img
-                                                src={ach.teamImage}
-                                                alt="Team"
-                                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                            />
-                                        </div>
-                                    )}
-                                </div>
-                            )}
+                                            📷 Click to view Trophy
+                                        </span>
+                                        {ach.teamImage && (
+                                            <span
+                                                style={{
+                                                    fontSize: '0.75rem',
+                                                    color: '#fbbf24',
+                                                    fontWeight: 'bold',
+                                                    background: '#1a1a1a',
+                                                    padding: '0.25rem 0.5rem',
+                                                    borderRadius: '4px',
+                                                    cursor: 'pointer'
+                                                }}
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    setSelectedCert({ image: ach.teamImage!, title: `${ach.title} - Team` });
+                                                    setShowCertModal(true);
+                                                }}
+                                            >
+                                                👥 View Team Photo
+                                            </span>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     ))}
                 </div>
 
                 {/* Certifications */}
-                <h3 style={{ fontWeight: 900, textTransform: 'uppercase', marginTop: '1.5rem', marginBottom: '0.75rem' }}>
+                <h3 style={{ fontWeight: 900, textTransform: 'uppercase', marginTop: '1.5rem', marginBottom: '0.75rem', color: '#1a1a1a' }}>
                     Certifications
                 </h3>
                 <div className="certs-grid">
@@ -402,7 +389,7 @@ export default function MangaPanelPortfolio() {
             </div>
 
             {/* ROW 4: CONTACT */}
-            <div className="manga-panel-frame section-panel panel-full panel-dark">
+            <div id="contact" className="manga-panel-frame section-panel panel-full panel-dark">
                 <div className="section-header">
                     <div className="section-number">05</div>
                     <h2 className="section-title">CONTACT</h2>
