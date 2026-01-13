@@ -66,7 +66,7 @@ export default function Navigation() {
               className="flex items-center gap-3 group"
             >
               <div className="text-xl sm:text-2xl font-black text-white group-hover:text-[#fbbf24] transition-colors tracking-tight">
-                SHUVIK<span className="text-[#fbbf24]">.</span>
+                SHUVIK<span className="text-[#fbbf24]"> M</span>
               </div>
             </button>
 

@@ -12,9 +12,12 @@ import MangaTimer from './components/MangaTimer';
 import MangaScene3D from './components/MangaScene3D';
 import MangaIntro from './components/MangaIntro';
 import MangaGallery from './components/MangaGallery';
+import MangaPanelPortfolio from './components/MangaPanelPortfolio';
+import './manga-panels.css';
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
+  const [viewMode, setViewMode] = useState<'original' | 'manga'>('manga');
 
   useEffect(() => {
     // Initialize Lenis smooth scroll with enhanced settings
@@ -78,60 +81,90 @@ function App() {
         }}
       />
 
-      {/* Three.js Manga Effects Background */}
-      <MangaScene3D />
-
-      <Navigation />
-
-      {/* Hero Section with Parallax */}
-      <div className="parallax parallax-hero">
-        <div className="manga-page">
-          <Hero />
-        </div>
+      {/* Portfolio Toggle Button */}
+      <div className="portfolio-toggle">
+        <button
+          className={`toggle-btn ${viewMode === 'manga' ? 'active' : ''}`}
+          onClick={() => setViewMode('manga')}
+        >
+          📖 Manga
+        </button>
+        <button
+          className={`toggle-btn ${viewMode === 'original' ? 'active' : ''}`}
+          onClick={() => setViewMode('original')}
+        >
+          🎮 Original
+        </button>
       </div>
 
-      {/* Content Sections - Aligned */}
-      <main className="manga-page">
-        {/* Manga Gallery - Browse favorite panels */}
-        <div className="content-section">
-          <MangaGallery />
-        </div>
+      {/* Manga Panel Portfolio View */}
+      {viewMode === 'manga' && (
+        <>
+          <Navigation />
+          <MangaPanelPortfolio />
+          <MangaTimer />
+        </>
+      )}
 
-        <div className="content-section">
-          <About />
-          <Skills />
-        </div>
+      {/* Original Portfolio View */}
+      {viewMode === 'original' && (
+        <>
+          {/* Three.js Manga Effects Background */}
+          <MangaScene3D />
 
-        {/* Parallax Divider with Manga Style */}
-        <div className="parallax parallax-projects">
-          <div className="parallax-content">
-            <h3 className="manga-title text-4xl text-center" style={{ textShadow: '2px 2px 0 white, 4px 4px 0 #1a1a1a' }}>
-              ⚡ ACTION ⚡
-            </h3>
+          <Navigation />
+
+          {/* Hero Section with Parallax */}
+          <div className="parallax parallax-hero">
+            <div className="manga-page">
+              <Hero />
+            </div>
           </div>
-        </div>
 
-        <div className="content-section">
-          <Projects />
-          <Journey />
-        </div>
+          {/* Content Sections - Aligned */}
+          <main className="manga-page">
+            {/* Manga Gallery - Browse favorite panels */}
+            <div className="content-section">
+              <MangaGallery />
+            </div>
 
-        {/* Parallax Divider with Manga Style */}
-        <div className="parallax parallax-contact">
-          <div className="parallax-content">
-            <h3 className="manga-title text-4xl text-center" style={{ textShadow: '2px 2px 0 white, 4px 4px 0 #1a1a1a' }}>
-              💬 CONTACT 💬
-            </h3>
-          </div>
-        </div>
+            <div className="content-section">
+              <About />
+              <Skills />
+            </div>
 
-        <div className="content-section">
-          <Contact />
-        </div>
-      </main>
+            {/* Parallax Divider with Manga Style */}
+            <div className="parallax parallax-projects">
+              <div className="parallax-content">
+                <h3 className="manga-title text-4xl text-center" style={{ textShadow: '2px 2px 0 white, 4px 4px 0 #1a1a1a' }}>
+                  ⚡ ACTION ⚡
+                </h3>
+              </div>
+            </div>
 
-      {/* Manga Reading Timer */}
-      <MangaTimer />
+            <div className="content-section">
+              <Projects />
+              <Journey />
+            </div>
+
+            {/* Parallax Divider with Manga Style */}
+            <div className="parallax parallax-contact">
+              <div className="parallax-content">
+                <h3 className="manga-title text-4xl text-center" style={{ textShadow: '2px 2px 0 white, 4px 4px 0 #1a1a1a' }}>
+                  💬 CONTACT 💬
+                </h3>
+              </div>
+            </div>
+
+            <div className="content-section">
+              <Contact />
+            </div>
+          </main>
+
+          {/* Manga Reading Timer */}
+          <MangaTimer />
+        </>
+      )}
     </div>
   );
 }
