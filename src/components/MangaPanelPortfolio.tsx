@@ -2,6 +2,7 @@ import { Github, Linkedin, Mail, Code2, ExternalLink, Trophy, Medal, ZoomIn, Gra
 import { useState, useEffect, useRef } from 'react';
 import { animate, stagger } from 'animejs';
 import CertificateModal from './CertificateModal';
+import MangaScene3D from './MangaScene3D';
 
 // Data from existing components
 const skills = {
@@ -172,6 +173,8 @@ export default function MangaPanelPortfolio() {
 
     return (
         <div className="manga-page-layout" ref={containerRef}>
+            {/* Three.js 3D Background Scene */}
+            <MangaScene3D />
 
             {/* Reading Mode Button */}
             <button
