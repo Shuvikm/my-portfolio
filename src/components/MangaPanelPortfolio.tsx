@@ -1,6 +1,8 @@
 import { Github, Linkedin, Mail, Code2, ExternalLink, Trophy, Medal, ZoomIn, GraduationCap, School, Target, Code, Database, Wrench, Palette, Phone, MessageSquare } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { animate, stagger } from 'animejs';
 import CertificateModal from './CertificateModal';
+import MangaScene3D from './MangaScene3D';
 
 // Data from existing components
 const skills = {
@@ -92,9 +94,41 @@ export default function MangaPanelPortfolio() {
     const [selectedCert, setSelectedCert] = useState({ image: '', title: '' });
     const [activePanel, setActivePanel] = useState<number | null>(null);
     const [isReading, setIsReading] = useState(false);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     // Panel IDs for the reading effect
     const panelIds = ['home', 'about', 'skills', 'projects', 'journey', 'contact'];
+
+    // Anime.js entrance animation on mount
+    useEffect(() => {
+        // Staggered entrance animation for all panels
+        animate('.manga-panel-frame', {
+            opacity: [0, 1],
+            translateY: [50, 0],
+            scale: [0.95, 1],
+            duration: 800,
+            delay: stagger(150),
+            easing: 'easeOutElastic(1, .8)'
+        });
+
+        // Animate content bubbles
+        animate('.content-bubble', {
+            opacity: [0, 1],
+            translateX: [-30, 0],
+            duration: 600,
+            delay: stagger(100, { start: 400 }),
+            easing: 'easeOutCubic'
+        });
+
+        // Animate skill tags
+        animate('.skill-tag, .project-tag', {
+            opacity: [0, 1],
+            scale: [0.8, 1],
+            duration: 400,
+            delay: stagger(50, { start: 800 }),
+            easing: 'easeOutBack'
+        });
+    }, []);
 
     // Start the manga reading effect
     const startReadingEffect = () => {
@@ -138,7 +172,10 @@ export default function MangaPanelPortfolio() {
     };
 
     return (
-        <div className="manga-page-layout">
+        <div className="manga-page-layout" ref={containerRef}>
+            {/* Three.js 3D Background Scene */}
+            <MangaScene3D />
+
             {/* Reading Mode Button */}
             <button
                 className="manga-reading-btn"
