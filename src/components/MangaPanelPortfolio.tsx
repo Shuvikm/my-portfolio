@@ -99,35 +99,58 @@ export default function MangaPanelPortfolio() {
     // Panel IDs for the reading effect
     const panelIds = ['home', 'about', 'skills', 'projects', 'journey', 'contact'];
 
-    // Anime.js entrance animation on mount
+    // Anime.js entrance animation on mount - delayed for background image to load first
     useEffect(() => {
-        // Staggered entrance animation for all panels
-        animate('.manga-panel-frame', {
-            opacity: [0, 1],
-            translateY: [50, 0],
-            scale: [0.95, 1],
-            duration: 800,
-            delay: stagger(150),
-            easing: 'easeOutElastic(1, .8)'
-        });
+        // Wait for background image to load before animating text
+        const bgImage = new Image();
+        bgImage.src = '/images/manga-bg.jpg';
 
-        // Animate content bubbles
-        animate('.content-bubble', {
-            opacity: [0, 1],
-            translateX: [-30, 0],
-            duration: 600,
-            delay: stagger(100, { start: 400 }),
-            easing: 'easeOutCubic'
-        });
+        bgImage.onload = () => {
+            // Staggered entrance animation for all panels (after image loads)
+            animate('.manga-panel-frame', {
+                opacity: [0, 1],
+                translateY: [80, 0],
+                scale: [0.9, 1],
+                duration: 1000,
+                delay: stagger(200),
+                easing: 'easeOutElastic(1, .6)'
+            });
 
-        // Animate skill tags
-        animate('.skill-tag, .project-tag', {
-            opacity: [0, 1],
-            scale: [0.8, 1],
-            duration: 400,
-            delay: stagger(50, { start: 800 }),
-            easing: 'easeOutBack'
-        });
+            // Animate content bubbles with delay
+            animate('.content-bubble', {
+                opacity: [0, 1],
+                translateX: [-50, 0],
+                duration: 800,
+                delay: stagger(120, { start: 600 }),
+                easing: 'easeOutCubic'
+            });
+
+            // Animate skill tags with delay
+            animate('.skill-tag, .project-tag', {
+                opacity: [0, 1],
+                scale: [0.7, 1],
+                duration: 500,
+                delay: stagger(60, { start: 1200 }),
+                easing: 'easeOutBack'
+            });
+        };
+
+        // Fallback if image takes too long - animate anyway after 2 seconds
+        const fallbackTimer = setTimeout(() => {
+            if (!bgImage.complete) {
+                // Trigger animations directly as fallback
+                animate('.manga-panel-frame', {
+                    opacity: [0, 1],
+                    translateY: [80, 0],
+                    scale: [0.9, 1],
+                    duration: 1000,
+                    delay: stagger(200),
+                    easing: 'easeOutElastic(1, .6)'
+                });
+            }
+        }, 2000);
+
+        return () => clearTimeout(fallbackTimer);
     }, []);
 
     // Start the manga reading effect
