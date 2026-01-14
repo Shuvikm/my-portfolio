@@ -287,6 +287,75 @@ export default function MangaPanelPortfolio() {
             {/* Manga Divider */}
             <div className="manga-divider" />
 
+            {/* GRIMOIRE SECTION - Floating Manga Images */}
+            <div className="grimoire-section">
+                <div className="grimoire-container">
+                    <div className="manga-panel-float">
+                        <img src="/images/grimoire/manga-1.jpg" alt="Manga Panel 1" />
+                    </div>
+                    <div className="manga-panel-float">
+                        <img src="/images/grimoire/manga-2.jpg" alt="Manga Panel 2" />
+                    </div>
+                    <div className="manga-panel-float">
+                        <img src="/images/grimoire/manga-3.jpg" alt="Manga Panel 3" />
+                    </div>
+                    <div className="manga-panel-float">
+                        <img src="/images/grimoire/manga-4.jpg" alt="Manga Panel 4" />
+                    </div>
+                    <div className="grimoire-book">
+                        <img src="/images/grimoire/grimoire-book.jpg" alt="Grimoire" />
+                    </div>
+                    <div className="manga-panel-float">
+                        <img src="/images/grimoire/manga-5.jpg" alt="Manga Panel 5" />
+                    </div>
+                    <div className="manga-panel-float">
+                        <img src="/images/grimoire/manga-6.jpg" alt="Manga Panel 6" />
+                    </div>
+                    <div className="manga-panel-float">
+                        <img src="/images/grimoire/manga-7.jpg" alt="Manga Panel 7" />
+                    </div>
+                    <div className="manga-panel-float">
+                        <img src="/images/grimoire/manga-8.jpg" alt="Manga Panel 8" />
+                    </div>
+                    <div className="manga-panel-float">
+                        <img src="/images/grimoire/manga-9.jpg" alt="Manga Panel 9" />
+                    </div>
+                    <div className="manga-panel-float">
+                        <img src="/images/grimoire/manga-10.jpg" alt="Manga Panel 10" />
+                    </div>
+                    <div className="manga-panel-float">
+                        <img src="/images/grimoire/manga-11.jpg" alt="Manga Panel 11" />
+                    </div>
+                    <div className="manga-panel-float">
+                        <img src="/images/grimoire/manga-12.jpg" alt="Manga Panel 12" />
+                    </div>
+                    <div className="manga-panel-float">
+                        <img src="/images/grimoire/manga-13.jpg" alt="Manga Panel 13" />
+                    </div>
+                    <div className="manga-panel-float">
+                        <img src="/images/grimoire/manga-14.jpg" alt="Manga Panel 14" />
+                    </div>
+                    <div className="manga-panel-float">
+                        <img src="/images/grimoire/manga-15.jpg" alt="Manga Panel 15" />
+                    </div>
+                    <div className="manga-panel-float">
+                        <img src="/images/grimoire/manga-16.jpg" alt="Manga Panel 16" />
+                    </div>
+                    <div className="manga-panel-float">
+                        <img src="/images/grimoire/manga-17.jpg" alt="Manga Panel 17" />
+                    </div>
+                    <div className="manga-panel-float">
+                        <img src="/images/grimoire/manga-18.jpg" alt="Manga Panel 18" />
+                    </div>
+                    <div className="manga-panel-float">
+                        <img src="/images/grimoire/manga-19.jpg" alt="Manga Panel 19" />
+                    </div>
+                </div>
+            </div>
+
+            {/* Manga Divider */}
+            <div className="manga-divider" />
+
             {/* ROW 1: WHOAMI + STACK (Angular) */}
             <div className="panel-row-angled">
                 {/* WHOAMI Panel */}
@@ -336,10 +405,10 @@ export default function MangaPanelPortfolio() {
                 </div>
 
                 {/* STACK Panel */}
-                <div id="skills" className={`manga-panel-frame section-panel panel-angled-right panel-dark ${getPanelClass('skills')}`}>
+                <div id="skills" className={`manga-panel-frame section-panel panel-angled-right ${getPanelClass('skills')}`}>
                     <div className="section-header">
                         <div className="section-number">02</div>
-                        <h2 className="section-title">STACK</h2>
+                        <h2 className="section-title" style={{ color: '#1a1a1a' }}>STACK</h2>
                     </div>
 
                     <div className="skills-grid">
@@ -526,18 +595,15 @@ export default function MangaPanelPortfolio() {
             </div>
 
             {/* ROW 4: CONTACT */}
-            <div id="contact" className={`manga-panel-frame section-panel panel-full panel-dark ${getPanelClass('contact')}`}>
+            <div id="contact" className={`manga-panel-frame section-panel panel-full ${getPanelClass('contact')}`}>
                 <div className="section-header">
                     <div className="section-number">05</div>
-                    <h2 className="section-title">CONTACT</h2>
+                    <h2 className="section-title" style={{ color: '#1a1a1a' }}>CONTACT</h2>
                 </div>
 
                 <div className="content-bubble" style={{
                     textAlign: 'center',
-                    marginBottom: '1.5rem',
-                    background: '#2a2a2a',
-                    color: '#fff',
-                    borderColor: '#3a3a3a'
+                    marginBottom: '1.5rem'
                 }}>
                     <MessageSquare className="w-5 h-5 inline mr-2" style={{ color: '#fbbf24' }} />
                     Have a project in mind? Let's collaborate!
@@ -565,10 +631,7 @@ export default function MangaPanelPortfolio() {
 
                 <div style={{ textAlign: 'center', marginTop: '2rem' }}>
                     <div className="content-bubble" style={{
-                        display: 'inline-block',
-                        background: '#2a2a2a',
-                        color: '#fff',
-                        borderColor: '#3a3a3a'
+                        display: 'inline-block'
                     }}>
                         "Let's turn ideas into reality, one line of code at a time."
                     </div>

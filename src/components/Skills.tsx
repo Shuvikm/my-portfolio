@@ -90,11 +90,11 @@ export default function Skills() {
       </div>
 
       {/* Tech Summary */}
-      <div className="manga-panel manga-panel-dark p-6">
+      <div className="manga-panel p-6">
         <h3 className="manga-subtitle text-sm text-[#fbbf24] mb-3 text-center">Full Stack</h3>
         <div className="flex flex-wrap justify-center gap-2">
           {[...skills.languages, ...skills.frontend, ...skills.databases, ...skills.tools].map((tech, i) => (
-            <span key={i} className="bg-black/40 border border-[#fbbf24] text-white px-3 py-1 text-xs font-bold uppercase hover:bg-[#fbbf24] hover:text-[#1a1a1a] transition-colors cursor-default">
+            <span key={i} className="bg-white border-2 border-[#fbbf24] text-[#1a1a1a] px-3 py-1 text-xs font-bold uppercase hover:bg-[#fbbf24] hover:text-white transition-colors cursor-default">
               {tech}
             </span>
           ))}

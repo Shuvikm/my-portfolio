@@ -73,7 +73,7 @@ export default function Contact() {
       </div>
 
       {/* Call to action */}
-      <div className="manga-panel manga-panel-dark p-6 mb-4 text-center">
+      <div className="manga-panel p-6 mb-4 text-center">
         <div className="thought-bubble inline-block">
           Have a project in mind? Let's collaborate!
         </div>
@@ -158,7 +158,7 @@ export default function Contact() {
       </div>
 
       {/* Footer Quote */}
-      <div className="manga-panel manga-panel-dark p-6 text-center">
+      <div className="manga-panel p-6 text-center">
         <div className="thought-bubble inline-block mb-4">
           "Let's turn ideas into reality, one line of code at a time."
         </div>

@@ -64,7 +64,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen relative" style={{ background: '#f5f5f5' }}>
+    <div className="min-h-screen relative" style={{ background: '#ffffff' }}>
       {/* Manga Intro Slideshow */}
       {showIntro && <MangaIntro onComplete={() => setShowIntro(false)} />}
 

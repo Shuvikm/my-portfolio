@@ -23,13 +23,13 @@ html.lenis {
 	pointer-events: none;
 }
 
-/* ===== MANGA COLOR PALETTE ===== */
+/* ===== MANGA COLOR PALETTE - Light Theme ===== */
 :root {
-	--manga-black: #0a0a0a;
-	--manga-white: #fafaff;
-	--manga-paper: #f5f5f5;
-	--manga-ink: #1a1a1a;
-	--manga-gray: #4a4a4a;
+	--manga-black: #ffffff;
+	--manga-white: #000000;
+	--manga-paper: #ffffff;
+	--manga-ink: #000000;
+	--manga-gray: #333333;
 	--manga-accent: #fbbf24;
 	--manga-red: #dc2626;
 }
@@ -1258,8 +1258,8 @@ html.lenis {
 
 body {
 	font-family: 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
-	background: var(--manga-black);
-	color: var(--manga-white);
+	background: var(--manga-white);
+	color: var(--manga-black);
 	overflow-x: hidden;
 }
 
@@ -1271,7 +1271,7 @@ body {
 
 ::-webkit-scrollbar-track {
 	background: var(--manga-ink);
-	border: 2px solid var(--manga-white);
+	border: 2px solid var(--manga-black);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -1304,15 +1304,15 @@ body {
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 80px 20px 40px;
-	background: var(--manga-black);
+	background: var(--manga-white);
 }
 
 /* ===== MANGA PANEL SYSTEM ===== */
 .manga-panel {
 	position: relative;
-	background: var(--manga-white);
+	background: #ffffff;
 	border: 5px solid var(--manga-ink);
-	box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.9);
+	box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
 	overflow: hidden;
 }
 
@@ -1403,9 +1403,9 @@ body {
 /* Impact Frame - For dramatic moments */
 .impact-frame {
 	position: relative;
-	background: var(--manga-ink);
-	color: var(--manga-white);
-	border: 8px solid var(--manga-white);
+	background: var(--manga-white);
+	color: var(--manga-black);
+	border: 8px solid var(--manga-black);
 	box-shadow:
 		0 0 0 3px var(--manga-ink),
 		15px 15px 0 var(--manga-accent);
@@ -1472,9 +1472,9 @@ body {
 }
 
 .manga-panel-dark {
-	background: var(--manga-ink);
-	color: var(--manga-white);
-	border-color: var(--manga-white);
+	background: #ffffff;
+	color: #000000;
+	border-color: #000000;
 }
 
 .manga-panel-accent {
@@ -2308,6 +2308,9 @@ body {
 /* ===== SECTION SPACING ===== */
 .manga-section {
 	margin-bottom: 40px;
+	background: #ffffff;
+	color: #000000;
+	padding: 2rem 0;
 }
 
 .section-title {
@@ -2748,7 +2751,7 @@ body {
 
 /* Hero parallax - One Piece adventure manga style */
 .parallax-hero {
-	background-color: #f5f5f5;
+	background-color: #ffffff;
 	background-image:
 		url('/onepiece-bg.png'),
 		radial-gradient(circle, #1a1a1a 1px, transparent 1px),
@@ -2781,7 +2784,7 @@ body {
 
 /* Contact parallax - Comic book dots pattern */
 .parallax-contact {
-	background-color: #f5f5f5;
+	background-color: #ffffff;
 	background-image:
 		radial-gradient(circle at 25% 25%, rgba(251, 191, 36, 0.15) 2px, transparent 2px),
 		radial-gradient(circle at 75% 75%, rgba(251, 191, 36, 0.15) 2px, transparent 2px),
@@ -2794,8 +2797,8 @@ body {
 
 /* Smooth content sections - Consistent alignment */
 .content-section {
-	background-color: #f5f5f5;
-	padding: 0;
+	background-color: #ffffff;
+	padding: 2rem 0;
 	position: relative;
 	z-index: 3;
 }
@@ -2874,32 +2877,30 @@ body {
 	box-shadow: 20px 20px 0 rgba(0, 0, 0, 0.9);
 }
 
-/* Hero parallax - JJK Domain Expansion Style - Full screen */
+/* Hero parallax - Clean manga style (no images) */
 .parallax-hero {
-	background-image: url('/images/manga-jjk-style.png');
+	background: #ffffff;
 	height: 100vh;
 }
 
-/* Projects/ACTION parallax - JJK Style - Full screen - Very transparent */
+/* Projects/ACTION parallax - Clean style */
 .parallax-projects {
-	background-image: url('/images/manga-jjk-style.png');
+	background: #ffffff;
 	height: 100vh;
 }
 
 .parallax-projects::before {
-	background: rgba(0, 0, 0, 0.1) !important;
-	/* Very transparent - see manga background clearly */
+	background: transparent !important;
 }
 
-/* Contact parallax - JoJo Menacing Style - Full screen - Very transparent */
+/* Contact parallax - Clean style */
 .parallax-contact {
-	background-image: url('/images/manga-jojo-style.png');
+	background: #ffffff;
 	height: 100vh;
 }
 
 .parallax-contact::before {
-	background: rgba(0, 0, 0, 0.1) !important;
-	/* Very transparent - see manga background clearly */
+	background: transparent !important;
 }
 
 /* Manga title styling for parallax sections - Enhanced */
@@ -2949,16 +2950,13 @@ body {
 @media (max-width: 768px) {
 	.parallax {
 		background-attachment: scroll;
-		/* Better performance on mobile */
 		height: 70vh;
-		/* Slightly smaller on mobile */
 		margin-left: 0;
 		width: 100%;
 	}
 
 	.parallax-hero {
 		height: 80vh;
-		/* Keep hero larger */
 	}
 
 	.parallax-projects,
@@ -2977,121 +2975,4 @@ body {
 			2px 2px 0 white,
 			4px 4px 0 var(--manga-ink);
 	}
-}
-
-/* ===== SECTION-SPECIFIC MANGA BACKGROUNDS ===== */
-
-/* About/WHOAMI Section - Gojo vs Sukuna */
-#about {
-	position: relative;
-}
-
-#about::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background-image: url('/images/manga-gojo-sukuna.png');
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	opacity: 1;
-	z-index: 0;
-	pointer-events: none;
-}
-
-#about>* {
-	position: relative;
-	z-index: 1;
-}
-
-/* Skills/STACK Section - DIO vs Jotaro */
-#skills {
-	position: relative;
-}
-
-#skills::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background-image: url('/images/manga-dio-jotaro.png');
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	opacity: 1;
-	z-index: 0;
-	pointer-events: none;
-}
-
-#skills>* {
-	position: relative;
-	z-index: 1;
-}
-
-/* Projects/WORK Section - Vegeta vs Goku */
-#projects {
-	position: relative;
-}
-
-#projects::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background-image: url('/images/manga-vegeta-goku.png');
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	opacity: 1;
-	z-index: 0;
-	pointer-events: none;
-}
-
-#projects>* {
-	position: relative;
-	z-index: 1;
-}
-
-/* Journey/ACHIEVEMENTS Section - All Might vs All For One */
-#journey {
-	position: relative;
-}
-
-#journey::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background-image: url('/images/manga-allmight-afo.png');
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	opacity: 1;
-	z-index: 0;
-	pointer-events: none;
-}
-
-#journey>* {
-	position: relative;
-	z-index: 1;
-}
-
-/* Contact Section - Gojo vs Sukuna (alternate) */
-#contact {
-	position: relative;
-}
-
-#contact::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background-image: url('/images/manga-gojo-sukuna.png');
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	opacity: 1;
-	z-index: 0;
-	pointer-events: none;
-}
-
-#contact>* {
-	position: relative;
-	z-index: 1;
 }
