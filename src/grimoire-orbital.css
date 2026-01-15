@@ -451,3 +451,25 @@
         width: 120px !important;
     }
 }
+
+/* Grimoire Modal Animation */
+@keyframes grimoireModalPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 50px rgba(251, 191, 36, 0.8);
+        filter: brightness(1);
+    }
+
+    50% {
+        box-shadow: 0 0 80px rgba(251, 191, 36, 1);
+        filter: brightness(1.1);
+    }
+}
+
+/* Grimoire Modal Button Hover */
+.grimoire-modal button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 #1a1a1a !important;
+    background: #fde047 !important;
+}

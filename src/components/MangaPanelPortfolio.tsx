@@ -95,6 +95,10 @@ export default function MangaPanelPortfolio() {
     const [isReading, setIsReading] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
 
+    // Grimoire image modal state
+    const [showGrimoireModal, setShowGrimoireModal] = useState(false);
+    const [selectedGrimoireImage, setSelectedGrimoireImage] = useState('');
+
     // Panel IDs for the reading effect
     const panelIds = ['home', 'about', 'skills', 'projects', 'journey', 'contact'];
 
@@ -290,64 +294,204 @@ export default function MangaPanelPortfolio() {
             {/* GRIMOIRE SECTION - Floating Manga Images */}
             <div className="grimoire-section">
                 <div className="grimoire-container">
-                    <div className="manga-panel-float">
+                    <div
+                        className="manga-panel-float"
+                        onClick={() => {
+                            setSelectedGrimoireImage('/images/grimoire/manga-1.jpg');
+                            setShowGrimoireModal(true);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src="/images/grimoire/manga-1.jpg" alt="Manga Panel 1" />
                     </div>
-                    <div className="manga-panel-float">
+                    <div
+                        className="manga-panel-float"
+                        onClick={() => {
+                            setSelectedGrimoireImage('/images/grimoire/manga-2.jpg');
+                            setShowGrimoireModal(true);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src="/images/grimoire/manga-2.jpg" alt="Manga Panel 2" />
                     </div>
-                    <div className="manga-panel-float">
+                    <div
+                        className="manga-panel-float"
+                        onClick={() => {
+                            setSelectedGrimoireImage('/images/grimoire/manga-3.jpg');
+                            setShowGrimoireModal(true);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src="/images/grimoire/manga-3.jpg" alt="Manga Panel 3" />
                     </div>
-                    <div className="manga-panel-float">
+                    <div
+                        className="manga-panel-float"
+                        onClick={() => {
+                            setSelectedGrimoireImage('/images/grimoire/manga-4.jpg');
+                            setShowGrimoireModal(true);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src="/images/grimoire/manga-4.jpg" alt="Manga Panel 4" />
                     </div>
-                    <div className="grimoire-book">
+                    <div
+                        className="grimoire-book"
+                        onClick={() => {
+                            setSelectedGrimoireImage('/images/grimoire/grimoire-book.jpg');
+                            setShowGrimoireModal(true);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src="/images/grimoire/grimoire-book.jpg" alt="Grimoire" />
                     </div>
-                    <div className="manga-panel-float">
+                    <div
+                        className="manga-panel-float"
+                        onClick={() => {
+                            setSelectedGrimoireImage('/images/grimoire/manga-5.jpg');
+                            setShowGrimoireModal(true);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src="/images/grimoire/manga-5.jpg" alt="Manga Panel 5" />
                     </div>
-                    <div className="manga-panel-float">
+                    <div
+                        className="manga-panel-float"
+                        onClick={() => {
+                            setSelectedGrimoireImage('/images/grimoire/manga-6.jpg');
+                            setShowGrimoireModal(true);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src="/images/grimoire/manga-6.jpg" alt="Manga Panel 6" />
                     </div>
-                    <div className="manga-panel-float">
+                    <div
+                        className="manga-panel-float"
+                        onClick={() => {
+                            setSelectedGrimoireImage('/images/grimoire/manga-7.jpg');
+                            setShowGrimoireModal(true);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src="/images/grimoire/manga-7.jpg" alt="Manga Panel 7" />
                     </div>
-                    <div className="manga-panel-float">
+                    <div
+                        className="manga-panel-float"
+                        onClick={() => {
+                            setSelectedGrimoireImage('/images/grimoire/manga-8.jpg');
+                            setShowGrimoireModal(true);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src="/images/grimoire/manga-8.jpg" alt="Manga Panel 8" />
                     </div>
-                    <div className="manga-panel-float">
+                    <div
+                        className="manga-panel-float"
+                        onClick={() => {
+                            setSelectedGrimoireImage('/images/grimoire/manga-9.jpg');
+                            setShowGrimoireModal(true);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src="/images/grimoire/manga-9.jpg" alt="Manga Panel 9" />
                     </div>
-                    <div className="manga-panel-float">
+                    <div
+                        className="manga-panel-float"
+                        onClick={() => {
+                            setSelectedGrimoireImage('/images/grimoire/manga-10.jpg');
+                            setShowGrimoireModal(true);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src="/images/grimoire/manga-10.jpg" alt="Manga Panel 10" />
                     </div>
-                    <div className="manga-panel-float">
+                    <div
+                        className="manga-panel-float"
+                        onClick={() => {
+                            setSelectedGrimoireImage('/images/grimoire/manga-11.jpg');
+                            setShowGrimoireModal(true);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src="/images/grimoire/manga-11.jpg" alt="Manga Panel 11" />
                     </div>
-                    <div className="manga-panel-float">
+                    <div
+                        className="manga-panel-float"
+                        onClick={() => {
+                            setSelectedGrimoireImage('/images/grimoire/manga-12.jpg');
+                            setShowGrimoireModal(true);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src="/images/grimoire/manga-12.jpg" alt="Manga Panel 12" />
                     </div>
-                    <div className="manga-panel-float">
+                    <div
+                        className="manga-panel-float"
+                        onClick={() => {
+                            setSelectedGrimoireImage('/images/grimoire/manga-13.jpg');
+                            setShowGrimoireModal(true);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src="/images/grimoire/manga-13.jpg" alt="Manga Panel 13" />
                     </div>
-                    <div className="manga-panel-float">
+                    <div
+                        className="manga-panel-float"
+                        onClick={() => {
+                            setSelectedGrimoireImage('/images/grimoire/manga-14.jpg');
+                            setShowGrimoireModal(true);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src="/images/grimoire/manga-14.jpg" alt="Manga Panel 14" />
                     </div>
-                    <div className="manga-panel-float">
+                    <div
+                        className="manga-panel-float"
+                        onClick={() => {
+                            setSelectedGrimoireImage('/images/grimoire/manga-15.jpg');
+                            setShowGrimoireModal(true);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src="/images/grimoire/manga-15.jpg" alt="Manga Panel 15" />
                     </div>
-                    <div className="manga-panel-float">
+                    <div
+                        className="manga-panel-float"
+                        onClick={() => {
+                            setSelectedGrimoireImage('/images/grimoire/manga-16.jpg');
+                            setShowGrimoireModal(true);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src="/images/grimoire/manga-16.jpg" alt="Manga Panel 16" />
                     </div>
-                    <div className="manga-panel-float">
+                    <div
+                        className="manga-panel-float"
+                        onClick={() => {
+                            setSelectedGrimoireImage('/images/grimoire/manga-17.jpg');
+                            setShowGrimoireModal(true);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src="/images/grimoire/manga-17.jpg" alt="Manga Panel 17" />
                     </div>
-                    <div className="manga-panel-float">
+                    <div
+                        className="manga-panel-float"
+                        onClick={() => {
+                            setSelectedGrimoireImage('/images/grimoire/manga-18.jpg');
+                            setShowGrimoireModal(true);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src="/images/grimoire/manga-18.jpg" alt="Manga Panel 18" />
                     </div>
-                    <div className="manga-panel-float">
+                    <div
+                        className="manga-panel-float"
+                        onClick={() => {
+                            setSelectedGrimoireImage('/images/grimoire/manga-19.jpg');
+                            setShowGrimoireModal(true);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src="/images/grimoire/manga-19.jpg" alt="Manga Panel 19" />
                     </div>
                 </div>
@@ -648,6 +792,62 @@ export default function MangaPanelPortfolio() {
                 imageSrc={selectedCert.image}
                 title={selectedCert.title}
             />
+
+            {/* Grimoire Image Modal */}
+            {showGrimoireModal && (
+                <div
+                    className="grimoire-modal"
+                    onClick={() => setShowGrimoireModal(false)}
+                    style={{
+                        position: 'fixed',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        backgroundColor: 'rgba(0, 0, 0, 0.95)',
+                        zIndex: 9999,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: '2rem',
+                        cursor: 'pointer'
+                    }}
+                >
+                    <img
+                        src={selectedGrimoireImage}
+                        alt="Grimoire"
+                        style={{
+                            maxWidth: '90%',
+                            maxHeight: '90vh',
+                            objectFit: 'contain',
+                            border: '5px solid #fbbf24',
+                            boxShadow: '0 0 50px rgba(251, 191, 36, 0.8)',
+                            animation: 'grimoireModalPulse 2s ease-in-out infinite'
+                        }}
+                        onClick={(e) => e.stopPropagation()}
+                    />
+                    <button
+                        onClick={() => setShowGrimoireModal(false)}
+                        style={{
+                            position: 'absolute',
+                            top: '2rem',
+                            right: '2rem',
+                            background: '#fbbf24',
+                            border: '3px solid #1a1a1a',
+                            color: '#1a1a1a',
+                            fontSize: '2rem',
+                            width: '50px',
+                            height: '50px',
+                            cursor: 'pointer',
+                            fontWeight: 'bold',
+                            boxShadow: '4px 4px 0 #1a1a1a',
+                            transition: 'all 0.2s ease'
+                        }}
+                    >
+                        ✕
+                    </button>
+                </div>
+            )}
         </div>
     );
 }
