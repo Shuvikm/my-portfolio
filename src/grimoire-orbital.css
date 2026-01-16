@@ -10,7 +10,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    perspective: 2000px !important;
+    perspective: 3500px !important;
+    perspective-origin: 50% 50%;
     transform-style: preserve-3d !important;
 }
 
@@ -73,6 +74,7 @@
     align-items: center;
     justify-content: center;
     transform-style: preserve-3d !important;
+    transform: translateZ(0px) rotateX(5deg);
     grid-template-columns: unset !important;
     gap: unset !important;
 }
@@ -140,28 +142,66 @@
     overflow: hidden;
     border: 4px solid #1a1a1a;
     background: #fff;
-    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
+    box-shadow:
+        15px 15px 35px rgba(0, 0, 0, 0.4),
+        8px 8px 15px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(251, 191, 36, 0.3);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     transform-style: preserve-3d !important;
     top: 50%;
     left: 50%;
+    backface-visibility: visible;
+}
+
+.manga-panel-float::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), transparent 50%, rgba(251, 191, 36, 0.1));
+    border-radius: 2px;
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.manga-panel-float::after {
+    content: '';
+    position: absolute;
+    bottom: -25px;
+    left: 10%;
+    right: 10%;
+    height: 20px;
+    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.3), transparent);
+    filter: blur(8px);
+    opacity: 0.6;
+    pointer-events: none;
 }
 
 .manga-panel-float img {
     width: 100%;
     height: auto;
     display: block;
-    filter: grayscale(30%);
-    transition: filter 0.3s ease;
+    filter: grayscale(30%) contrast(1.1);
+    transition: filter 0.4s ease, transform 0.4s ease;
 }
 
 .manga-panel-float:hover {
-    box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.3) !important;
-    z-index: 20;
+    box-shadow:
+        20px 20px 50px rgba(0, 0, 0, 0.6),
+        10px 10px 25px rgba(0, 0, 0, 0.4),
+        0 0 60px rgba(251, 191, 36, 0.8) !important;
+    z-index: 100 !important;
+    transform: scale(1.15) translateZ(80px) !important;
+}
+
+.manga-panel-float:hover::after {
+    opacity: 0.9;
+    transform: scale(1.3);
 }
 
 .manga-panel-float:hover img {
-    filter: grayscale(0%);
+    filter: grayscale(0%) contrast(1.2) brightness(1.1);
+    transform: scale(1.05);
 }
 
 /* Orbital animations */
@@ -241,54 +281,54 @@
     animation: orbit20 15.3s linear infinite;
 }
 
-/* Orbital paths */
+/* Orbital paths with enhanced 3D effects */
 @keyframes orbit1 {
     from {
-        transform: translate(-50%, -50%) rotate(0deg) translateX(300px) rotateY(0deg) rotateX(10deg);
+        transform: translate(-50%, -50%) rotate(0deg) translateX(300px) translateZ(0px) rotateY(0deg) rotateX(15deg) scale(0.95);
     }
 
     to {
-        transform: translate(-50%, -50%) rotate(360deg) translateX(300px) rotateY(360deg) rotateX(10deg);
+        transform: translate(-50%, -50%) rotate(360deg) translateX(300px) translateZ(100px) rotateY(360deg) rotateX(15deg) scale(1.05);
     }
 }
 
 @keyframes orbit2 {
     from {
-        transform: translate(-50%, -50%) rotate(40deg) translateX(280px) rotateY(0deg) rotateX(-5deg);
+        transform: translate(-50%, -50%) rotate(40deg) translateX(280px) translateZ(-50px) rotateY(0deg) rotateX(-8deg) scale(1.02);
     }
 
     to {
-        transform: translate(-50%, -50%) rotate(400deg) translateX(280px) rotateY(360deg) rotateX(-5deg);
+        transform: translate(-50%, -50%) rotate(400deg) translateX(280px) translateZ(80px) rotateY(360deg) rotateX(-8deg) scale(0.98);
     }
 }
 
 @keyframes orbit3 {
     from {
-        transform: translate(-50%, -50%) rotate(80deg) translateX(320px) rotateY(0deg) rotateX(15deg);
+        transform: translate(-50%, -50%) rotate(80deg) translateX(320px) translateZ(60px) rotateY(0deg) rotateX(20deg) scale(1.08);
     }
 
     to {
-        transform: translate(-50%, -50%) rotate(440deg) translateX(320px) rotateY(360deg) rotateX(15deg);
+        transform: translate(-50%, -50%) rotate(440deg) translateX(320px) translateZ(-40px) rotateY(360deg) rotateX(20deg) scale(0.92);
     }
 }
 
 @keyframes orbit4 {
     from {
-        transform: translate(-50%, -50%) rotate(120deg) translateX(290px) rotateY(0deg) rotateX(-10deg);
+        transform: translate(-50%, -50%) rotate(120deg) translateX(290px) translateZ(-30px) rotateY(0deg) rotateX(-12deg) scale(0.96);
     }
 
     to {
-        transform: translate(-50%, -50%) rotate(480deg) translateX(290px) rotateY(360deg) rotateX(-10deg);
+        transform: translate(-50%, -50%) rotate(480deg) translateX(290px) translateZ(90px) rotateY(360deg) rotateX(-12deg) scale(1.04);
     }
 }
 
 @keyframes orbit6 {
     from {
-        transform: translate(-50%, -50%) rotate(200deg) translateX(310px) rotateY(0deg) rotateX(8deg);
+        transform: translate(-50%, -50%) rotate(200deg) translateX(310px) translateZ(70px) rotateY(0deg) rotateX(12deg) scale(1.06);
     }
 
     to {
-        transform: translate(-50%, -50%) rotate(560deg) translateX(310px) rotateY(360deg) rotateX(8deg);
+        transform: translate(-50%, -50%) rotate(560deg) translateX(310px) translateZ(-60px) rotateY(360deg) rotateX(12deg) scale(0.94);
     }
 }
 

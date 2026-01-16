@@ -15,6 +15,7 @@ import {
     ZoomOut,
     Info
 } from 'lucide-react';
+import '../manga-gallery-orbital.css';
 
 // Top 10 Best Manga/Anime of All Time - Iconic Panels with descriptions
 const mangaSlides = [
