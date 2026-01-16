@@ -23,15 +23,18 @@ html.lenis {
 	pointer-events: none;
 }
 
-/* ===== MANGA COLOR PALETTE - Light Theme ===== */
+/* ===== MANGA COLOR PALETTE - Light Theme with Space Accents ===== */
 :root {
-	--manga-black: #ffffff;
-	--manga-white: #000000;
+	--manga-black: #1a1a2e;
+	--manga-white: #ffffff;
 	--manga-paper: #ffffff;
 	--manga-ink: #000000;
 	--manga-gray: #333333;
 	--manga-accent: #fbbf24;
 	--manga-red: #dc2626;
+	--space-dark: #0f0f23;
+	--space-blue: #16213e;
+	--space-purple: #1a1a2e;
 }
 
 /* ===== MANGA GALLERY (In-Page Section) ===== */
@@ -223,18 +226,51 @@ html.lenis {
 	}
 }
 
-/* ===== MANGA CINEMA DISPLAY ===== */
 .manga-cinema-display {
 	position: relative;
 	width: 100%;
 	height: 80vh;
 	min-height: 500px;
 	max-height: 900px;
-	background: #000;
+	background: linear-gradient(135deg, var(--space-dark) 0%, var(--space-blue) 50%, var(--space-purple) 100%);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	overflow: hidden;
+}
+
+/* Animated starfield effect */
+.manga-cinema-display::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image:
+		radial-gradient(2px 2px at 20% 30%, white, transparent),
+		radial-gradient(2px 2px at 60% 70%, white, transparent),
+		radial-gradient(1px 1px at 50% 50%, white, transparent),
+		radial-gradient(1px 1px at 80% 10%, white, transparent),
+		radial-gradient(2px 2px at 90% 60%, white, transparent),
+		radial-gradient(1px 1px at 33% 85%, white, transparent),
+		radial-gradient(2px 2px at 75% 35%, white, transparent);
+	background-size: 200% 200%;
+	background-position: 0% 0%;
+	animation: twinkleStars 20s ease-in- infinite;
+	opacity: 0.6;
+	pointer-events: none;
+}
+
+@keyframes twinkleStars {
+
+	0%,
+	100% {
+		background-position: 0% 0%;
+		opacity: 0.6;
+	}
+
+	50% {
+		background-position: 100% 100%;
+		opacity: 0.8;
+	}
 }
 
 .manga-cinema-frame {
