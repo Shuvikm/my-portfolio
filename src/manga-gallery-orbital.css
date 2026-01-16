@@ -107,45 +107,45 @@
     filter: grayscale(0%) contrast(1.15);
 }
 
-/* Orbital animations for each thumbnail */
+/* Fast Astronomical Orbital Speeds - Solar System Style */
 .manga-cinema-thumb:nth-child(1) {
-    animation: thumbOrbit1 14s linear infinite;
+    animation: thumbOrbit1 5s linear infinite;
 }
 
 .manga-cinema-thumb:nth-child(2) {
-    animation: thumbOrbit2 15s linear infinite;
+    animation: thumbOrbit2 5.5s linear infinite;
 }
 
 .manga-cinema-thumb:nth-child(3) {
-    animation: thumbOrbit3 16s linear infinite;
+    animation: thumbOrbit3 6s linear infinite;
 }
 
 .manga-cinema-thumb:nth-child(4) {
-    animation: thumbOrbit4 17s linear infinite;
+    animation: thumbOrbit4 6.5s linear infinite;
 }
 
 .manga-cinema-thumb:nth-child(5) {
-    animation: thumbOrbit5 13s linear infinite;
+    animation: thumbOrbit5 7s linear infinite;
 }
 
 .manga-cinema-thumb:nth-child(6) {
-    animation: thumbOrbit6 14.5s linear infinite;
+    animation: thumbOrbit6 7.5s linear infinite;
 }
 
 .manga-cinema-thumb:nth-child(7) {
-    animation: thumbOrbit7 15.5s linear infinite;
+    animation: thumbOrbit7 8s linear infinite;
 }
 
 .manga-cinema-thumb:nth-child(8) {
-    animation: thumbOrbit8 16.5s linear infinite;
+    animation: thumbOrbit8 8.5s linear infinite;
 }
 
 .manga-cinema-thumb:nth-child(9) {
-    animation: thumbOrbit9 17.5s linear infinite;
+    animation: thumbOrbit9 9s linear infinite;
 }
 
 .manga-cinema-thumb:nth-child(10) {
-    animation: thumbOrbit10 13.5s linear infinite;
+    animation: thumbOrbit10 5.3s linear infinite;
 }
 
 /* Orbital keyframes with enhanced 3D effects */

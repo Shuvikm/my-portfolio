@@ -205,80 +205,81 @@
 }
 
 /* Orbital animations */
+/* Fast Solar System-style Orbital Speeds */
 .manga-panel-float:nth-child(1) {
-    animation: orbit1 12s linear infinite;
+    animation: orbit1 4s linear infinite;
 }
 
 .manga-panel-float:nth-child(2) {
-    animation: orbit2 13s linear infinite;
+    animation: orbit2 4.5s linear infinite;
 }
 
 .manga-panel-float:nth-child(3) {
-    animation: orbit3 14s linear infinite;
+    animation: orbit3 5s linear infinite;
 }
 
 .manga-panel-float:nth-child(4) {
-    animation: orbit4 15s linear infinite;
+    animation: orbit4 5.5s linear infinite;
 }
 
 .manga-panel-float:nth-child(6) {
-    animation: orbit6 11s linear infinite;
+    animation: orbit6 6s linear infinite;
 }
 
 .manga-panel-float:nth-child(7) {
-    animation: orbit7 12.5s linear infinite;
+    animation: orbit7 6.5s linear infinite;
 }
 
 .manga-panel-float:nth-child(8) {
-    animation: orbit8 13.5s linear infinite;
+    animation: orbit8 7s linear infinite;
 }
 
 .manga-panel-float:nth-child(9) {
-    animation: orbit9 14.5s linear infinite;
+    animation: orbit9 7.5s linear infinite;
 }
 
 .manga-panel-float:nth-child(10) {
-    animation: orbit10 15.5s linear infinite;
+    animation: orbit10 8s linear infinite;
 }
 
 .manga-panel-float:nth-child(11) {
-    animation: orbit11 11.5s linear infinite;
+    animation: orbit11 4.2s linear infinite;
 }
 
 .manga-panel-float:nth-child(12) {
-    animation: orbit12 12.8s linear infinite;
+    animation: orbit12 4.8s linear infinite;
 }
 
 .manga-panel-float:nth-child(13) {
-    animation: orbit13 13.3s linear infinite;
+    animation: orbit13 5.3s linear infinite;
 }
 
 .manga-panel-float:nth-child(14) {
-    animation: orbit14 14.2s linear infinite;
+    animation: orbit14 5.8s linear infinite;
 }
 
 .manga-panel-float:nth-child(15) {
-    animation: orbit15 15.1s linear infinite;
+    animation: orbit15 6.3s linear infinite;
 }
 
 .manga-panel-float:nth-child(16) {
-    animation: orbit16 11.8s linear infinite;
+    animation: orbit16 6.8s linear infinite;
 }
 
 .manga-panel-float:nth-child(17) {
-    animation: orbit17 13.7s linear infinite;
+    animation: orbit17 7.3s linear infinite;
 }
 
 .manga-panel-float:nth-child(18) {
-    animation: orbit18 14.9s linear infinite;
+    animation: orbit18 7.8s linear infinite;
 }
 
 .manga-panel-float:nth-child(19) {
-    animation: orbit19 12.3s linear infinite;
+    animation: orbit19 4.6s linear infinite;
 }
 
 .manga-panel-float:nth-child(20) {
-    animation: orbit20 15.3s linear infinite;
+    animation: orbit20 5.1s linear infinite;
 }
 
 /* Orbital paths with enhanced 3D effects */
