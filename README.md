@@ -84,10 +84,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/killPort.ps1 -Port
 
 You can also run the npm script that runs the helper:
 
-```powershell
+powershell
 cd server
 npm run free-port -- 5001
-```
 
 The script will display the PID found and kill it. Use with caution — only run when you know which process you're terminating.
 
