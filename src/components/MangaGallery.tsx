@@ -400,12 +400,7 @@ export default function MangaGallery() {
                     </div>
                 </div>
 
-                {/* Instructions */}
-                <div className="manga-panel p-4 text-center">
-                    <div className="thought-bubble inline-block text-sm">
-                        ⌨️ Arrow keys to navigate • Space to play/pause • F for fullscreen • Swipe on mobile 📱
-                    </div>
-                </div>
+
             </section>
 
             {/* Fullscreen Lightbox */}
