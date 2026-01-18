@@ -85,6 +85,7 @@ export default function MangaGrimoireOrbit({ images }: MangaGrimoireOrbitProps) 
                             <div className="grimoire-panel-glow"></div>
                         </div>
                     </div>
+                ))}
             </div>
         </div>
     );
