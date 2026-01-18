@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import '../styles/grimoire-animation.css';
 
@@ -9,6 +9,8 @@ interface MangaGrimoireOrbitProps {
 export default function MangaGrimoireOrbit({ images }: MangaGrimoireOrbitProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const panelsRef = useRef<HTMLDivElement[]>([]);
+    const [showPopup, setShowPopup] = useState(false);
+    const [selectedImage, setSelectedImage] = useState('');
 
     useEffect(() => {
         if (!containerRef.current || panelsRef.current.length === 0) return;
@@ -67,6 +69,12 @@ export default function MangaGrimoireOrbit({ images }: MangaGrimoireOrbitProps) 
         };
     }, [images]);
 
+    // Handle panel click to show popup
+    const handlePanelClick = (image: string) => {
+        setSelectedImage(image);
+        setShowPopup(true);
+    };
+
     return (
         <div className="grimoire-container">
             <div ref={containerRef} className="grimoire-orbital-space">
@@ -79,6 +87,7 @@ export default function MangaGrimoireOrbit({ images }: MangaGrimoireOrbitProps) 
                             if (el) panelsRef.current[index] = el;
                         }}
                         className="grimoire-panel"
+                        onClick={() => handlePanelClick(image)}
                     >
                         <div className="grimoire-panel-inner">
                             <img src={image} alt={`Manga panel ${index + 1}`} />
@@ -87,6 +96,18 @@ export default function MangaGrimoireOrbit({ images }: MangaGrimoireOrbitProps) 
                     </div>
                 ))}
             </div>
+
+            {/* Pop-up Modal */}
+            {showPopup && (
+                <div className="grimoire-popup-overlay" onClick={() => setShowPopup(false)}>
+                    <div className="grimoire-popup-content" onClick={(e) => e.stopPropagation()}>
+                        <img src={selectedImage} alt="Selected manga panel" />
+                        <button className="grimoire-popup-close" onClick={() => setShowPopup(false)}>
+                            ✕
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
