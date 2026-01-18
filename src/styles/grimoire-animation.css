@@ -1,0 +1,187 @@
+/* GRIMOIRE ORBITAL ANIMATION - Julius Novachrono Style */
+
+.grimoire-container {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    padding: 4rem 2rem;
+    overflow: visible;
+    background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+}
+
+.grimoire-orbital-space {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    perspective: 2000px;
+    perspective-origin: 50% 50%;
+    transform-style: preserve-3d;
+}
+
+.grimoire-center-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle,
+            rgba(251, 191, 36, 0.4) 0%,
+            rgba(251, 191, 36, 0.2) 30%,
+            transparent 70%);
+    border-radius: 50%;
+    animation: centerGlow 3s ease-in-out infinite;
+    z-index: 1;
+}
+
+@keyframes centerGlow {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 1;
+    }
+}
+
+.grimoire-panel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 200px;
+    margin: -100px 0 0 -75px;
+    transform-style: preserve-3d;
+    transform-origin: center center -300px;
+    pointer-events: all;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.grimoire-panel:hover {
+    transform: scale(1.2) !important;
+    z-index: 100 !important;
+}
+
+.grimoire-panel-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    border: 3px solid #fbbf24;
+    background: #ffffff;
+    box-shadow:
+        0 0 30px rgba(251, 191, 36, 0.6),
+        0 10px 40px rgba(0, 0, 0, 0.5),
+        inset 0 0 20px rgba(251, 191, 36, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.grimoire-panel-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.2) contrast(1.1);
+    transition: filter 0.3s ease;
+}
+
+.grimoire-panel:hover .grimoire-panel-inner img {
+    filter: grayscale(0) contrast(1.2) brightness(1.1);
+}
+
+.grimoire-panel-glow {
+    position: absolute;
+    inset: -4px;
+    background: linear-gradient(135deg,
+            rgba(251, 191, 36, 0.4),
+            transparent 50%,
+            rgba(251, 191, 36, 0.2));
+    border-radius: 8px;
+    pointer-events: none;
+    opacity: 0.7;
+    animation: panelGlow 2s ease-in-out infinite;
+}
+
+@keyframes panelGlow {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Magical Particles */
+.grimoire-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #fbbf24;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.8);
+    animation: particleFloat 5s infinite ease-in-out;
+    opacity: 0;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100%) scale(0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .grimoire-orbital-space {
+        height: 500px;
+        perspective: 1500px;
+    }
+
+    .grimoire-panel {
+        width: 120px;
+        height: 160px;
+        margin: -80px 0 0 -60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .grimoire-orbital-space {
+        height: 400px;
+    }
+
+    .grimoire-panel {
+        width: 100px;
+        height: 140px;
+        margin: -70px 0 0 -50px;
+    }
+}
