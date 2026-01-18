@@ -15,45 +15,50 @@ export default function MangaGrimoireOrbit({ images }: MangaGrimoireOrbitProps) 
 
         const panels = panelsRef.current;
 
-        // Animate each panel with faster orbital paths using GSAP
+        // Proper 3D orbital animation like Julius Novachrono's grimoire
         panels.forEach((panel, index) => {
-            const angle = (360 / panels.length) * index;
-            const duration = 6 + (index % 3); // Much faster: 6-9 seconds
-            const orbitRadius = 300; // Distance from center
+            const totalPanels = panels.length;
+            const angleOffset = (360 / totalPanels) * index;
+            const duration = 8; // 8 second rotation
+            const orbitRadius = 300;
 
-            // Set initial position with proper 3D transform
-            gsap.set(panel, {
-                rotation: angle,
-                transformOrigin: 'center center',
-                x: 0,
-                y: 0,
-            });
-
-            // Create orbital animation with CSS transforms
+            // Grimoire-style 3D orbital animation
             gsap.to(panel, {
-                rotation: `+=${360}`,
+                rotation: 360,
                 duration: duration,
                 ease: 'none',
                 repeat: -1,
                 modifiers: {
-                    rotation: (r) => {
-                        // Convert rotation to position on orbit
-                        const radian = (parseFloat(r) * Math.PI) / 180;
-                        const x = Math.cos(radian) * orbitRadius;
-                        const y = Math.sin(radian) * orbitRadius;
-                        gsap.set(panel, { x, y });
-                        return r;
+                    rotation: function (rotation) {
+                        const currentRotation = parseFloat(rotation) + angleOffset;
+                        const rad = (currentRotation * Math.PI) / 180;
+
+                        // Calculate orbital position
+                        const x = Math.cos(rad) * orbitRadius;
+                        const z = Math.sin(rad) * orbitRadius;
+
+                        // Apply 3D transform with orbital position and spin
+                        gsap.set(panel, {
+                            x: x,
+                            y: 0,
+                            z: z,
+                            rotationY: currentRotation, // Spin panels as they orbit
+                            transformPerspective: 1000,
+                        });
+
+                        return rotation;
                     },
                 },
             });
 
-            // Floating animation
+            // Subtle floating
             gsap.to(panel, {
-                y: '+=20',
-                duration: 2 + (index % 2) * 0.5,
+                y: '+=15',
+                duration: 3,
                 ease: 'sine.inOut',
                 yoyo: true,
                 repeat: -1,
+                delay: index * 0.2,
             });
         });
 
@@ -80,18 +85,6 @@ export default function MangaGrimoireOrbit({ images }: MangaGrimoireOrbitProps) 
                             <div className="grimoire-panel-glow"></div>
                         </div>
                     </div>
-                ))}
-
-                {/* Magical particles */}
-                <div className="grimoire-particles">
-                    {[...Array(30)].map((_, i) => (
-                        <div key={i} className="particle" style={{
-                            left: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 2}s`,
-                            animationDuration: `${2 + Math.random() * 3}s` // Faster particles too
-                        }}></div>
-                    ))}
-                </div>
             </div>
         </div>
     );
