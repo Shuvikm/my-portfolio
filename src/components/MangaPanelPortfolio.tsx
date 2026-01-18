@@ -2,6 +2,8 @@ import { Github, Linkedin, Mail, Code2, ExternalLink, Trophy, Medal, ZoomIn, Gra
 import { useState, useEffect, useRef } from 'react';
 import { animate, stagger } from 'animejs';
 import CertificateModal from './CertificateModal';
+import '../grimoire-orbital.css'; // Add orbital rotation animation
+
 
 // Data from existing components
 const skills = {
