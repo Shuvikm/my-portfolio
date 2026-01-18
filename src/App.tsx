@@ -14,8 +14,7 @@ import MangaIntro from './components/MangaIntro';
 import MangaGallery from './components/MangaGallery';
 import MangaPanelPortfolio from './components/MangaPanelPortfolio';
 import './manga-panels.css';
-import './grimoire-orbital.css';
-import GrimoireOrbital from './components/GrimoireOrbital';
+
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -125,33 +124,6 @@ function App() {
 
           {/* Content Sections - Aligned */}
           <main className="manga-page">
-            {/* Grimoire Orbital - Floating Manga Images */}
-            <div className="content-section">
-              <GrimoireOrbital
-                grimoireImage="/images/grimoire/grimoire-book.jpg"
-                images={[
-                  '/images/grimoire/manga-1.jpg',
-                  '/images/grimoire/manga-2.jpg',
-                  '/images/grimoire/manga-3.jpg',
-                  '/images/grimoire/manga-4.jpg',
-                  '/images/grimoire/manga-5.jpg',
-                  '/images/grimoire/manga-6.jpg',
-                  '/images/grimoire/manga-7.jpg',
-                  '/images/grimoire/manga-8.jpg',
-                  '/images/grimoire/manga-9.jpg',
-                  '/images/grimoire/manga-10.jpg',
-                  '/images/grimoire/manga-11.jpg',
-                  '/images/grimoire/manga-12.jpg',
-                  '/images/grimoire/manga-13.jpg',
-                  '/images/grimoire/manga-14.jpg',
-                  '/images/grimoire/manga-15.jpg',
-                  '/images/grimoire/manga-16.jpg',
-                  '/images/grimoire/manga-17.jpg',
-                  '/images/grimoire/manga-18.jpg',
-                  '/images/grimoire/manga-19.jpg',
-                ]}
-              />
-            </div>
 
             {/* Manga Gallery - Browse favorite panels */}
             <div className="content-section">
