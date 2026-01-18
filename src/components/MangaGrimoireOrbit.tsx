@@ -18,35 +18,39 @@ export default function MangaGrimoireOrbit({ images }: MangaGrimoireOrbitProps) 
         // Animate each panel with faster orbital paths using GSAP
         panels.forEach((panel, index) => {
             const angle = (360 / panels.length) * index;
-            const duration = 6 + (index % 3); // Much faster: 6-9 seconds instead of 15-25
-            const depthVariation = index % 2 === 0 ? 180 : -180;
+            const duration = 6 + (index % 3); // Much faster: 6-9 seconds
+            const orbitRadius = 300; // Distance from center
 
-            // Set initial position
+            // Set initial position with proper 3D transform
             gsap.set(panel, {
-                rotationY: angle,
-                rotationX: index * 12,
-                z: depthVariation,
+                rotation: angle,
+                transformOrigin: 'center center',
+                x: 0,
+                y: 0,
             });
 
-            // Create faster orbital animation timeline
-            const tl = gsap.timeline({ repeat: -1 });
-
-            tl.to(panel, {
-                rotationY: `+=${360}`,
-                rotationX: `+=${180}`,
-                z: -depthVariation,
+            // Create orbital animation with CSS transforms
+            gsap.to(panel, {
+                rotation: `+=${360}`,
                 duration: duration,
                 ease: 'none',
-            }).to(panel, {
-                z: depthVariation,
-                duration: duration / 2,
-                ease: 'sine.inOut',
-            }, 0);
+                repeat: -1,
+                modifiers: {
+                    rotation: (r) => {
+                        // Convert rotation to position on orbit
+                        const radian = (parseFloat(r) * Math.PI) / 180;
+                        const x = Math.cos(radian) * orbitRadius;
+                        const y = Math.sin(radian) * orbitRadius;
+                        gsap.set(panel, { x, y });
+                        return r;
+                    },
+                },
+            });
 
-            // Faster floating animation
+            // Floating animation
             gsap.to(panel, {
-                y: '+=25',
-                duration: 2 + (index % 2) * 0.5, // Faster floating: 2-2.5 seconds
+                y: '+=20',
+                duration: 2 + (index % 2) * 0.5,
                 ease: 'sine.inOut',
                 yoyo: true,
                 repeat: -1,
