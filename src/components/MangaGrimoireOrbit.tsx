@@ -40,12 +40,15 @@ export default function MangaGrimoireOrbit({ images }: MangaGrimoireOrbitProps) 
                         const z = Math.sin(rad) * orbitRadius;
 
                         // Apply 3D transform with orbital position and spin
+                        // Make panels face forward primarily, with slight tilt for style
+                        // This ensures they are always visible (billboard-ish)
                         gsap.set(panel, {
                             x: x,
                             y: 0,
                             z: z,
-                            rotationY: currentRotation - 90, // Face outwards for better visibility
-                            rotationX: -10, // Slight tilt to avoid perfect edge-on visibility
+                            rotationY: 0, // Always face front
+                            rotationX: -10, // Slight tilt back
+                            rotationZ: Math.sin(rad * 2) * 5, // Subtle wobble
                             transformPerspective: 1000,
                         });
 
