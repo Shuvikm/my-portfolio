@@ -1,0 +1,260 @@
+/* ===== GRIMOIRE ORBITAL ROTATION - Floating Manga Panels ===== */
+.grimoire-section {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+}
+
+.grimoire-container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Central Grimoire Book */
+.grimoire-book {
+    position: relative;
+    z-index: 10;
+    width: 180px;
+    height: 180px;
+    cursor: pointer;
+    animation: grimoireFloat 3s ease-in-out infinite, grimoireGlow 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.5));
+}
+
+.grimoire-book img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@keyframes grimoireFloat {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+}
+
+@keyframes grimoireGlow {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.5));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 40px rgba(251, 191, 36, 0.8));
+    }
+}
+
+/* Manga Panels Orbiting */
+.manga-panel-float {
+    position: absolute;
+    width: 100px;
+    height: 140px;
+    cursor: pointer;
+    border: 3px solid #1a1a1a;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    animation: orbit 20s linear infinite;
+    transform-origin: 250px 250px;
+}
+
+.manga-panel-float img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.manga-panel-float:hover {
+    transform: scale(1.15) !important;
+    z-index: 20;
+    box-shadow: 0 8px 25px rgba(251, 191, 36, 0.6);
+    border-color: #fbbf24;
+}
+
+/* Individual panel positions and rotation speeds */
+.manga-panel-float:nth-child(1) {
+    animation: orbit 20s linear infinite;
+    animation-delay: 0s;
+}
+
+.manga-panel-float:nth-child(2) {
+    animation: orbit 20s linear infinite;
+    animation-delay: -1.05s;
+}
+
+.manga-panel-float:nth-child(3) {
+    animation: orbit 20s linear infinite;
+    animation-delay: -2.1s;
+}
+
+.manga-panel-float:nth-child(4) {
+    animation: orbit 20s linear infinite;
+    animation-delay: -3.15s;
+}
+
+.manga-panel-float:nth-child(5) {
+    animation: orbit 20s linear infinite;
+    animation-delay: -4.2s;
+}
+
+.manga-panel-float:nth-child(6) {
+    animation: orbit 20s linear infinite;
+    animation-delay: -5.25s;
+}
+
+.manga-panel-float:nth-child(7) {
+    animation: orbit 20s linear infinite;
+    animation-delay: -6.3s;
+}
+
+.manga-panel-float:nth-child(8) {
+    animation: orbit 20s linear infinite;
+    animation-delay: -7.35s;
+}
+
+.manga-panel-float:nth-child(9) {
+    animation: orbit 20s linear infinite;
+    animation-delay: -8.4s;
+}
+
+.manga-panel-float:nth-child(10) {
+    animation: orbit 20s linear infinite;
+    animation-delay: -9.45s;
+}
+
+.manga-panel-float:nth-child(11) {
+    animation: orbit 20s linear infinite;
+    animation-delay: -10.5s;
+}
+
+.manga-panel-float:nth-child(12) {
+    animation: orbit 20s linear infinite;
+    animation-delay: -11.55s;
+}
+
+.manga-panel-float:nth-child(13) {
+    animation: orbit 20s linear infinite;
+    animation-delay: -12.6s;
+}
+
+.manga-panel-float:nth-child(14) {
+    animation: orbit 20s linear infinite;
+    animation-delay: -13.65s;
+}
+
+.manga-panel-float:nth-child(15) {
+    animation: orbit 20s linear infinite;
+    animation-delay: -14.7s;
+}
+
+.manga-panel-float:nth-child(16) {
+    animation: orbit 20s linear infinite;
+    animation-delay: -15.75s;
+}
+
+.manga-panel-float:nth-child(17) {
+    animation: orbit 20s linear infinite;
+    animation-delay: -16.8s;
+}
+
+.manga-panel-float:nth-child(18) {
+    animation: orbit 20s linear infinite;
+    animation-delay: -17.85s;
+}
+
+.manga-panel-float:nth-child(19) {
+    animation: orbit 20s linear infinite;
+    animation-delay: -18.9s;
+}
+
+/* Orbital rotation animation */
+@keyframes orbit {
+    from {
+        transform: rotate(0deg) translateX(250px) rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg) translateX(250px) rotate(-360deg);
+    }
+}
+
+/* Modal for fullscreen view */
+.grimoire-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    cursor: pointer;
+}
+
+.grimoire-modal img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    border: 5px solid #fbbf24;
+    box-shadow: 0 0 50px rgba(251, 191, 36, 0.8);
+    animation: grimoireModalPulse 2s ease-in-out infinite;
+}
+
+@keyframes grimoireModalPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 30px rgba(251, 191, 36, 0.6);
+    }
+
+    50% {
+        box-shadow: 0 0 60px rgba(251, 191, 36, 1);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .grimoire-container {
+        width: 350px;
+        height: 350px;
+    }
+
+    .grimoire-book {
+        width: 120px;
+        height: 120px;
+    }
+
+    .manga-panel-float {
+        width: 70px;
+        height: 100px;
+    }
+
+    @keyframes orbit {
+        from {
+            transform: rotate(0deg) translateX(175px) rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg) translateX(175px) rotate(-360deg);
+        }
+    }
+}

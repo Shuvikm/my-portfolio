@@ -9,6 +9,7 @@ import Projects from './components/sections/Projects';
 import Journey from './components/sections/Journey';
 import Contact from './components/sections/Contact';
 import GrimoireOrbital from './components/ui/GrimoireOrbital';
+import './styles/grimoire-animation.css';
 
 function App() {
   useEffect(() => {
