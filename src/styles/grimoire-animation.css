@@ -19,12 +19,8 @@
     perspective: 2000px;
     perspective-origin: 50% 50%;
     transform-style: preserve-3d;
-    background: radial-gradient(circle at center,
-            rgba(251, 191, 36, 0.08) 0%,
-            rgba(251, 191, 36, 0.03) 40%,
-            transparent 70%);
-    /* Subtle golden background for visibility */
-    border-radius: 50%;
+    background: transparent;
+    /* Removed background to avoid conflict */
 }
 
 .grimoire-center-glow {

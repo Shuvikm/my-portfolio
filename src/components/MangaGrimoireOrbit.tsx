@@ -21,7 +21,7 @@ export default function MangaGrimoireOrbit({ images }: MangaGrimoireOrbitProps) 
         panels.forEach((panel, index) => {
             const totalPanels = panels.length;
             const angleOffset = (360 / totalPanels) * index;
-            const duration = 8; // 8 second rotation
+            const duration = 4; // Faster rotation (was 8)
             const orbitRadius = 300;
 
             // Grimoire-style 3D orbital animation
@@ -44,13 +44,15 @@ export default function MangaGrimoireOrbit({ images }: MangaGrimoireOrbitProps) 
                             x: x,
                             y: 0,
                             z: z,
-                            rotationY: currentRotation, // Spin panels as they orbit
+                            rotationY: currentRotation - 90, // Face outwards for better visibility
+                            rotationX: -10, // Slight tilt to avoid perfect edge-on visibility
                             transformPerspective: 1000,
                         });
 
                         return rotation;
                     },
                 },
+
             });
 
             // Subtle floating

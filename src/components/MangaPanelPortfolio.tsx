@@ -1,3 +1,4 @@
+// Manga Panel Portfolio with Grimoire Orbital Animation
 import { Github, Linkedin, Mail, Code2, ExternalLink, Trophy, Medal, ZoomIn, GraduationCap, School, Target, Code, Database, Wrench, Palette, Phone, MessageSquare } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { animate, stagger } from 'animejs';
