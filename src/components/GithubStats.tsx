@@ -1,6 +1,4 @@
-import { useEffect, useRef } from 'react';
 import { Github } from 'lucide-react';
-import gsap from 'gsap';
 
 export default function GithubStats() {
 

@@ -1,6 +1,6 @@
 // Manga Panel Portfolio with Grimoire Orbital Animation
 import { Github, Linkedin, Mail, Code2, ExternalLink, Trophy, Medal, ZoomIn, GraduationCap, School, Target, Code, Database, Wrench, Palette, Phone, MessageSquare } from 'lucide-react';
-import { useState, useLayoutEffect, useRef } from 'react';
+import { useState, useLayoutEffect, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import CertificateModal from './CertificateModal';
