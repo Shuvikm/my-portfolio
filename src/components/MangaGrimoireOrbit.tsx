@@ -21,7 +21,7 @@ export default function MangaGrimoireOrbit({ images }: MangaGrimoireOrbitProps) 
         panels.forEach((panel, index) => {
             const totalPanels = panels.length;
             const angleOffset = (360 / totalPanels) * index;
-            const duration = 15; // Slow, cinematic rotation (was 4)
+            const duration = 8; // Normal speed
             const orbitRadius = 300;
 
             // Grimoire-style 3D orbital animation
