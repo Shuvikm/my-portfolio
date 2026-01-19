@@ -1,10 +1,12 @@
 // Manga Panel Portfolio with Grimoire Orbital Animation
 import { Github, Linkedin, Mail, Code2, ExternalLink, Trophy, Medal, ZoomIn, GraduationCap, School, Target, Code, Database, Wrench, Palette, Phone, MessageSquare } from 'lucide-react';
-import { useState, useEffect, useRef } from 'react';
-import { animate, stagger } from 'animejs';
+import { useState, useLayoutEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import CertificateModal from './CertificateModal';
 import '../grimoire-orbital.css'; // Add orbital rotation animation
 
+gsap.registerPlugin(ScrollTrigger);
 
 // Data from existing components
 const skills = {
@@ -105,58 +107,69 @@ export default function MangaPanelPortfolio() {
     // Panel IDs for the reading effect
     const panelIds = ['home', 'about', 'skills', 'projects', 'journey', 'contact'];
 
-    // Anime.js entrance animation on mount - delayed for background image to load first
-    useEffect(() => {
-        // Wait for background image to load before animating text
-        const bgImage = new Image();
-        bgImage.src = '/images/manga-bg.jpg';
+    // GSAP Entrance Animation
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            // Wait for background image to load before animating
+            const bgImage = new Image();
+            bgImage.src = '/images/manga-bg.jpg';
 
-        bgImage.onload = () => {
-            // Staggered entrance animation for all panels (after image loads)
-            animate('.manga-panel-frame', {
-                opacity: [0, 1],
-                translateY: [80, 0],
-                scale: [0.9, 1],
-                duration: 1000,
-                delay: stagger(200),
-                easing: 'easeOutElastic(1, .6)'
-            });
+            const startAnimation = () => {
+                const tl = gsap.timeline();
 
-            // Animate content bubbles with delay
-            animate('.content-bubble', {
-                opacity: [0, 1],
-                translateX: [-50, 0],
-                duration: 800,
-                delay: stagger(120, { start: 600 }),
-                easing: 'easeOutCubic'
-            });
+                // 1. Panels pop in
+                tl.from('.manga-panel-frame', {
+                    y: 100,
+                    opacity: 0,
+                    scale: 0.9,
+                    duration: 1,
+                    stagger: 0.15,
+                    ease: 'elastic.out(1, 0.6)',
+                })
+                    // 2. Content bubbles slide in
+                    .from('.content-bubble', {
+                        x: -30,
+                        opacity: 0,
+                        duration: 0.6,
+                        stagger: 0.1,
+                        ease: 'power2.out',
+                    }, '-=1.2') // Overlap with panels
+                    // 3. Tags scale up
+                    .from('.skill-tag, .project-tag', {
+                        scale: 0,
+                        opacity: 0,
+                        duration: 0.4,
+                        stagger: 0.03,
+                        ease: 'back.out(2)',
+                    }, '-=0.5');
 
-            // Animate skill tags with delay
-            animate('.skill-tag, .project-tag', {
-                opacity: [0, 1],
-                scale: [0.7, 1],
-                duration: 500,
-                delay: stagger(60, { start: 1200 }),
-                easing: 'easeOutBack'
-            });
-        };
-
-        // Fallback if image takes too long - animate anyway after 2 seconds
-        const fallbackTimer = setTimeout(() => {
-            if (!bgImage.complete) {
-                // Trigger animations directly as fallback
-                animate('.manga-panel-frame', {
-                    opacity: [0, 1],
-                    translateY: [80, 0],
-                    scale: [0.9, 1],
-                    duration: 1000,
-                    delay: stagger(200),
-                    easing: 'easeOutElastic(1, .6)'
+                // ScrollTrigger Animations for detailed sections
+                // Animate elements inside the panels when they come into view
+                gsap.utils.toArray('.section-panel').forEach((panel: any) => {
+                    gsap.from(panel.querySelectorAll('.skill-tag, .project-card, .achievement-item, .contact-item'), {
+                        y: 30,
+                        opacity: 0,
+                        duration: 0.6,
+                        stagger: 0.05,
+                        scrollTrigger: {
+                            trigger: panel,
+                            start: 'top 80%',
+                            toggleActions: 'play none none reverse'
+                        }
+                    });
                 });
-            }
-        }, 2000);
+            };
 
-        return () => clearTimeout(fallbackTimer);
+            if (bgImage.complete) {
+                startAnimation();
+            } else {
+                bgImage.onload = startAnimation;
+                // Fallback
+                setTimeout(startAnimation, 2000);
+            }
+        }, containerRef);
+
+        return () => ctx.revert();
     }, []);
 
     // Start the manga reading effect

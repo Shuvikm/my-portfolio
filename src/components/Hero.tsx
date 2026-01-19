@@ -1,6 +1,9 @@
 import { Github, Linkedin, Mail, Code2 } from 'lucide-react';
+import { useRef, useLayoutEffect } from 'react';
+import gsap from 'gsap';
 
 export default function Hero() {
+  const comp = useRef(null);
   const marqueeTexts = [
     'ソフトウェア開発者',
     'SOFTWARE DEVELOPER',
@@ -8,15 +11,66 @@ export default function Hero() {
     'FULL STACK',
   ];
 
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      // Timeline for entrance sequence
+      const tl = gsap.timeline();
+
+      // 1. Panel Expand & Fade In
+      tl.from('.manga-panel-hero', {
+        scale: 0.9,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+      })
+        // 2. Profile Image Pop
+        .from('.profile-image', {
+          scale: 0,
+          rotation: -45,
+          opacity: 0,
+          duration: 0.6,
+          ease: 'back.out(1.7)',
+        }, '-=0.4')
+        // 3. Text Elements Stagger
+        .from('.hero-text-element', {
+          x: -50,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: 'power2.out',
+        }, '-=0.2')
+        // 4. Buttons Pop
+        .from('.hero-btn', {
+          y: 20,
+          opacity: 0,
+          scale: 0.8,
+          duration: 0.5,
+          stagger: 0.1,
+          ease: 'back.out(1.5)',
+        }, '-=0.4')
+        // 5. Social Icons Fade & Slide
+        .from('.social-icon', {
+          y: 10,
+          opacity: 0,
+          duration: 0.4,
+          stagger: 0.05,
+          ease: 'power1.out',
+        }, '-=0.2');
+
+    }, comp);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="home" className="manga-section">
+    <section id="home" className="manga-section" ref={comp}>
       {/* Main Hero Panel */}
-      <div className="manga-panel manga-panel-dark p-8 sm:p-12 relative overflow-hidden">
+      <div className="manga-panel manga-panel-hero manga-panel-dark p-8 sm:p-12 relative overflow-hidden">
         <div className="screentone" style={{ opacity: 0.3 }} />
 
         <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           {/* Profile Panel */}
-          <div className="manga-panel p-2 bg-white flex-shrink-0">
+          <div className="manga-panel p-2 bg-white flex-shrink-0 profile-image">
             <img
               src="/images/profile.jpg"
               alt="Shuvik M"
@@ -27,15 +81,15 @@ export default function Hero() {
           {/* Content */}
           <div className="flex-1 text-center lg:text-left">
             {/* Title Tag */}
-            <div className="exclaim-box mb-4">Software Developer</div>
+            <div className="exclaim-box mb-4 hero-text-element">Software Developer</div>
 
             {/* Name */}
-            <h1 className="manga-title text-5xl sm:text-6xl lg:text-7xl text-white text-outline-thick mb-6">
-              <span className="text-[#fbbf24]">SHUVIK</span> <span className="text-[#fbbf24]">M</span>
+            <h1 className="manga-title text-5xl sm:text-6xl lg:text-7xl text-white text-outline-thick mb-6 hero-text-element">
+              <span className="text-[#fbbf24] inline-block">SHUVIK</span> <span className="text-[#fbbf24] inline-block">M</span>
             </h1>
 
             {/* Description - Thought Bubble */}
-            <div className="thought-bubble max-w-xl mx-auto lg:mx-0 mb-8">
+            <div className="thought-bubble max-w-xl mx-auto lg:mx-0 mb-8 hero-text-element">
               <p className="text-base leading-relaxed">
                 Crafting digital experiences through code, inspired by the creativity of anime and
                 manga. Building meaningful web applications.
@@ -44,8 +98,8 @@ export default function Hero() {
 
             {/* Buttons */}
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-8">
-              <a href="#projects" className="manga-button">View Projects</a>
-              <a href="#contact" className="manga-button manga-button-dark">Contact Me</a>
+              <a href="#projects" className="manga-button hero-btn">View Projects</a>
+              <a href="#contact" className="manga-button manga-button-dark hero-btn">Contact Me</a>
             </div>
 
             {/* Social Links */}
@@ -81,7 +135,7 @@ export default function Hero() {
       </div>
 
       {/* Resume Download */}
-      <div className="mt-4 manga-panel p-4 flex items-center justify-between flex-wrap gap-4">
+      <div className="mt-4 manga-panel p-4 flex items-center justify-between flex-wrap gap-4 hero-btn">
         <span className="font-bold text-[#1a1a1a]">Want to know more?</span>
         <div className="flex gap-3">
           <a
