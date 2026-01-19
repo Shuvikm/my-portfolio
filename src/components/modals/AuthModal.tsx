@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Mail, Lock, User, Eye, EyeOff, LogIn, UserPlus, Loader2, CheckCircle, AlertCircle, X } from 'lucide-react';
-import { login, signup } from '../lib/api';
+import { login, signup } from '../../lib/api';
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -19,7 +19,7 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalP
   const [mode, setMode] = useState<AuthMode>('login');
   const [showPassword, setShowPassword] = useState(false);
   const [formStatus, setFormStatus] = useState<FormStatus>({ type: 'idle', message: '' });
-  
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -35,7 +35,7 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalP
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Validation
     if (mode === 'signup') {
       if (!formData.name.trim()) {
@@ -61,20 +61,20 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalP
 
     try {
       let result;
-      
+
       if (mode === 'login') {
         result = await login({ email: formData.email, password: formData.password });
       } else {
-        result = await signup({ 
-          name: formData.name, 
-          email: formData.email, 
-          password: formData.password 
+        result = await signup({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password
         });
       }
 
-      setFormStatus({ 
-        type: 'success', 
-        message: mode === 'login' ? 'Login successful!' : 'Account created successfully!' 
+      setFormStatus({
+        type: 'success',
+        message: mode === 'login' ? 'Login successful!' : 'Account created successfully!'
       });
 
       // Notify parent and close modal after success
@@ -83,11 +83,11 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalP
         onClose();
         resetForm();
       }, 1500);
-      
+
     } catch (error) {
-      setFormStatus({ 
-        type: 'error', 
-        message: error instanceof Error ? error.message : 'Authentication failed' 
+      setFormStatus({
+        type: 'error',
+        message: error instanceof Error ? error.message : 'Authentication failed'
       });
     }
   };
@@ -108,11 +108,11 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalP
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
-      <div 
+      <div
         className="absolute inset-0 bg-black/70 backdrop-blur-sm"
         onClick={onClose}
       />
-      
+
       {/* Modal */}
       <div className="relative w-full max-w-md bg-slate-800/95 backdrop-blur-sm border-2 border-cyan-400/30 rounded-2xl p-8 shadow-2xl shadow-cyan-500/10">
         {/* Close button */}
@@ -136,8 +136,8 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalP
             {mode === 'login' ? 'Welcome Back!' : 'Create Account'}
           </h2>
           <p className="text-gray-400 mt-2">
-            {mode === 'login' 
-              ? 'Sign in to your account' 
+            {mode === 'login'
+              ? 'Sign in to your account'
               : 'Sign up to get started'}
           </p>
         </div>
@@ -229,11 +229,10 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalP
 
           {/* Status Message */}
           {formStatus.type !== 'idle' && (
-            <div className={`flex items-center gap-3 p-4 rounded-xl ${
-              formStatus.type === 'success' ? 'bg-green-500/20 border border-green-400/30 text-green-400' :
-              formStatus.type === 'error' ? 'bg-red-500/20 border border-red-400/30 text-red-400' :
-              'bg-cyan-500/20 border border-cyan-400/30 text-cyan-400'
-            }`}>
+            <div className={`flex items-center gap-3 p-4 rounded-xl ${formStatus.type === 'success' ? 'bg-green-500/20 border border-green-400/30 text-green-400' :
+                formStatus.type === 'error' ? 'bg-red-500/20 border border-red-400/30 text-red-400' :
+                  'bg-cyan-500/20 border border-cyan-400/30 text-cyan-400'
+              }`}>
               {formStatus.type === 'loading' && <Loader2 className="w-5 h-5 animate-spin" />}
               {formStatus.type === 'success' && <CheckCircle className="w-5 h-5" />}
               {formStatus.type === 'error' && <AlertCircle className="w-5 h-5" />}

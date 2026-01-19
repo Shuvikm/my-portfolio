@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Trophy, ZoomIn, Medal, X, Maximize2 } from 'lucide-react';
-import CertificateModal from './CertificateModal';
+import CertificateModal from '../modals/CertificateModal';
 
 const achievements = [
   {

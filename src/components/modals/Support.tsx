@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MessageSquare, X, Send, Loader2 } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { submitContactForm } from '../lib/api';
+import { submitContactForm } from '../../lib/api';
 
 export default function Support() {
     const [isOpen, setIsOpen] = useState(false);

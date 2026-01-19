@@ -1,6 +1,6 @@
 import { Mail, Phone, Linkedin, Github, Code, Send, MessageSquare, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import { submitContactForm } from '../lib/api';
+import { submitContactForm } from '../../lib/api';
 
 interface FormData {
   name: string;

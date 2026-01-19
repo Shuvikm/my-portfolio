@@ -1,25 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
 import Lenis from 'lenis';
-import Navigation from './components/Navigation';
-import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Journey from './components/Journey';
-import Contact from './components/Contact';
-import MangaTimer from './components/MangaTimer';
-import MangaScene3D from './components/MangaScene3D';
-import MangaIntro from './components/MangaIntro';
-import MangaGallery from './components/MangaGallery';
-import MangaPanelPortfolio from './components/MangaPanelPortfolio';
-import './manga-panels.css';
-import MangaGrimoireOrbit from './components/MangaGrimoireOrbit';
+import Navigation from './components/ui/Navigation';
+import Hero from './components/sections/Hero';
+import About from './components/sections/About';
+import Skills from './components/sections/Skills';
+import Projects from './components/sections/Projects';
+import Journey from './components/sections/Journey';
+import Contact from './components/sections/Contact';
+import GrimoireOrbital from './components/ui/GrimoireOrbital';
 
 function App() {
-  const [showIntro, setShowIntro] = useState(true);
-  const [viewMode, setViewMode] = useState<'original' | 'manga'>('manga');
-
   useEffect(() => {
     // Initialize Lenis smooth scroll with enhanced settings
     const lenis = new Lenis({
@@ -66,9 +57,6 @@ function App() {
 
   return (
     <div className="min-h-screen relative" style={{ background: '#ffffff' }}>
-      {/* Manga Intro Slideshow */}
-      {showIntro && <MangaIntro onComplete={() => setShowIntro(false)} />}
-
       <Toaster
         position="top-right"
         toastOptions={{
@@ -82,115 +70,75 @@ function App() {
         }}
       />
 
-      {/* Portfolio Toggle Button */}
-      <div className="portfolio-toggle">
-        <button
-          className={`toggle-btn ${viewMode === 'manga' ? 'active' : ''}`}
-          onClick={() => setViewMode('manga')}
-        >
-          📖 Manga
-        </button>
-        <button
-          className={`toggle-btn ${viewMode === 'original' ? 'active' : ''}`}
-          onClick={() => setViewMode('original')}
-        >
-          🎮 Original
-        </button>
+      <Navigation />
+
+      {/* Hero Section with Parallax */}
+      <div className="parallax parallax-hero">
+        <div className="manga-page">
+          <Hero />
+        </div>
       </div>
 
-      {/* Manga Panel Portfolio View */}
-      {viewMode === 'manga' && (
-        <>
-          <Navigation />
-          <MangaPanelPortfolio />
-          <MangaTimer />
-        </>
-      )}
+      {/* Content Sections - Aligned */}
+      <main className="manga-page">
+        {/* Grimoire Orbital - Floating Manga Panels */}
+        <GrimoireOrbital
+          images={[
+            '/images/grimoire/manga-1.jpg',
+            '/images/grimoire/manga-2.jpg',
+            '/images/grimoire/manga-3.jpg',
+            '/images/grimoire/manga-4.jpg',
+            '/images/grimoire/manga-5.jpg',
+            '/images/grimoire/manga-6.jpg',
+            '/images/grimoire/manga-7.jpg',
+            '/images/grimoire/manga-8.jpg',
+            '/images/grimoire/manga-9.jpg',
+            '/images/grimoire/manga-10.jpg',
+            '/images/grimoire/manga-11.jpg',
+            '/images/grimoire/manga-12.jpg',
+            '/images/grimoire/manga-13.jpg',
+            '/images/grimoire/manga-14.jpg',
+            '/images/grimoire/manga-15.jpg',
+            '/images/grimoire/manga-16.jpg',
+            '/images/grimoire/manga-17.jpg',
+            '/images/grimoire/manga-18.jpg',
+            '/images/grimoire/manga-19.jpg',
+          ]}
+          grimoireImage="/images/grimoire/grimoire-book.jpg"
+        />
 
-      {/* Original Portfolio View */}
-      {viewMode === 'original' && (
-        <>
-          {/* Three.js Manga Effects Background - Removed per user request */}
-          {/* <MangaScene3D /> */}
+        <div className="content-section">
+          <About />
+          <Skills />
+        </div>
 
-          <Navigation />
-
-          {/* Hero Section with Parallax */}
-          <div className="parallax parallax-hero">
-            <div className="manga-page">
-              <Hero />
-            </div>
+        {/* Parallax Divider */}
+        <div className="parallax parallax-projects">
+          <div className="parallax-content">
+            <h3 className="manga-title text-4xl text-center" style={{ textShadow: '2px 2px 0 white, 4px 4px 0 #1a1a1a' }}>
+              ⚡ PROJECTS ⚡
+            </h3>
           </div>
+        </div>
 
-          {/* Content Sections - Aligned */}
-          <main className="manga-page">
-            {/* Fast-Rotating Grimoire Orbital - All Manga Panels */}
-            <MangaGrimoireOrbit
-              images={[
-                '/images/grimoire/manga-1.jpg',
-                '/images/grimoire/manga-2.jpg',
-                '/images/grimoire/manga-3.jpg',
-                '/images/grimoire/manga-4.jpg',
-                '/images/grimoire/manga-5.jpg',
-                '/images/grimoire/manga-6.jpg',
-                '/images/grimoire/manga-7.jpg',
-                '/images/grimoire/manga-8.jpg',
-                '/images/grimoire/manga-9.jpg',
-                '/images/grimoire/manga-10.jpg',
-                '/images/grimoire/manga-11.jpg',
-                '/images/grimoire/manga-12.jpg',
-                '/images/grimoire/manga-13.jpg',
-                '/images/grimoire/manga-14.jpg',
-                '/images/grimoire/manga-15.jpg',
-                '/images/grimoire/manga-16.jpg',
-                '/images/grimoire/manga-17.jpg',
-                '/images/grimoire/manga-18.jpg',
-                '/images/grimoire/manga-19.jpg',
-              ]}
-            />
+        <div className="content-section">
+          <Projects />
+          <Journey />
+        </div>
 
-            {/* Manga Gallery - Browse favorite panels */}
-            <div className="content-section">
-              <MangaGallery />
-            </div>
+        {/* Parallax Divider */}
+        <div className="parallax parallax-contact">
+          <div className="parallax-content">
+            <h3 className="manga-title text-4xl text-center" style={{ textShadow: '2px 2px 0 white, 4px 4px 0 #1a1a1a' }}>
+              💬 CONTACT 💬
+            </h3>
+          </div>
+        </div>
 
-            <div className="content-section">
-              <About />
-              <Skills />
-            </div>
-
-            {/* Parallax Divider with Manga Style */}
-            <div className="parallax parallax-projects">
-              <div className="parallax-content">
-                <h3 className="manga-title text-4xl text-center" style={{ textShadow: '2px 2px 0 white, 4px 4px 0 #1a1a1a' }}>
-                  ⚡ ACTION ⚡
-                </h3>
-              </div>
-            </div>
-
-            <div className="content-section">
-              <Projects />
-              <Journey />
-            </div>
-
-            {/* Parallax Divider with Manga Style */}
-            <div className="parallax parallax-contact">
-              <div className="parallax-content">
-                <h3 className="manga-title text-4xl text-center" style={{ textShadow: '2px 2px 0 white, 4px 4px 0 #1a1a1a' }}>
-                  💬 CONTACT 💬
-                </h3>
-              </div>
-            </div>
-
-            <div className="content-section">
-              <Contact />
-            </div>
-          </main>
-
-          {/* Manga Reading Timer */}
-          <MangaTimer />
-        </>
-      )}
+        <div className="content-section">
+          <Contact />
+        </div>
+      </main>
     </div>
   );
 }
