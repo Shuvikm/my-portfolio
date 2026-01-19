@@ -1,0 +1,30 @@
+/* Animation performance optimizations */
+
+.manga-panel {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.manga-button {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Reduce repaints */
+.manga-section {
+    contain: layout style paint;
+}
+
+/* GPU acceleration for animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
