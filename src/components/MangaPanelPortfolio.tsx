@@ -526,94 +526,84 @@ export default function MangaPanelPortfolio() {
                     </div>
 
                     {/* Mission */}
-                    <div className="content-bubble" style={{ marginBottom: '1rem' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                            <Target className="w-5 h-5" style={{ color: '#fbbf24' }} />
-                            <strong>Mission</strong>
-                        </div>
-                        <p style={{ fontSize: '0.875rem' }}>
-                            Seeking an entry-level position where I can apply my skills, enhance my knowledge, and contribute to the company's success.
+                    <div className="bg-gray-50 p-4 border-2 border-dashed border-gray-300 rounded-lg">
+                        <h4 className="font-bold text-lg mb-2 flex items-center gap-2 text-black">
+                            <Target className="w-5 h-5 text-orange-500" /> Mission
+                        </h4>
+                        <p className="text-gray-800 leading-relaxed font-medium">
+                            Seeking an entry-level position where I can apply my skills, enhance my knowledge, and
+                            contribute to the company's success.
                         </p>
                     </div>
 
                     {/* Education */}
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '1rem' }}>
-                        <div className="content-bubble">
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                                <GraduationCap className="w-4 h-4" />
-                                <strong style={{ fontSize: '0.8rem' }}>B.TECH CSE</strong>
-                            </div>
-                            <p style={{ fontSize: '0.75rem', color: '#4a4a4a' }}>Kongu Engineering College</p>
-                            <p style={{ fontSize: '0.75rem', color: '#fbbf24', fontWeight: 'bold' }}>CGPA: 7.77*</p>
-                        </div>
-                        <div className="content-bubble">
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                                <School className="w-4 h-4" />
-                                <strong style={{ fontSize: '0.8rem' }}>GRADE 12</strong>
-                            </div>
-                            <p style={{ fontSize: '0.75rem', color: '#4a4a4a' }}>Bharathi Vidya Bhavan</p>
-                            <p style={{ fontSize: '0.75rem', color: '#fbbf24', fontWeight: 'bold' }}>82%</p>
-                        </div>
+                        <strong style={{ fontSize: '0.8rem' }}>GRADE 12</strong>
                     </div>
-
-                    {/* Soft Skills */}
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                        {['Leadership', 'Teamwork', 'Adaptability', 'Communication'].map((skill) => (
-                            <span key={skill} className="skill-tag">{skill}</span>
-                        ))}
-                    </div>
-                </div>
-
-                {/* STACK Panel */}
-                <div id="skills" className={`manga-panel-frame section-panel panel-angled-right ${getPanelClass('skills')}`}>
-                    <div className="section-header">
-                        <div className="section-number">02</div>
-                        <h2 className="section-title" style={{ color: '#1a1a1a' }}>STACK</h2>
-                    </div>
-
-                    <div className="skills-grid">
-                        <div className="skill-category">
-                            <div className="skill-category-title">
-                                <span className="skill-category-icon"><Code className="w-3 h-3" /></span>
-                                Languages
-                            </div>
-                            <div className="skill-tags">
-                                {skills.languages.map((s) => <span key={s} className="skill-tag">{s}</span>)}
-                            </div>
-                        </div>
-                        <div className="skill-category">
-                            <div className="skill-category-title" style={{ color: '#fbbf24' }}>
-                                <span className="skill-category-icon" style={{ background: '#fbbf24', color: '#1a1a1a' }}><Palette className="w-3 h-3" /></span>
-                                Frontend
-                            </div>
-                            <div className="skill-tags">
-                                {skills.frontend.map((s) => <span key={s} className="skill-tag">{s}</span>)}
-                            </div>
-                        </div>
-                        <div className="skill-category">
-                            <div className="skill-category-title">
-                                <span className="skill-category-icon" style={{ background: '#22c55e' }}><Database className="w-3 h-3" /></span>
-                                Databases
-                            </div>
-                            <div className="skill-tags">
-                                {skills.databases.map((s) => <span key={s} className="skill-tag">{s}</span>)}
-                            </div>
-                        </div>
-                        <div className="skill-category">
-                            <div className="skill-category-title">
-                                <span className="skill-category-icon" style={{ background: '#22d3ee', color: '#1a1a1a' }}><Wrench className="w-3 h-3" /></span>
-                                Tools
-                            </div>
-                            <div className="skill-tags">
-                                {skills.tools.map((s) => <span key={s} className="skill-tag">{s}</span>)}
-                            </div>
-                        </div>
-                    </div>
+                    <p style={{ fontSize: '0.75rem', color: '#4a4a4a' }}>Bharathi Vidya Bhavan</p>
+                    <p style={{ fontSize: '0.75rem', color: '#fbbf24', fontWeight: 'bold' }}>82%</p>
                 </div>
             </div>
 
-            {/* ROW 2: WORKS (Full Width) */}
-            <div id="projects" className={`manga-panel-frame section-panel panel-full ${getPanelClass('projects')}`}>
+            {/* Soft Skills */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                {['Leadership', 'Teamwork', 'Adaptability', 'Communication'].map((skill) => (
+                    <span key={skill} className="skill-tag">{skill}</span>
+                ))}
+            </div>
+        </div>
+
+                {/* STACK Panel */ }
+    <div id="skills" className={`manga-panel-frame section-panel panel-angled-right ${getPanelClass('skills')}`}>
+        <div className="section-header">
+            <div className="section-number">02</div>
+            <h2 className="section-title" style={{ color: '#1a1a1a' }}>STACK</h2>
+        </div>
+
+        <div className="skills-grid">
+            <div className="skill-category">
+                <div className="skill-category-title">
+                    <span className="skill-category-icon"><Code className="w-3 h-3" /></span>
+                    Languages
+                </div>
+                <div className="skill-tags">
+                    {skills.languages.map((s) => <span key={s} className="skill-tag">{s}</span>)}
+                </div>
+            </div>
+            <div className="skill-category">
+                <div className="skill-category-title" style={{ color: '#fbbf24' }}>
+                    <span className="skill-category-icon" style={{ background: '#fbbf24', color: '#1a1a1a' }}><Palette className="w-3 h-3" /></span>
+                    Frontend
+                </div>
+                <div className="skill-tags">
+                    {skills.frontend.map((s) => <span key={s} className="skill-tag">{s}</span>)}
+                </div>
+            </div>
+            <div className="skill-category">
+                <div className="skill-category-title">
+                    <span className="skill-category-icon" style={{ background: '#22c55e' }}><Database className="w-3 h-3" /></span>
+                    Databases
+                </div>
+                <div className="skill-tags">
+                    {skills.databases.map((s) => <span key={s} className="skill-tag">{s}</span>)}
+                </div>
+            </div>
+            <div className="skill-category">
+                <div className="skill-category-title">
+                    <span className="skill-category-icon" style={{ background: '#22d3ee', color: '#1a1a1a' }}><Wrench className="w-3 h-3" /></span>
+                    Tools
+                </div>
+                <div className="skill-tags">
+                    {skills.tools.map((s) => <span key={s} className="skill-tag">{s}</span>)}
+                </div>
+            </div>
+        </div>
+    </div>
+            </div >
+
+        {/* ROW 2: WORKS (Full Width) */ }
+        < div id = "projects" className = {`manga-panel-frame section-panel panel-full ${getPanelClass('projects')}`
+}>
                 <div className="section-header">
                     <div className="section-number">03</div>
                     <h2 className="section-title">WORKS</h2>
@@ -637,16 +627,16 @@ export default function MangaPanelPortfolio() {
                         </div>
                     ))}
                 </div>
-            </div>
+            </div >
 
-            {/* Second Decorative Manga Panels Row */}
-            <div className="panel-row-angled" style={{ marginBottom: '1.5rem' }}>
+    {/* Second Decorative Manga Panels Row */ }
+    < div className = "panel-row-angled" style = {{ marginBottom: '1.5rem' }}>
                 <div className="manga-panel-decorative" style={{ minHeight: '100px' }} />
                 <div className="manga-panel-decorative" style={{ minHeight: '100px' }} />
-            </div>
+            </div >
 
-            {/* ROW 3: ACHIEVEMENTS (Full Width) */}
-            <div id="journey" className={`manga-panel-frame section-panel panel-full ${getPanelClass('journey')}`}>
+    {/* ROW 3: ACHIEVEMENTS (Full Width) */ }
+    < div id = "journey" className = {`manga-panel-frame section-panel panel-full ${getPanelClass('journey')}`}>
                 <div className="section-header">
                     <div className="section-number">04</div>
                     <h2 className="section-title">ACHIEVEMENTS</h2>
@@ -678,7 +668,18 @@ export default function MangaPanelPortfolio() {
                                 </h4>
                                 <p style={{ fontSize: '0.875rem', color: '#4a4a4a' }}>{ach.desc}</p>
                                 {ach.image && (
-                                    <div style={{ marginTop: '0.5rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                                    <div className="p-4 border-2 border-black bg-white shadow-[4px_4px_0_rgba(0,0,0,0.1)] hover:shadow-[6px_6px_0_rgba(251,191,36,0.3)] transition-all">
+                                        <h4 className="font-black mb-3 flex items-center gap-2 uppercase text-black">
+                                            <Code className="w-4 h-4" /> Languages
+                                        </h4>
+                                        <div className="flex flex-wrap gap-2">
+                                            {skills.languages.map((skill) => (
+                                                <span key={skill} className="skill-tag px-2 py-1 bg-gray-100 border border-gray-300 text-xs font-bold text-black">
+                                                    {skill}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>    <div style={{ marginTop: '0.5rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                                         <span
                                             style={{
                                                 fontSize: '0.75rem',
@@ -718,7 +719,7 @@ export default function MangaPanelPortfolio() {
                     ))}
                 </div>
 
-                {/* Certifications */}
+{/* Certifications */ }
                 <h3 style={{ fontWeight: 900, textTransform: 'uppercase', marginTop: '1.5rem', marginBottom: '0.75rem', color: '#1a1a1a' }}>
                     Certifications
                 </h3>
@@ -752,10 +753,10 @@ export default function MangaPanelPortfolio() {
                         </div>
                     ))}
                 </div>
-            </div>
+            </div >
 
-            {/* ROW 4: CONTACT */}
-            <div id="contact" className={`manga-panel-frame section-panel panel-full ${getPanelClass('contact')}`}>
+    {/* ROW 4: CONTACT */ }
+    < div id = "contact" className = {`manga-panel-frame section-panel panel-full ${getPanelClass('contact')}`}>
                 <div className="section-header">
                     <div className="section-number">05</div>
                     <h2 className="section-title" style={{ color: '#1a1a1a' }}>CONTACT</h2>
@@ -799,71 +800,73 @@ export default function MangaPanelPortfolio() {
                         — Shuvik M
                     </div>
                 </div>
-            </div>
+            </div >
 
-            {/* Certificate Modal */}
-            <CertificateModal
-                isOpen={showCertModal}
-                onClose={() => setShowCertModal(false)}
-                imageSrc={selectedCert.image}
-                title={selectedCert.title}
+    {/* Certificate Modal */ }
+    < CertificateModal
+isOpen = { showCertModal }
+onClose = {() => setShowCertModal(false)}
+imageSrc = { selectedCert.image }
+title = { selectedCert.title }
+    />
+
+    {/* Grimoire Image Modal */ }
+{
+    showGrimoireModal && (
+        <div
+            className="grimoire-modal"
+            onClick={() => setShowGrimoireModal(false)}
+            style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                backgroundColor: 'rgba(0, 0, 0, 0.95)',
+                zIndex: 9999,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '2rem',
+                cursor: 'pointer'
+            }}
+        >
+            <img
+                src={selectedGrimoireImage}
+                alt="Grimoire"
+                style={{
+                    maxWidth: '90%',
+                    maxHeight: '90vh',
+                    objectFit: 'contain',
+                    border: '5px solid #fbbf24',
+                    boxShadow: '0 0 50px rgba(251, 191, 36, 0.8)',
+                    animation: 'grimoireModalPulse 2s ease-in-out infinite'
+                }}
+                onClick={(e) => e.stopPropagation()}
             />
-
-            {/* Grimoire Image Modal */}
-            {showGrimoireModal && (
-                <div
-                    className="grimoire-modal"
-                    onClick={() => setShowGrimoireModal(false)}
-                    style={{
-                        position: 'fixed',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        backgroundColor: 'rgba(0, 0, 0, 0.95)',
-                        zIndex: 9999,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        padding: '2rem',
-                        cursor: 'pointer'
-                    }}
-                >
-                    <img
-                        src={selectedGrimoireImage}
-                        alt="Grimoire"
-                        style={{
-                            maxWidth: '90%',
-                            maxHeight: '90vh',
-                            objectFit: 'contain',
-                            border: '5px solid #fbbf24',
-                            boxShadow: '0 0 50px rgba(251, 191, 36, 0.8)',
-                            animation: 'grimoireModalPulse 2s ease-in-out infinite'
-                        }}
-                        onClick={(e) => e.stopPropagation()}
-                    />
-                    <button
-                        onClick={() => setShowGrimoireModal(false)}
-                        style={{
-                            position: 'absolute',
-                            top: '2rem',
-                            right: '2rem',
-                            background: '#fbbf24',
-                            border: '3px solid #1a1a1a',
-                            color: '#1a1a1a',
-                            fontSize: '2rem',
-                            width: '50px',
-                            height: '50px',
-                            cursor: 'pointer',
-                            fontWeight: 'bold',
-                            boxShadow: '4px 4px 0 #1a1a1a',
-                            transition: 'all 0.2s ease'
-                        }}
-                    >
-                        ✕
-                    </button>
-                </div>
-            )}
+            <button
+                onClick={() => setShowGrimoireModal(false)}
+                style={{
+                    position: 'absolute',
+                    top: '2rem',
+                    right: '2rem',
+                    background: '#fbbf24',
+                    border: '3px solid #1a1a1a',
+                    color: '#1a1a1a',
+                    fontSize: '2rem',
+                    width: '50px',
+                    height: '50px',
+                    cursor: 'pointer',
+                    fontWeight: 'bold',
+                    boxShadow: '4px 4px 0 #1a1a1a',
+                    transition: 'all 0.2s ease'
+                }}
+            >
+                ✕
+            </button>
         </div>
+    )
+}
+        </div >
     );
 }

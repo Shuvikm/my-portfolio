@@ -110,8 +110,8 @@ function App() {
       {/* Original Portfolio View */}
       {viewMode === 'original' && (
         <>
-          {/* Three.js Manga Effects Background */}
-          <MangaScene3D />
+          {/* Three.js Manga Effects Background - Removed per user request */}
+          {/* <MangaScene3D /> */}
 
           <Navigation />
 
