@@ -6,12 +6,6 @@ export default {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-      },
-      fontSize: {
-        base: '18px',
-      },
       colors: {
         'manga-black': '#0a0a0a',
         'manga-white': '#fafaff',

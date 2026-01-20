@@ -75,13 +75,13 @@ function App() {
       <Suspense fallback={null}>
         <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', zIndex: 5, pointerEvents: 'none' }}>
           <Ribbons
-            baseThickness={20}
-            colors={["#fbbf24", "#ffffff"]}
-            speedMultiplier={0.7}
-            maxAge={450}
+            baseThickness={25}
+            colors={["#fbbf24", "#ffffff", "#dc2626"]}
+            speedMultiplier={0.9}
+            maxAge={400}
             enableFade={true}
             enableShaderEffect={false}
-            pointCount={20}
+            pointCount={30}
           />
         </div>
       </Suspense>
