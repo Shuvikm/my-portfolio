@@ -1,0 +1,46 @@
+.true-focus {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.true-focus-word {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    font-weight: 600;
+    transition: all 0.5s ease;
+    filter: blur(2px);
+    opacity: 0.4;
+    color: inherit;
+    border: 2px solid transparent;
+    background: transparent;
+}
+
+.true-focus-word.active {
+    filter: blur(0);
+    opacity: 1;
+    border: 2px solid #fbbf24;
+    background: rgba(251, 191, 36, 0.1);
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.5),
+        0 0 40px rgba(251, 191, 36, 0.3),
+        inset 0 0 10px rgba(251, 191, 36, 0.2);
+    animation: glow 0.5s ease-in-out;
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(251, 191, 36, 0.5),
+            0 0 40px rgba(251, 191, 36, 0.3),
+            inset 0 0 10px rgba(251, 191, 36, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(251, 191, 36, 0.7),
+            0 0 60px rgba(251, 191, 36, 0.5),
+            inset 0 0 15px rgba(251, 191, 36, 0.4);
+    }
+}
