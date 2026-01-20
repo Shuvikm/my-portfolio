@@ -394,7 +394,7 @@ const ParticlesBackground: React.FC = () => {
                 powerPreference: 'high-performance'
             });
             renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); // Reduced from 2 for better performance
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
             renderer.toneMappingExposure = 1.1;
 
@@ -417,7 +417,7 @@ const ParticlesBackground: React.FC = () => {
                     CONFIG.colorScheme = schemes[Math.floor(Math.random() * schemes.length)];
                 }
                 morphToShape(nextIdx);
-            }, 8000);
+            }, 10000); // Increased from 8000ms to reduce frequency of expensive morphing
 
             const shineInterval = setInterval(() => {
                 if (!isMorphing) triggerSingleShine();

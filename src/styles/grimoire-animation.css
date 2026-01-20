@@ -76,6 +76,8 @@
     overflow: hidden;
     backface-visibility: hidden;
     transform-style: preserve-3d;
+    will-change: transform, opacity;
+    /* Optimize for GPU acceleration */
     /* 8K Quality Rendering */
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
@@ -252,6 +254,37 @@
     50% {
         filter: drop-shadow(0 0 40px rgba(251, 191, 36, 0.8));
     }
+}
+
+/* Image Loading States */
+.image-loading,
+.image-error {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(26, 26, 26, 0.05);
+}
+
+.image-loading .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(251, 191, 36, 0.2);
+    border-top-color: var(--grimoire-gold);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.image-error {
+    color: var(--grimoire-dark);
+    font-weight: 600;
 }
 
 /* Modal Styling */

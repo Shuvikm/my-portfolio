@@ -4,9 +4,9 @@ import GlitchText from '../ui/GlitchText';
 
 export default function About() {
   return (
-    <section id="about" className="manga-section">
+    <section id="about" className="manga-section py-12">
       {/* Section Header */}
-      <div className="manga-panel p-6 mb-4">
+      <div className="manga-panel p-8 mb-8">
         <div className="flex items-center gap-8">
           <div className="exclaim-box" style={{ background: '#fbbf24', color: '#1a1a1a' }}>01</div>
           <h2 className="manga-title text-3xl sm:text-4xl tracking-widest">
@@ -16,7 +16,7 @@ export default function About() {
       </div>
 
       {/* Career Objective */}
-      <div className="manga-panel manga-panel-dark p-6 sm:p-8 mb-4 relative overflow-hidden">
+      <div className="manga-panel manga-panel-dark p-6 sm:p-8 mb-8 relative overflow-hidden">
         <div className="screentone" style={{ opacity: 0.2 }} />
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-4">

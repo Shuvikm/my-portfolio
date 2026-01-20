@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { Toaster } from 'react-hot-toast';
 import Lenis from 'lenis';
 import Navigation from './components/layout/Navigation';
@@ -7,20 +7,23 @@ import About from './components/sections/About';
 import Skills from './components/sections/Skills';
 import Projects from './components/sections/Projects';
 import Journey from './components/sections/Journey';
+import DesertHorse from './components/sections/DesertHorse';
 import Contact from './components/sections/Contact';
-import GrimoireOrbital from './components/ui/GrimoireOrbital';
 import Footer from './components/layout/Footer';
-import ParticlesBackground from './components/ui/Particles/ParticlesBackground';
 import './styles/grimoire-animation.css';
+
+// Lazy load heavy components for better performance
+const GrimoireOrbital = lazy(() => import('./components/ui/GrimoireOrbital'));
+const ParticlesBackground = lazy(() => import('./components/ui/Particles/ParticlesBackground'));
 
 function App() {
   useEffect(() => {
     // Initialize Lenis smooth scroll with optimized settings
     const lenis = new Lenis({
-      duration: 1.0,
+      duration: 0.8, // Reduced from 1.0 for faster response
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      wheelMultiplier: 0.8,
+      wheelMultiplier: 1.0, // Increased from 0.8 for more direct control
       touchMultiplier: 1.5,
       infinite: false,
     });
@@ -44,7 +47,7 @@ function App() {
           if (element) {
             lenis.scrollTo(element as HTMLElement, {
               offset: -80,
-              duration: 1.2,
+              duration: 1.0, // Reduced from 1.2 for snappier navigation
             });
           }
         }
@@ -61,7 +64,9 @@ function App() {
 
   return (
     <div className="min-h-screen relative overflow-x-hidden">
-      <ParticlesBackground />
+      <Suspense fallback={<div className="fixed inset-0 bg-[#001026]" />}>
+        <ParticlesBackground />
+      </Suspense>
       <Toaster
         position="top-right"
         toastOptions={{
@@ -86,35 +91,38 @@ function App() {
 
       {/* Main Content */}
       <main className="manga-page">
-        <GrimoireOrbital
-          images={[
-            '/images/grimoire/manga-1.jpg',
-            '/images/grimoire/manga-2.jpg',
-            '/images/grimoire/manga-3.jpg',
-            '/images/grimoire/manga-4.jpg',
-            '/images/grimoire/manga-5.jpg',
-            '/images/grimoire/manga-6.jpg',
-            '/images/grimoire/manga-7.jpg',
-            '/images/grimoire/manga-8.jpg',
-            '/images/grimoire/manga-9.jpg',
-            '/images/grimoire/manga-10.jpg',
-            '/images/grimoire/manga-11.jpg',
-            '/images/grimoire/manga-12.jpg',
-            '/images/grimoire/manga-13.jpg',
-            '/images/grimoire/manga-14.jpg',
-            '/images/grimoire/manga-15.jpg',
-            '/images/grimoire/manga-16.jpg',
-            '/images/grimoire/manga-17.jpg',
-            '/images/grimoire/manga-18.jpg',
-            '/images/grimoire/manga-19.jpg',
-          ]}
-          grimoireImage="/images/grimoire/grimoire-book.jpg"
-        />
+        <Suspense fallback={<div className="min-h-[80vh] flex items-center justify-center"><div className="text-2xl">Loading...</div></div>}>
+          <GrimoireOrbital
+            images={[
+              '/images/grimoire/manga-1.jpg',
+              '/images/grimoire/manga-2.jpg',
+              '/images/grimoire/manga-3.jpg',
+              '/images/grimoire/manga-4.jpg',
+              '/images/grimoire/manga-5.jpg',
+              '/images/grimoire/manga-6.jpg',
+              '/images/grimoire/manga-7.jpg',
+              '/images/grimoire/manga-8.jpg',
+              '/images/grimoire/manga-9.jpg',
+              '/images/grimoire/manga-10.jpg',
+              '/images/grimoire/manga-11.jpg',
+              '/images/grimoire/manga-12.jpg',
+              '/images/grimoire/manga-13.jpg',
+              '/images/grimoire/manga-14.jpg',
+              '/images/grimoire/manga-15.jpg',
+              '/images/grimoire/manga-16.jpg',
+              '/images/grimoire/manga-17.jpg',
+              '/images/grimoire/manga-18.jpg',
+              '/images/grimoire/manga-19.jpg',
+            ]}
+            grimoireImage="/images/grimoire/grimoire-book.jpg"
+          />
+        </Suspense>
 
         <About />
         <Skills />
         <Projects />
         <Journey />
+        <DesertHorse />
 
         {/* Contact Section */}
         <div className="parallax parallax-contact">

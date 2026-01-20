@@ -97,12 +97,13 @@ export default function Hero() {
                 textShadow: '3px 3px 0 #1a1a1a, 6px 6px 0 rgba(251, 191, 36, 0.3)'
               }}
               shuffleDirection="down"
-              duration={0.5}
-              shuffleTimes={3}
+              duration={0.3}
+              shuffleTimes={5}
               animationMode="evenodd"
-              stagger={0.03}
-              triggerOnHover={false}
-              scrambleCharset="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+"
+              stagger={0.04}
+              triggerOnHover={true}
+              triggerOnce={false}
+              scrambleCharset="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?/~`★☆♦♣♠♥✦✧"
             />
 
             {/* Description - Thought Bubble */}

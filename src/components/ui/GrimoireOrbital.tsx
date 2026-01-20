@@ -11,6 +11,32 @@ export default function GrimoireOrbital({ images, grimoireImage, onImageClick }:
     const [showModal, setShowModal] = useState(false);
     const [selectedImage, setSelectedImage] = useState('');
     const [isAnimating, setIsAnimating] = useState(false);
+    const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
+    const [imageErrors, setImageErrors] = useState<Set<number>>(new Set());
+
+    // Preload visible images for smooth experience
+    useEffect(() => {
+        const indicesToPreload = [
+            currentIndex,
+            (currentIndex + 1) % images.length,
+            (currentIndex - 1 + images.length) % images.length,
+            (currentIndex + 2) % images.length,
+            (currentIndex - 2 + images.length) % images.length,
+        ];
+
+        indicesToPreload.forEach(index => {
+            if (!loadedImages.has(index) && !imageErrors.has(index)) {
+                const img = new Image();
+                img.onload = () => {
+                    setLoadedImages(prev => new Set(prev).add(index));
+                };
+                img.onerror = () => {
+                    setImageErrors(prev => new Set(prev).add(index));
+                };
+                img.src = images[index];
+            }
+        });
+    }, [currentIndex, images, loadedImages, imageErrors]);
 
     const updateCarousel = useCallback((newIndex: number) => {
         if (isAnimating) return;
@@ -75,7 +101,19 @@ export default function GrimoireOrbital({ images, grimoireImage, onImageClick }:
                                 className={`grimoire-card ${getCardClass(index)}`}
                                 onClick={() => handleImageClick(imageSrc, index)}
                             >
-                                <img src={imageSrc} alt={`Manga Panel ${index + 1}`} />
+                                {loadedImages.has(index) ? (
+                                    <img
+                                        src={imageSrc}
+                                        alt={`Manga Panel ${index + 1}`}
+                                        loading="lazy"
+                                    />
+                                ) : imageErrors.has(index) ? (
+                                    <div className="image-error">Failed to load</div>
+                                ) : (
+                                    <div className="image-loading">
+                                        <div className="spinner"></div>
+                                    </div>
+                                )}
                             </div>
                         ))}
                     </div>
@@ -105,7 +143,7 @@ export default function GrimoireOrbital({ images, grimoireImage, onImageClick }:
 
             {/* Central Grimoire Decorative Element - positioned behind or aside */}
             <div className="grimoire-decorative">
-                <img src={grimoireImage} alt="Grimoire" className="floating-grimoire" />
+                <img src={grimoireImage} alt="Grimoire" className="floating-grimoire" loading="lazy" />
             </div>
 
             {/* Modal */}

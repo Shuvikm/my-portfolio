@@ -1,4 +1,4 @@
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Gamepad2 } from 'lucide-react';
 import Shuffle from '../ui/Shuffle';
 import GlitchText from '../ui/GlitchText';
 
@@ -8,24 +8,36 @@ const projects = [
     role: 'Web Development',
     desc: 'AI-based mentoring platform with personalized learning paths, study materials, and real-time dashboard.',
     tags: ['AI', 'React', 'Node.js'],
+    isGame: false,
   },
   {
     title: 'Lost & Found Web Application',
     role: 'MERN Stack',
     desc: 'Platform for reporting, searching, and claiming lost items with secure authentication.',
     tags: ['MERN', 'Auth', 'Geo'],
+    isGame: false,
   },
   {
     title: 'Flight Delay & Prediction',
     role: 'Predictive Analytics',
     desc: 'ML model using XGBoost to predict flight delays with high accuracy.',
     tags: ['Python', 'ML', 'XGBoost'],
+    isGame: false,
+  },
+  {
+    title: 'Desert Horse',
+    role: 'Game Development',
+    desc: 'Retro pixel art endless runner! Control a galloping horse, dodge cactus and vultures. Konami code for bull power-up!',
+    tags: ['Canvas', 'Pixel Art', 'Game'],
+    isGame: true,
+    gameLink: '#game',
   },
   {
     title: 'Rescue Connect',
     role: 'Agile Project',
     desc: 'Platform for efficient coordination during emergency situations.',
     tags: ['Agile', 'GitHub', 'Team'],
+    isGame: false,
   },
 ];
 
@@ -50,15 +62,16 @@ export default function Projects() {
             className="manga-panel p-0 overflow-hidden hover:shadow-[8px_8px_0_#1a1a1a] transition-all"
           >
             {/* Header */}
-            <div className="bg-[#1a1a1a] px-4 py-2">
-              <span className="text-[#fbbf24] text-xs font-bold uppercase">
+            <div className={`${proj.isGame ? 'bg-[#fbbf24]' : 'bg-[#1a1a1a]'} px-4 py-2`}>
+              <span className={`${proj.isGame ? 'text-[#1a1a1a]' : 'text-[#fbbf24]'} text-xs font-bold uppercase`}>
                 <Shuffle text={proj.role} duration={0.3} />
               </span>
             </div>
 
             {/* Content */}
             <div className="p-5">
-              <h3 className="font-black text-lg uppercase mb-3">
+              <h3 className="font-black text-lg uppercase mb-3 flex items-center gap-2">
+                {proj.isGame && <Gamepad2 className="w-5 h-5 text-[#fbbf24]" />}
                 <Shuffle text={proj.title} duration={0.4} />
               </h3>
 
@@ -76,10 +89,20 @@ export default function Projects() {
                 ))}
               </div>
 
-              <button className="manga-button w-full py-2 text-sm flex items-center justify-center gap-2">
-                <ExternalLink className="w-4 h-4" />
-                <span>View Quest</span>
-              </button>
+              {proj.isGame ? (
+                <a
+                  href={proj.gameLink}
+                  className="manga-button manga-button-dark w-full py-2 text-sm flex items-center justify-center gap-2"
+                >
+                  <Gamepad2 className="w-4 h-4" />
+                  <span>Play Game</span>
+                </a>
+              ) : (
+                <button className="manga-button w-full py-2 text-sm flex items-center justify-center gap-2">
+                  <ExternalLink className="w-4 h-4" />
+                  <span>View Quest</span>
+                </button>
+              )}
             </div>
           </div>
         ))}

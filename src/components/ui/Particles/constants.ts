@@ -1,5 +1,5 @@
 export const CONFIG = {
-    particleCount: 3000,
+    particleCount: 1500, // Reduced from 3000 for better performance
     shapeSize: 8,
     swarmDistanceFactor: 1.0,
     swirlFactor: 2.0,
@@ -7,10 +7,10 @@ export const CONFIG = {
     noiseTimeScale: 0.015,
     noiseMaxStrength: 1.2,
     colorScheme: 'solar',
-    morphDuration: 2000,
+    morphDuration: 1800, // Reduced from 2000 for faster transitions
     particleSizeRange: [0.04, 0.12] as [number, number],
-    starCount: 5000,
-    bloomStrength: 0.8,
+    starCount: 2500, // Reduced from 5000 for better performance
+    bloomStrength: 0.6, // Reduced from 0.8 to lower GPU load
     bloomRadius: 0.25,
     bloomThreshold: 0.12,
     idleFlowStrength: 0.12,
@@ -23,6 +23,7 @@ export const CONFIG = {
     shineSizeFactor: 1.5,
     shineBrightFactor: 1.0
 };
+
 
 export const COLOR_SCHEMES = {
     inferno: { startHue: 10, endHue: 55, saturation: 0.95, lightness: 0.55, gradient: ['#000000', '#43000a', '#9a061f', '#ff8c42'] },
