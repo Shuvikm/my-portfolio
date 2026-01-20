@@ -45,11 +45,12 @@ export default function Projects() {
 
       {/* ScrollStack Projects */}
       <ScrollStack
-        itemDistance={150}
-        itemScale={0.05}
-        itemStackDistance={40}
-        baseScale={0.9}
+        itemDistance={100}
+        itemScale={0.03}
+        itemStackDistance={30}
+        baseScale={0.92}
         useWindowScroll={true}
+        scaleDuration={0.3}
       >
         {projects.map((proj, i) => (
           <ScrollStackItem key={i}>
