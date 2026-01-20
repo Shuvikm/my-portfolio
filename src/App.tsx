@@ -7,6 +7,7 @@ import About from './components/sections/About';
 import Skills from './components/sections/Skills';
 import Projects from './components/sections/Projects';
 import Journey from './components/sections/Journey';
+import GitHubActivity from './components/sections/GitHubActivity';
 import DesertHorse from './components/sections/DesertHorse';
 import Contact from './components/sections/Contact';
 import Footer from './components/layout/Footer';
@@ -133,6 +134,7 @@ function App() {
         <Skills />
         <Projects />
         <Journey />
+        <GitHubActivity />
         <DesertHorse />
 
         {/* Contact Section */}
