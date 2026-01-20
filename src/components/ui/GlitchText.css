@@ -7,6 +7,7 @@
     position: relative;
     display: inline-block;
     user-select: none;
+    letter-spacing: 0.15em;
 }
 
 .glitch::after,
