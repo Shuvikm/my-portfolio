@@ -11,6 +11,7 @@ import Contact from './components/sections/Contact';
 import GrimoireOrbital from './components/ui/GrimoireOrbital';
 import Footer from './components/layout/Footer';
 import ParticlesBackground from './components/ui/Particles/ParticlesBackground';
+import ScrollStack, { ScrollStackItem } from './components/ui/ScrollStack';
 import './styles/grimoire-animation.css';
 
 function App() {
@@ -83,7 +84,7 @@ function App() {
         </div>
       </div>
 
-      {/* Content Sections - Aligned */}
+      {/* Content Sections - With ScrollStack */}
       <main className="manga-page">
         {/* Grimoire Orbital - Floating Manga Panels */}
         <GrimoireOrbital
@@ -111,24 +112,30 @@ function App() {
           grimoireImage="/images/grimoire/grimoire-book.jpg"
         />
 
-        <div className="content-section">
-          <About />
-          <Skills />
-        </div>
+        {/* ScrollStack Sections */}
+        <ScrollStack
+          itemDistance={120}
+          itemScale={0.04}
+          itemStackDistance={35}
+          baseScale={0.9}
+          useWindowScroll={true}
+        >
+          <ScrollStackItem>
+            <About />
+          </ScrollStackItem>
 
-        {/* Parallax Divider */}
-        <div className="parallax parallax-projects">
-          <div className="parallax-content">
-            <h3 className="manga-title text-4xl text-center" style={{ textShadow: '2px 2px 0 white, 4px 4px 0 #1a1a1a' }}>
-              ⚡ PROJECTS ⚡
-            </h3>
-          </div>
-        </div>
+          <ScrollStackItem>
+            <Skills />
+          </ScrollStackItem>
 
-        <div className="content-section">
-          <Projects />
-          <Journey />
-        </div>
+          <ScrollStackItem>
+            <Projects />
+          </ScrollStackItem>
+
+          <ScrollStackItem>
+            <Journey />
+          </ScrollStackItem>
+        </ScrollStack>
 
         {/* Parallax Divider */}
         <div className="parallax parallax-contact">
