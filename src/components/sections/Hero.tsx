@@ -73,13 +73,13 @@ export default function Hero() {
         {/* Ribbons Background Effect */}
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0 }}>
           <Ribbons
-            baseThickness={25}
-            colors={["#fbbf24", "#ffffff", "#dc2626"]}
-            speedMultiplier={0.4}
-            maxAge={600}
+            baseThickness={20}
+            colors={["#fbbf24", "#ffffff"]}
+            speedMultiplier={0.6}
+            maxAge={400}
             enableFade={true}
             enableShaderEffect={false}
-            pointCount={40}
+            pointCount={25}
           />
         </div>
         <div className="screentone" style={{ opacity: 0.3 }} />

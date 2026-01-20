@@ -1,5 +1,5 @@
 export const CONFIG = {
-    particleCount: 1500, // Reduced from 3000 for better performance
+    particleCount: 1000, // Further reduced for optimal performance
     shapeSize: 8,
     swarmDistanceFactor: 1.0,
     swirlFactor: 2.0,
@@ -7,10 +7,10 @@ export const CONFIG = {
     noiseTimeScale: 0.015,
     noiseMaxStrength: 1.2,
     colorScheme: 'solar',
-    morphDuration: 1800, // Reduced from 2000 for faster transitions
+    morphDuration: 2200, // Slightly increased for smoother transitions
     particleSizeRange: [0.04, 0.12] as [number, number],
-    starCount: 2500, // Reduced from 5000 for better performance
-    bloomStrength: 0.6, // Reduced from 0.8 to lower GPU load
+    starCount: 1500, // Further reduced for better performance
+    bloomStrength: 0.4, // Further reduced to lower GPU load
     bloomRadius: 0.25,
     bloomThreshold: 0.12,
     idleFlowStrength: 0.12,
