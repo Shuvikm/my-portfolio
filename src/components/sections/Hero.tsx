@@ -3,6 +3,7 @@ import { useRef, useLayoutEffect, useState } from 'react';
 import gsap from 'gsap';
 import Shuffle from '../ui/Shuffle';
 import ResumeModal from '../modals/ResumeModal';
+import Ribbons from '../ui/Ribbons';
 
 export default function Hero() {
   const comp = useRef(null);
@@ -69,6 +70,18 @@ export default function Hero() {
     <section id="home" className="manga-section" ref={comp}>
       {/* Main Hero Panel */}
       <div className="manga-panel manga-panel-hero manga-panel-dark p-8 sm:p-12 relative overflow-hidden">
+        {/* Ribbons Background Effect */}
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0 }}>
+          <Ribbons
+            baseThickness={25}
+            colors={["#fbbf24", "#ffffff", "#dc2626"]}
+            speedMultiplier={0.4}
+            maxAge={600}
+            enableFade={true}
+            enableShaderEffect={false}
+            pointCount={40}
+          />
+        </div>
         <div className="screentone" style={{ opacity: 0.3 }} />
 
         <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
