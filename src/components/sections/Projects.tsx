@@ -1,7 +1,6 @@
 import { ExternalLink } from 'lucide-react';
 import Shuffle from '../ui/Shuffle';
 import GlitchText from '../ui/GlitchText';
-import ScrollStack, { ScrollStackItem } from '../ui/ScrollStack';
 
 const projects = [
   {
@@ -43,17 +42,13 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* ScrollStack Projects */}
-      <ScrollStack
-        itemDistance={100}
-        itemScale={0.03}
-        itemStackDistance={30}
-        baseScale={0.92}
-        useWindowScroll={true}
-        scaleDuration={0.3}
-      >
+      {/* Projects Grid */}
+      <div className="grid md:grid-cols-2 gap-4">
         {projects.map((proj, i) => (
-          <ScrollStackItem key={i}>
+          <div
+            key={i}
+            className="manga-panel p-0 overflow-hidden hover:shadow-[8px_8px_0_#1a1a1a] transition-all"
+          >
             {/* Header */}
             <div className="bg-[#1a1a1a] px-4 py-2">
               <span className="text-[#fbbf24] text-xs font-bold uppercase">
@@ -86,9 +81,9 @@ export default function Projects() {
                 <span>View Quest</span>
               </button>
             </div>
-          </ScrollStackItem>
+          </div>
         ))}
-      </ScrollStack>
+      </div>
     </section>
   );
 }
