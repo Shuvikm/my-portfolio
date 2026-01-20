@@ -6,6 +6,13 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+        mono: ['Space Mono', 'monospace'],
+      },
+      fontSize: {
+        base: '18px',
+      },
       colors: {
         'manga-black': '#0a0a0a',
         'manga-white': '#fafaff',
