@@ -11,18 +11,17 @@ import Contact from './components/sections/Contact';
 import GrimoireOrbital from './components/ui/GrimoireOrbital';
 import Footer from './components/layout/Footer';
 import ParticlesBackground from './components/ui/Particles/ParticlesBackground';
-import ScrollStack, { ScrollStackItem } from './components/ui/ScrollStack';
 import './styles/grimoire-animation.css';
 
 function App() {
   useEffect(() => {
-    // Initialize Lenis smooth scroll with enhanced settings
+    // Initialize Lenis smooth scroll with optimized settings
     const lenis = new Lenis({
-      duration: 1.5, // Smoother, longer scroll duration
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Exponential easing
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      wheelMultiplier: 1.2, // Slightly faster wheel scrolling
-      touchMultiplier: 2, // Better touch responsiveness
+      wheelMultiplier: 1,
+      touchMultiplier: 1.5,
     });
 
     function raf(time: number) {
@@ -43,8 +42,8 @@ function App() {
           const element = document.querySelector(href);
           if (element) {
             lenis.scrollTo(element as HTMLElement, {
-              offset: -80, // Account for fixed navigation
-              duration: 1.5,
+              offset: -80,
+              duration: 1.2,
             });
           }
         }
@@ -77,16 +76,15 @@ function App() {
 
       <Navigation />
 
-      {/* Hero Section with Parallax */}
+      {/* Hero Section */}
       <div className="parallax parallax-hero">
         <div className="manga-page">
           <Hero />
         </div>
       </div>
 
-      {/* Content Sections - With ScrollStack */}
+      {/* Main Content */}
       <main className="manga-page">
-        {/* Grimoire Orbital - Floating Manga Panels */}
         <GrimoireOrbital
           images={[
             '/images/grimoire/manga-1.jpg',
@@ -112,32 +110,12 @@ function App() {
           grimoireImage="/images/grimoire/grimoire-book.jpg"
         />
 
-        {/* ScrollStack Sections */}
-        <ScrollStack
-          itemDistance={120}
-          itemScale={0.04}
-          itemStackDistance={35}
-          baseScale={0.9}
-          useWindowScroll={true}
-        >
-          <ScrollStackItem>
-            <About />
-          </ScrollStackItem>
+        <About />
+        <Skills />
+        <Projects />
+        <Journey />
 
-          <ScrollStackItem>
-            <Skills />
-          </ScrollStackItem>
-
-          <ScrollStackItem>
-            <Projects />
-          </ScrollStackItem>
-
-          <ScrollStackItem>
-            <Journey />
-          </ScrollStackItem>
-        </ScrollStack>
-
-        {/* Parallax Divider */}
+        {/* Contact Section */}
         <div className="parallax parallax-contact">
           <div className="parallax-content">
             <h3 className="manga-title text-4xl text-center" style={{ textShadow: '2px 2px 0 white, 4px 4px 0 #1a1a1a' }}>
@@ -146,10 +124,7 @@ function App() {
           </div>
         </div>
 
-        <div className="content-section">
-          <Contact />
-        </div>
-
+        <Contact />
         <Footer />
       </main>
     </div>
