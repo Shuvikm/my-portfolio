@@ -15,6 +15,7 @@ import './styles/grimoire-animation.css';
 // Lazy load heavy components for better performance
 const GrimoireOrbital = lazy(() => import('./components/ui/GrimoireOrbital'));
 const ParticlesBackground = lazy(() => import('./components/ui/Particles/ParticlesBackground'));
+const Ribbons = lazy(() => import('./components/ui/Ribbons'));
 
 function App() {
   useEffect(() => {
@@ -64,9 +65,26 @@ function App() {
 
   return (
     <div className="min-h-screen relative overflow-x-hidden">
+      {/* Particles Background - Lowest layer */}
       <Suspense fallback={<div className="fixed inset-0 bg-[#001026]" />}>
         <ParticlesBackground />
       </Suspense>
+
+      {/* Full-Page Ribbons - Above particles, below content */}
+      <Suspense fallback={null}>
+        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', zIndex: 5, pointerEvents: 'none' }}>
+          <Ribbons
+            baseThickness={20}
+            colors={["#fbbf24", "#ffffff"]}
+            speedMultiplier={0.7}
+            maxAge={450}
+            enableFade={true}
+            enableShaderEffect={false}
+            pointCount={20}
+          />
+        </div>
+      </Suspense>
+
       <Toaster
         position="top-right"
         toastOptions={{
