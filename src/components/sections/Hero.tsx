@@ -1,6 +1,7 @@
 import { Github, Linkedin, Mail, Code2 } from 'lucide-react';
 import { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
+import Shuffle from '../ui/Shuffle';
 
 export default function Hero() {
   const comp = useRef(null);
@@ -84,9 +85,23 @@ export default function Hero() {
             <div className="exclaim-box mb-4 hero-text-element">Software Developer</div>
 
             {/* Name */}
-            <h1 className="manga-title text-5xl sm:text-6xl lg:text-7xl text-white text-outline-thick mb-6 hero-text-element">
-              <span className="text-[#fbbf24] inline-block">SHUVIK</span> <span className="text-[#fbbf24] inline-block">M</span>
-            </h1>
+            <Shuffle
+              text="SHUVIK M"
+              tag="h1"
+              className="mb-6 hero-text-element tracking-widest"
+              style={{
+                fontSize: 'clamp(2.5rem, 8vw, 4.5rem)',
+                lineHeight: '1.2',
+                textShadow: '3px 3px 0 #1a1a1a, 6px 6px 0 rgba(251, 191, 36, 0.3)'
+              }}
+              shuffleDirection="down"
+              duration={0.5}
+              shuffleTimes={3}
+              animationMode="evenodd"
+              stagger={0.03}
+              triggerOnHover={false}
+              scrambleCharset="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+"
+            />
 
             {/* Description - Thought Bubble */}
             <div className="thought-bubble max-w-xl mx-auto lg:mx-0 mb-8 hero-text-element">

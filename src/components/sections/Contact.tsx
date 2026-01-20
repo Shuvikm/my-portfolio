@@ -1,5 +1,6 @@
 import { Mail, Phone, Linkedin, Github, Code, Send, MessageSquare, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import Shuffle from '../ui/Shuffle';
 import { submitContactForm } from '../../lib/api';
 
 interface FormData {
@@ -66,16 +67,25 @@ export default function Contact() {
     <section id="contact" ref={sectionRef} className="manga-section">
       {/* Section Header */}
       <div className="manga-panel p-6 mb-4">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-8">
           <div className="exclaim-box">05</div>
-          <h2 className="manga-title text-3xl sm:text-4xl text-[#1a1a1a]">CONTACT</h2>
+          <Shuffle
+            text="CONTACT"
+            tag="h2"
+            className="manga-title text-3xl sm:text-4xl tracking-widest"
+            shuffleDirection="down"
+            duration={0.4}
+            stagger={0.03}
+            scrambleCharset="XVW!@#$"
+            triggerOnHover={false}
+          />
         </div>
       </div>
 
       {/* Call to action */}
       <div className="manga-panel p-6 mb-4 text-center">
         <div className="thought-bubble inline-block">
-          Have a project in mind? Let's collaborate!
+          <Shuffle text="Have a project in mind? Let's collaborate!" duration={0.4} />
         </div>
       </div>
 
@@ -84,7 +94,8 @@ export default function Contact() {
         <div className="manga-panel p-6 mb-4">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-black uppercase text-[#1a1a1a] flex items-center gap-2">
-              <MessageSquare className="w-5 h-5" /> Send Message
+              <MessageSquare className="w-5 h-5" />
+              <Shuffle text="Send Message" duration={0.3} />
             </h3>
             <button onClick={() => setShowForm(false)} className="text-2xl font-bold text-[#4a4a4a] hover:text-[#1a1a1a]">×</button>
           </div>
@@ -102,7 +113,9 @@ export default function Contact() {
             </div>
 
             <div>
-              <label className="block text-sm font-bold text-[#1a1a1a] mb-1">Message</label>
+              <label className="block text-sm font-bold text-[#1a1a1a] mb-1">
+                <Shuffle text="Message" duration={0.2} />
+              </label>
               <textarea name="message" value={formData.message} onChange={handleInputChange} placeholder="Tell me about your project..." rows={4} className="w-full px-4 py-3 border-4 border-[#1a1a1a] focus:outline-none focus:border-[#fbbf24] resize-none bg-white text-black" required />
             </div>
 
@@ -120,7 +133,7 @@ export default function Contact() {
 
             <button type="submit" disabled={formStatus.type === 'loading'} className="manga-button w-full flex items-center justify-center gap-2">
               <Send className="w-4 h-4" />
-              <span>SEND!</span>
+              <Shuffle text="SEND!" duration={0.2} />
             </button>
           </form>
         </div>
@@ -128,7 +141,7 @@ export default function Contact() {
         <div className="manga-panel p-6 mb-4 text-center">
           <button onClick={() => setShowForm(true)} className="manga-button">
             <MessageSquare className="w-4 h-4 inline mr-2" />
-            Send a Message!
+            <Shuffle text="Send a Message!" duration={0.3} />
           </button>
         </div>
       )}
@@ -149,21 +162,24 @@ export default function Contact() {
                 <link.icon className="w-4 h-4 text-[#fbbf24]" />
               </div>
               <div className="thought-bubble py-1 px-3 text-sm flex-1">
-                <div className="text-xs text-[#4a4a4a] uppercase font-bold">{link.label}</div>
-                <div className="font-bold text-[#1a1a1a] truncate">{link.value}</div>
+                <div className="text-xs text-[#4a4a4a] uppercase font-bold">
+                  <Shuffle text={link.label} duration={0.2} />
+                </div>
+                <div className="font-bold text-[#1a1a1a] truncate">
+                  <Shuffle text={link.value} duration={0.3} />
+                </div>
               </div>
             </div>
           </a>
         ))}
       </div>
 
-      {/* Footer Quote */}
       <div className="manga-panel p-6 text-center">
         <div className="thought-bubble inline-block mb-4">
-          "Let's turn ideas into reality, one line of code at a time."
+          <Shuffle text='"Let&apos;s turn ideas into reality, one line of code at a time."' duration={0.5} />
         </div>
         <div className="text-sm text-[#fbbf24] font-bold">
-          Shuvik M
+          <Shuffle text="Shuvik M" duration={0.3} />
         </div>
       </div>
     </section>

@@ -1,13 +1,17 @@
 import { GraduationCap, School, Target } from 'lucide-react';
+import Shuffle from '../ui/Shuffle';
+import GlitchText from '../ui/GlitchText';
 
 export default function About() {
   return (
     <section id="about" className="manga-section">
       {/* Section Header */}
       <div className="manga-panel p-6 mb-4">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-8">
           <div className="exclaim-box" style={{ background: '#fbbf24', color: '#1a1a1a' }}>01</div>
-          <h2 className="manga-title text-3xl sm:text-4xl text-[#fbbf24]">WHOAMI</h2>
+          <h2 className="manga-title text-3xl sm:text-4xl tracking-widest">
+            <GlitchText speed={0.8} enableOnHover={false}>WHOAMI</GlitchText>
+          </h2>
         </div>
       </div>
 
@@ -17,13 +21,24 @@ export default function About() {
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-4">
             <Target className="w-8 h-8 text-[#fbbf24]" />
-            <h3 className="manga-subtitle text-lg text-[#fbbf24]">Mission</h3>
+            <Shuffle
+              text="Mission"
+              tag="h3"
+              className="manga-subtitle text-lg"
+              shuffleDirection="right"
+              duration={0.4}
+              stagger={0.03}
+            />
           </div>
           <div className="thought-bubble">
-            <p className="text-base leading-relaxed text-[#1a1a1a]">
-              Seeking an entry-level position in a dynamic organization where I can apply my skills,
-              enhance my knowledge, and contribute to the company's success while growing professionally.
-            </p>
+            <Shuffle
+              text="Seeking an entry-level position in a dynamic organization where I can apply my skills, enhance my knowledge, and contribute to the company's success while growing professionally."
+              tag="p"
+              className="text-base leading-relaxed text-[#1a1a1a]"
+              duration={0.8}
+              stagger={0.01}
+              triggerOnHover={false}
+            />
           </div>
         </div>
       </div>
@@ -35,7 +50,14 @@ export default function About() {
             <div className="p-2 bg-[#fbbf24]">
               <GraduationCap className="w-6 h-6 text-[#1a1a1a]" />
             </div>
-            <h3 className="font-black text-[#1a1a1a]">B.TECH CSE</h3>
+            <Shuffle
+              text="B.TECH CSE"
+              tag="h3"
+              className="font-black"
+              shuffleDirection="left"
+              duration={0.4}
+              stagger={0.03}
+            />
           </div>
           <div className="thought-bubble">
             <p className="font-bold">Kongu Engineering College</p>
@@ -49,7 +71,14 @@ export default function About() {
             <div className="p-2 bg-[#dc2626]">
               <School className="w-6 h-6 text-white" />
             </div>
-            <h3 className="font-black text-[#1a1a1a]">GRADE 12</h3>
+            <Shuffle
+              text="GRADE 12"
+              tag="h3"
+              className="font-black"
+              shuffleDirection="left"
+              duration={0.4}
+              stagger={0.03}
+            />
           </div>
           <div className="thought-bubble">
             <p className="font-bold">Bharathi Vidya Bhavan</p>
@@ -59,25 +88,35 @@ export default function About() {
         </div>
       </div>
 
-      {/* Soft Skills */}
       <div className="manga-panel p-6 mb-4">
-        <h3 className="manga-subtitle text-lg text-[#1a1a1a] mb-4">Soft Skills</h3>
+        <Shuffle
+          text="Soft Skills"
+          tag="h3"
+          className="manga-subtitle text-lg mb-4"
+          shuffleDirection="right"
+          duration={0.4}
+        />
         <div className="flex flex-wrap gap-3">
           {['Leadership', 'Teamwork', 'Adaptability', 'Communication'].map((skill, i) => (
             <div key={i} className="thought-bubble py-2 px-4 text-sm font-bold">
-              {skill}
+              <Shuffle text={skill} duration={0.3} stagger={0.02} />
             </div>
           ))}
         </div>
       </div>
 
-      {/* Areas of Interest */}
       <div className="manga-panel manga-panel-dark p-6">
-        <h3 className="manga-subtitle text-lg text-[#fbbf24] mb-4">Areas of Interest</h3>
+        <Shuffle
+          text="Areas of Interest"
+          tag="h3"
+          className="manga-subtitle text-lg mb-4"
+          shuffleDirection="right"
+          duration={0.4}
+        />
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {['Web Development', 'UI/UX Design', 'Operating Systems', 'Computer Networks', 'DBMS', 'CapCut Editing'].map((interest, i) => (
             <div key={i} className="thought-bubble py-2 px-4 text-sm font-medium text-center">
-              {interest}
+              <Shuffle text={interest} duration={0.3} stagger={0.02} />
             </div>
           ))}
         </div>

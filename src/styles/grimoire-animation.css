@@ -1,377 +1,353 @@
-/* ===== GRIMOIRE ORBITAL ROTATION - Enhanced 3D Floating Manga Panels ===== */
-.grimoire-section {
-    position: relative;
-    width: 100%;
-    min-height: 700px;
+/* ===== GRIMOIRE 3D VERTICAL CAROUSEL - High Quality 8K Feel ===== */
+:root {
+    --grimoire-gold: #fbbf24;
+    --grimoire-dark: #1a1a1a;
+    --grimoire-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.grimoire-main-container {
     display: flex;
+    width: 100%;
+    min-height: 80vh;
+    gap: 40px;
     align-items: center;
     justify-content: center;
-    padding: 6rem 0;
+    padding: 4rem 2rem;
+    background: radial-gradient(circle at center, #ffffff 0%, #f0f0f0 100%);
+    position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
     perspective: 1200px;
 }
 
-.grimoire-container {
-    position: relative;
-    width: 600px;
-    height: 600px;
+.grimoire-carousel-section {
+    flex: 1.2;
     display: flex;
-    align-items: center;
     justify-content: center;
-    transform-style: preserve-3d;
-    animation: containerTilt 15s ease-in-out infinite;
-}
-
-@keyframes containerTilt {
-
-    0%,
-    100% {
-        transform: rotateX(0deg) rotateY(0deg);
-    }
-
-    25% {
-        transform: rotateX(5deg) rotateY(5deg);
-    }
-
-    50% {
-        transform: rotateX(0deg) rotateY(10deg);
-    }
-
-    75% {
-        transform: rotateX(-5deg) rotateY(5deg);
-    }
-}
-
-/* Central Grimoire Book */
-.grimoire-book {
+    align-items: center;
     position: relative;
-    z-index: 10;
-    width: 200px;
-    height: 200px;
-    cursor: pointer;
-    animation: grimoireFloat 4s ease-in-out infinite, grimoireGlow 3s ease-in-out infinite, grimoireSpin 30s linear infinite;
-    filter: drop-shadow(0 0 30px rgba(251, 191, 36, 0.8));
+    z-index: 5;
+}
+
+.grimoire-carousel-container {
+    width: 100%;
+    max-width: 500px;
+    height: 60vh;
+    position: relative;
+    perspective: 1500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     transform-style: preserve-3d;
 }
 
-.grimoire-book img {
+.grimoire-carousel-track {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-}
-
-.grimoire-book:hover {
-    animation-play-state: paused;
-    transform: scale(1.2) rotateY(15deg);
-    filter: drop-shadow(0 0 50px rgba(251, 191, 36, 1));
-}
-
-@keyframes grimoireFloat {
-
-    0%,
-    100% {
-        transform: translateY(0px) scale(1);
-    }
-
-    50% {
-        transform: translateY(-20px) scale(1.05);
-    }
-}
-
-@keyframes grimoireGlow {
-
-    0%,
-    100% {
-        filter: drop-shadow(0 0 30px rgba(251, 191, 36, 0.6));
-    }
-
-    50% {
-        filter: drop-shadow(0 0 60px rgba(251, 191, 36, 1)) drop-shadow(0 0 80px rgba(251, 191, 36, 0.5));
-    }
-}
-
-@keyframes grimoireSpin {
-    from {
-        transform: rotateZ(0deg);
-    }
-
-    to {
-        transform: rotateZ(360deg);
-    }
-}
-
-/* Manga Panels Orbiting - Enhanced 3D with Page-Turning Effect */
-.manga-panel-float {
-    position: absolute;
-    width: 110px;
-    height: 150px;
-    cursor: pointer;
-    border: 4px solid #1a1a1a;
-    box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.4),
-        0 0 15px rgba(251, 191, 36, 0.3),
-        inset 0 0 10px rgba(255, 255, 255, 0.5);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    /* 15s orbit, 3s float, 8s page-flip */
-    animation: orbit3D 15s linear infinite, panelFloat 3s ease-in-out infinite, pageFlip 8s ease-in-out infinite;
-    transform-origin: 300px 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     transform-style: preserve-3d;
-    background: #fff;
-    /* Ensure high image quality */
-    image-rendering: -webkit-optimize-contrast;
-    backface-visibility: hidden;
+    animation: trackFloat 6s ease-in-out infinite;
 }
 
-.manga-panel-float img {
+@keyframes trackFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotateX(2deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotateX(-2deg);
+    }
+}
+
+.grimoire-card {
+    position: absolute;
+    width: 420px;
+    height: 240px;
+    background: #fff;
+    border: 4px solid var(--grimoire-dark);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transition: all 0.8s var(--grimoire-transition);
+    cursor: pointer;
+    overflow: hidden;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    /* 8K Quality Rendering */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+.grimoire-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
-    backface-visibility: hidden;
+    transition: transform 0.8s var(--grimoire-transition), filter 0.8s ease;
 }
 
-.manga-panel-float:hover {
-    transform: scale(1.3) translateZ(100px) !important;
-    z-index: 100;
+/* 3D Stacking States */
+.grimoire-card.center {
+    z-index: 50;
+    transform: scale(1.1) translateZ(150px);
     box-shadow:
-        0 15px 40px rgba(251, 191, 36, 0.8),
-        0 0 30px rgba(251, 191, 36, 0.9),
-        inset 0 0 20px rgba(255, 255, 255, 0.8);
-    border-color: #fbbf24;
-    animation-play-state: paused;
+        0 25px 50px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(251, 191, 36, 0.4);
+    border-color: var(--grimoire-gold);
 }
 
-.manga-panel-float:hover img {
-    transform: scale(1.1);
+.grimoire-card.center img {
+    filter: brightness(1.1) contrast(1.1);
 }
 
-@keyframes panelFloat {
+.grimoire-card.up-1 {
+    z-index: 30;
+    transform: translateY(-160px) scale(0.9) translateZ(0px) rotateX(-10deg);
+    opacity: 0.8;
+}
+
+.grimoire-card.up-2 {
+    z-index: 10;
+    transform: translateY(-300px) scale(0.75) translateZ(-150px) rotateX(-20deg);
+    opacity: 0.5;
+}
+
+.grimoire-card.down-1 {
+    z-index: 30;
+    transform: translateY(160px) scale(0.9) translateZ(0px) rotateX(10deg);
+    opacity: 0.8;
+}
+
+.grimoire-card.down-2 {
+    z-index: 10;
+    transform: translateY(300px) scale(0.75) translateZ(-150px) rotateX(20deg);
+    opacity: 0.5;
+}
+
+.grimoire-card.hidden-card {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.5) translateZ(-300px);
+}
+
+/* Hover Enhancement */
+.grimoire-card:hover {
+    z-index: 60;
+    filter: brightness(1.05);
+}
+
+.grimoire-card.center:hover {
+    transform: scale(1.15) translateZ(200px);
+}
+
+/* Controls Section */
+.grimoire-controls-section {
+    flex: 0.8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    z-index: 10;
+}
+
+.grimoire-nav-controls {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.grimoire-nav-arrow {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid var(--grimoire-dark);
+    color: var(--grimoire-dark);
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 0 var(--grimoire-dark);
+}
+
+.grimoire-nav-arrow:hover {
+    background: var(--grimoire-gold);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--grimoire-dark);
+}
+
+.grimoire-nav-arrow:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0 var(--grimoire-dark);
+}
+
+.grimoire-dots {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 200px;
+}
+
+.grimoire-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(26, 26, 26, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.grimoire-dot.active {
+    background: var(--grimoire-gold);
+    transform: scale(1.3);
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+}
+
+/* Decorative Central Grimoire */
+.grimoire-decorative {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 300px;
+    z-index: 1;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.floating-grimoire {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: decorativeFloat 5s ease-in-out infinite, decorativeGlow 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.4));
+}
+
+@keyframes decorativeFloat {
 
     0%,
     100% {
-        transform: translateY(0px);
+        transform: translateY(0) rotate(5deg);
     }
 
     50% {
-        transform: translateY(-15px);
+        transform: translateY(-20px) rotate(-5deg);
     }
 }
 
-/* Page-Flipping Animation - Like Turning Book Pages */
-@keyframes pageFlip {
+@keyframes decorativeGlow {
 
     0%,
     100% {
-        transform: rotateY(0deg);
-    }
-
-    25% {
-        transform: rotateY(180deg);
+        filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.4));
     }
 
     50% {
-        transform: rotateY(360deg);
-    }
-
-    75% {
-        transform: rotateY(180deg);
+        filter: drop-shadow(0 0 40px rgba(251, 191, 36, 0.8));
     }
 }
 
-/* Individual panel positions and rotation speeds with 3D depth and offset flip */
-.manga-panel-float:nth-child(1) {
-    animation-delay: 0s, 0s, 0s;
-}
-
-.manga-panel-float:nth-child(2) {
-    animation-delay: -0.79s, -0.2s, -0.5s;
-}
-
-.manga-panel-float:nth-child(3) {
-    animation-delay: -1.58s, -0.4s, -1s;
-}
-
-.manga-panel-float:nth-child(4) {
-    animation-delay: -2.37s, -0.6s, -1.5s;
-}
-
-.manga-panel-float:nth-child(5) {
-    animation-delay: -3.16s, -0.8s, -2s;
-}
-
-.manga-panel-float:nth-child(6) {
-    animation-delay: -3.95s, -1s, -2.5s;
-}
-
-.manga-panel-float:nth-child(7) {
-    animation-delay: -4.74s, -1.2s, -3s;
-}
-
-.manga-panel-float:nth-child(8) {
-    animation-delay: -5.53s, -1.4s, -3.5s;
-}
-
-.manga-panel-float:nth-child(9) {
-    animation-delay: -6.32s, -1.6s, -4s;
-}
-
-.manga-panel-float:nth-child(10) {
-    animation-delay: -7.11s, -1.8s, -4.5s;
-}
-
-.manga-panel-float:nth-child(11) {
-    animation-delay: -7.9s, -2s, -5s;
-}
-
-.manga-panel-float:nth-child(12) {
-    animation-delay: -8.69s, -2.2s, -5.5s;
-}
-
-.manga-panel-float:nth-child(13) {
-    animation-delay: -9.48s, -2.4s, -6s;
-}
-
-.manga-panel-float:nth-child(14) {
-    animation-delay: -10.26s, -2.6s, -6.5s;
-}
-
-.manga-panel-float:nth-child(15) {
-    animation-delay: -11.05s, -2.8s, -7s;
-}
-
-.manga-panel-float:nth-child(16) {
-    animation-delay: -11.84s, -3s, -7.5s;
-}
-
-.manga-panel-float:nth-child(17) {
-    animation-delay: -12.63s, -3.2s, -8s;
-}
-
-.manga-panel-float:nth-child(18) {
-    animation-delay: -13.42s, -3.4s, -8.5s;
-}
-
-.manga-panel-float:nth-child(19) {
-    animation-delay: -14.21s, -3.6s, -9s;
-}
-
-/* Enhanced 3D Orbital rotation with depth and perspective clarity */
-@keyframes orbit3D {
-    from {
-        transform: rotate(0deg) translateX(280px) rotate(0deg) translateZ(0px);
-    }
-
-    25% {
-        transform: rotate(90deg) translateX(280px) rotate(-90deg) translateZ(100px);
-    }
-
-    50% {
-        transform: rotate(180deg) translateX(280px) rotate(-180deg) translateZ(0px);
-    }
-
-    75% {
-        transform: rotate(270deg) translateX(280px) rotate(-270deg) translateZ(-100px);
-    }
-
-    to {
-        transform: rotate(360deg) translateX(280px) rotate(-360deg) translateZ(0px);
-    }
-}
-
-/* Modal */
+/* Modal Styling */
 .grimoire-modal {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.97);
-    z-index: 9999;
+    background: rgba(0, 0, 0, 0.98);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2rem;
     cursor: pointer;
-    animation: modalFadeIn 0.3s ease;
-}
-
-@keyframes modalFadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
 }
 
 .grimoire-modal img {
     max-width: 90%;
     max-height: 90vh;
     object-fit: contain;
-    border: 6px solid #fbbf24;
-    box-shadow: 0 0 40px rgba(251, 191, 36, 0.9), 0 0 80px rgba(251, 191, 36, 0.6), 0 0 120px rgba(251, 191, 36, 0.3);
-    animation: grimoireModalPulse 2.5s ease-in-out infinite;
-    transition: transform 0.3s ease;
+    border: 8px solid var(--grimoire-gold);
+    box-shadow: 0 0 60px rgba(251, 191, 36, 0.8);
+    animation: modalPulse 2s ease-in-out infinite;
 }
 
-.grimoire-modal img:hover {
-    transform: scale(1.05);
+.close-modal {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: var(--grimoire-gold);
+    color: var(--grimoire-dark);
+    border: 4px solid var(--grimoire-dark);
+    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 4px 4px 0 var(--grimoire-dark);
+    transition: all 0.2s ease;
 }
 
-@keyframes grimoireModalPulse {
+.close-modal:hover {
+    transform: scale(1.1);
+    box-shadow: 6px 6px 0 var(--grimoire-dark);
+}
+
+@keyframes modalPulse {
 
     0%,
     100% {
-        box-shadow: 0 0 30px rgba(251, 191, 36, 0.7), 0 0 60px rgba(251, 191, 36, 0.5), 0 0 90px rgba(251, 191, 36, 0.3);
+        transform: scale(1);
+        box-shadow: 0 0 40px rgba(251, 191, 36, 0.6);
     }
 
     50% {
-        box-shadow: 0 0 50px rgba(251, 191, 36, 1), 0 0 100px rgba(251, 191, 36, 0.8), 0 0 150px rgba(25, 191, 36, 0.5);
+        transform: scale(1.02);
+        box-shadow: 0 0 80px rgba(251, 191, 36, 1);
     }
 }
 
-/* Responsive */
+/* Responsive Scaling */
+@media (max-width: 1024px) {
+    .grimoire-main-container {
+        flex-direction: column;
+        height: auto;
+        gap: 2rem;
+    }
+
+    .grimoire-decorative {
+        display: none;
+    }
+}
+
 @media (max-width: 768px) {
-    .grimoire-section {
-        min-height: 500px;
-        perspective: 800px;
+    .grimoire-card {
+        width: 320px;
+        height: 180px;
     }
 
-    .grimoire-container {
-        width: 400px;
-        height: 400px;
+    .grimoire-carousel-container {
+        height: 50vh;
     }
 
-    .grimoire-book {
-        width: 140px;
-        height: 140px;
+    .grimoire-card.up-1 {
+        transform: translateY(-120px) scale(0.9) translateZ(0);
     }
 
-    .manga-panel-float {
-        width: 80px;
-        height: 110px;
-        border-width: 3px;
+    .grimoire-card.up-2 {
+        transform: translateY(-220px) scale(0.8) translateZ(-100px);
     }
 
-    @keyframes orbit3D {
-        from {
-            transform: rotate(0deg) translateX(200px) rotate(0deg) translateZ(0px);
-        }
+    .grimoire-card.down-1 {
+        transform: translateY(120px) scale(0.9) translateZ(0);
+    }
 
-        25% {
-            transform: rotate(90deg) translateX(200px) rotate(-90deg) translateZ(30px);
-        }
-
-        50% {
-            transform: rotate(180deg) translateX(200px) rotate(-180deg) translateZ(0px);
-        }
-
-        75% {
-            transform: rotate(270deg) translateX(200px) rotate(-270deg) translateZ(-30px);
-        }
-
-        to {
-            transform: rotate(360deg) translateX(200px) rotate(-360deg) translateZ(0px);
-        }
+    .grimoire-card.down-2 {
+        transform: translateY(220px) scale(0.8) translateZ(-100px);
     }
 }

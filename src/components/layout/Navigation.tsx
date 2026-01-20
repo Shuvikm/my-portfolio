@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import Shuffle from '../ui/Shuffle';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -65,9 +66,17 @@ export default function Navigation() {
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="flex items-center gap-3 group"
             >
-              <div className="text-xl sm:text-2xl font-black text-white group-hover:text-[#fbbf24] transition-colors tracking-tight">
-                SHUVIK<span className="text-[#fbbf24]"> M</span>
-              </div>
+              <Shuffle
+                text="SHUVIK M"
+                tag="h2"
+                className="text-xl sm:text-2xl font-black transition-colors tracking-tight"
+                shuffleDirection="right"
+                duration={0.3}
+                shuffleTimes={1}
+                stagger={0.02}
+                triggerOnHover={true}
+                scrambleCharset="XVW!@#$"
+              />
             </button>
 
             {/* Desktop Nav - Minimal */}

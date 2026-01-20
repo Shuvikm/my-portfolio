@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
 import Lenis from 'lenis';
-import Navigation from './components/ui/Navigation';
+import Navigation from './components/layout/Navigation';
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
 import Skills from './components/sections/Skills';
@@ -9,6 +9,8 @@ import Projects from './components/sections/Projects';
 import Journey from './components/sections/Journey';
 import Contact from './components/sections/Contact';
 import GrimoireOrbital from './components/ui/GrimoireOrbital';
+import Footer from './components/layout/Footer';
+import ParticlesBackground from './components/ui/Particles/ParticlesBackground';
 import './styles/grimoire-animation.css';
 
 function App() {
@@ -57,7 +59,8 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen relative" style={{ background: '#ffffff' }}>
+    <div className="min-h-screen relative overflow-x-hidden">
+      <ParticlesBackground />
       <Toaster
         position="top-right"
         toastOptions={{
@@ -139,6 +142,8 @@ function App() {
         <div className="content-section">
           <Contact />
         </div>
+
+        <Footer />
       </main>
     </div>
   );

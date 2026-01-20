@@ -1,5 +1,7 @@
 import { ExternalLink } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import Shuffle from '../ui/Shuffle';
+import GlitchText from '../ui/GlitchText';
 
 const projects = [
   {
@@ -45,9 +47,11 @@ export default function Projects() {
     <section id="projects" ref={sectionRef} className="manga-section">
       {/* Section Header */}
       <div className="manga-panel p-6 mb-4">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-8">
           <div className="exclaim-box">03</div>
-          <h2 className="manga-title text-3xl sm:text-4xl text-[#1a1a1a]">WORKS</h2>
+          <h2 className="manga-title text-3xl sm:text-4xl tracking-widest">
+            <GlitchText speed={0.8} enableOnHover={false}>WORKS</GlitchText>
+          </h2>
         </div>
       </div>
 
@@ -62,23 +66,27 @@ export default function Projects() {
           >
             {/* Header */}
             <div className="bg-[#1a1a1a] px-4 py-2">
-              <span className="text-[#fbbf24] text-xs font-bold uppercase">{proj.role}</span>
+              <span className="text-[#fbbf24] text-xs font-bold uppercase">
+                <Shuffle text={proj.role} duration={0.3} />
+              </span>
             </div>
 
             {/* Content */}
             <div className="p-5">
-              <h3 className="font-black text-lg uppercase text-[#1a1a1a] mb-3">{proj.title}</h3>
+              <h3 className="font-black text-lg uppercase mb-3">
+                <Shuffle text={proj.title} duration={0.4} />
+              </h3>
 
               {/* Description - Thought Bubble */}
               <div className="thought-bubble mb-4 text-sm">
-                {proj.desc}
+                <Shuffle text={proj.desc} duration={0.5} stagger={0.01} />
               </div>
 
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {proj.tags.map((t) => (
                   <span key={t} className="text-xs font-bold border border-[#1a1a1a] px-2 py-0.5 uppercase bg-white text-black">
-                    {t}
+                    <Shuffle text={t} duration={0.2} />
                   </span>
                 ))}
               </div>

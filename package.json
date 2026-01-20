@@ -14,10 +14,12 @@
     "install:all": "npm install && cd server && npm install"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@react-three/drei": "^9.108.3",
     "@react-three/fiber": "^8.16.8",
-    "@types/animejs": "^3.1.13",
+    "@types/animejs": "^3.1.12",
     "@types/three": "^0.182.0",
+    "animejs": "^3.2.2",
     "gsap": "^3.14.2",
     "lenis": "^1.3.16",
     "lucide-react": "^0.344.0",
@@ -25,6 +27,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hot-toast": "^2.6.0",
+    "simplex-noise": "^4.0.3",
     "three": "^0.165.0"
   },
   "devDependencies": {
@@ -40,6 +43,7 @@
     "globals": "^15.9.0",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
+    "terser": "^5.46.0",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",
     "vite": "^5.4.2"
