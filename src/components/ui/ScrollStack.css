@@ -1,0 +1,25 @@
+.scroll-stack-container {
+    position: relative;
+    width: 100%;
+}
+
+.scroll-stack-item {
+    position: relative;
+    width: 100%;
+    background: #fff;
+    border: 4px solid #1a1a1a;
+    box-shadow: 8px 8px 0 #1a1a1a;
+    overflow: hidden;
+    will-change: transform, opacity;
+    transform-origin: center top;
+}
+
+.scroll-stack-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(90deg, #fbbf24, #f59e0b, #fbbf24);
+}
