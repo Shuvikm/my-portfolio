@@ -1,10 +1,12 @@
 import { Github, Linkedin, Mail, Code2 } from 'lucide-react';
-import { useRef, useLayoutEffect } from 'react';
+import { useRef, useLayoutEffect, useState } from 'react';
 import gsap from 'gsap';
 import Shuffle from '../ui/Shuffle';
+import ResumeModal from '../modals/ResumeModal';
 
 export default function Hero() {
   const comp = useRef(null);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
   const marqueeTexts = [
     'ソフトウェア開発者',
     'SOFTWARE DEVELOPER',
@@ -153,14 +155,12 @@ export default function Hero() {
       <div className="mt-4 manga-panel p-4 flex items-center justify-between flex-wrap gap-4 hero-btn">
         <span className="font-bold text-[#1a1a1a]">Want to know more?</span>
         <div className="flex gap-3">
-          <a
-            href="/resume.png"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => setIsResumeOpen(true)}
             className="manga-button text-sm py-2 px-6"
           >
             📄 View Resume
-          </a>
+          </button>
           <a
             href="/resume.pdf"
             download="Shuvik_M_Resume.pdf"
@@ -170,6 +170,9 @@ export default function Hero() {
           </a>
         </div>
       </div>
+
+      {/* Resume Modal */}
+      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
     </section>
   );
 }
