@@ -1,7 +1,7 @@
 import { ExternalLink } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
 import Shuffle from '../ui/Shuffle';
 import GlitchText from '../ui/GlitchText';
+import ScrollStack, { ScrollStackItem } from '../ui/ScrollStack';
 
 const projects = [
   {
@@ -31,20 +31,8 @@ const projects = [
 ];
 
 export default function Projects() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([e]) => e.isIntersecting && setIsVisible(true),
-      { threshold: 0.1 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section id="projects" ref={sectionRef} className="manga-section">
+    <section id="projects" className="manga-section">
       {/* Section Header */}
       <div className="manga-panel p-6 mb-4">
         <div className="flex items-center gap-8">
@@ -55,15 +43,16 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* Projects Grid */}
-      <div className="grid md:grid-cols-2 gap-4">
+      {/* ScrollStack Projects */}
+      <ScrollStack
+        itemDistance={150}
+        itemScale={0.05}
+        itemStackDistance={40}
+        baseScale={0.9}
+        useWindowScroll={true}
+      >
         {projects.map((proj, i) => (
-          <div
-            key={i}
-            className={`manga-panel p-0 overflow-hidden transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-            style={{ transitionDelay: `${i * 80}ms` }}
-          >
+          <ScrollStackItem key={i}>
             {/* Header */}
             <div className="bg-[#1a1a1a] px-4 py-2">
               <span className="text-[#fbbf24] text-xs font-bold uppercase">
@@ -96,9 +85,9 @@ export default function Projects() {
                 <span>View Quest</span>
               </button>
             </div>
-          </div>
+          </ScrollStackItem>
         ))}
-      </div>
+      </ScrollStack>
     </section>
   );
 }
