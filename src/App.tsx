@@ -11,6 +11,7 @@ import GitHubActivity from './components/sections/GitHubActivity';
 import DesertHorse from './components/sections/DesertHorse';
 import Contact from './components/sections/Contact';
 import Footer from './components/layout/Footer';
+import { SpiderCursor } from './components/ui/SpiderCursor';
 import './styles/grimoire-animation.css';
 
 // Lazy load heavy components for better performance
@@ -66,6 +67,9 @@ function App() {
 
   return (
     <div className="min-h-screen relative overflow-x-hidden">
+      {/* Spider Cursor - Highest layer */}
+      <SpiderCursor />
+
       {/* Particles Background - Lowest layer */}
       <Suspense fallback={<div className="fixed inset-0 bg-[#001026]" />}>
         <ParticlesBackground />
