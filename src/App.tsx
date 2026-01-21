@@ -66,9 +66,6 @@ function App() {
 
   return (
     <div className="min-h-screen relative overflow-x-hidden">
-      {/* Spider Cursor - Highest layer */}
-      <SpiderCursor />
-
       {/* Particles Background - Lowest layer */}
       <Suspense fallback={<div className="fixed inset-0 bg-[#001026]" />}>
         <ParticlesBackground />
