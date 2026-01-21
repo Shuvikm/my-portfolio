@@ -1642,11 +1642,13 @@ h6 {
 	color: var(--manga-ink);
 	border: 3px solid var(--manga-ink);
 	border-radius: 30px;
-	padding: 20px 28px;
+	padding: 24px 32px;
 	font-style: italic;
 	box-shadow: 4px 4px 0 var(--manga-ink);
 	transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 	cursor: default;
+	overflow: visible;
+	line-height: 1.8;
 }
 
 .thought-bubble:hover {
@@ -1655,6 +1657,7 @@ h6 {
 	border-color: var(--manga-accent);
 }
 
+/* REMOVED: Decorative dots under thought bubbles
 .thought-bubble::after {
 	content: '○ ○';
 	position: absolute;
@@ -1670,6 +1673,7 @@ h6 {
 	color: var(--manga-accent);
 	transform: scale(1.1);
 }
+*/
 
 /* ===== COMIC-STYLE DIALOGUE BOXES ===== */
 
