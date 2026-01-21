@@ -14,8 +14,8 @@ import Footer from './components/layout/Footer';
 import './styles/grimoire-animation.css';
 
 // Lazy load heavy components for better performance
-const GrimoireOrbital = lazy(() => import('./components/ui/GrimoireOrbital'));
-const ParticlesBackground = lazy(() => import('./components/ui/Particles/ParticlesBackground'));
+const GrimoireOrbital = lazy(() => import('./components/features/grimoire/GrimoireOrbital'));
+const ParticlesBackground = lazy(() => import('./components/features/particles/ParticlesBackground'));
 const Ribbons = lazy(() => import('./components/ui/Ribbons'));
 
 function App() {

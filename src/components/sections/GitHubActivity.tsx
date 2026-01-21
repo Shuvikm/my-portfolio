@@ -1,23 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Github, Star, GitFork } from 'lucide-react';
 import Shuffle from '../ui/Shuffle';
-
-interface GitHubRepo {
-    id: number;
-    name: string;
-    description: string;
-    html_url: string;
-    stargazers_count: number;
-    forks_count: number;
-    language: string;
-    updated_at: string;
-}
-
-interface GitHubStats {
-    public_repos: number;
-    followers: number;
-    following: number;
-}
+import type { GitHubRepo, GitHubStats } from '../../types';
 
 export default function GitHubActivity() {
     const [repos, setRepos] = useState<GitHubRepo[]>([]);
