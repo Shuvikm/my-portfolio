@@ -83,8 +83,12 @@ export default function Hero() {
 
           {/* Content */}
           <div className="flex-1 text-center lg:text-left">
-            {/* Title Tag */}
-            <div className="exclaim-box mb-4 hero-text-element">Software Developer</div>
+            {/* Title Tag with proper overflow handling */}
+            <div className="overflow-visible mb-4">
+              <div className="exclaim-box hero-text-element" style={{ letterSpacing: '0.2em', overflow: 'visible' }}>
+                SOFTWARE DEVELOPER
+              </div>
+            </div>
 
             {/* Name with proper spacing to prevent cutoff */}
             <div className="overflow-visible py-6 mb-8">
