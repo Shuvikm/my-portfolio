@@ -7,8 +7,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['DM Sans', 'system-ui', 'sans-serif'],
-        mono: ['Space Mono', 'monospace'],
+        display: ['Space Mono', 'monospace'],        // titles, numbers, labels
+        body: ['DM Sans', 'system-ui', 'sans-serif'], // paragraphs
+        accent: ['Inter', 'system-ui', 'sans-serif'], // buttons, UI
       },
       fontSize: {
         base: '18px',
