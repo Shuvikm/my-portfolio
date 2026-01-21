@@ -11,7 +11,6 @@ import GitHubActivity from './components/sections/GitHubActivity';
 import DesertHorse from './components/sections/DesertHorse';
 import Contact from './components/sections/Contact';
 import Footer from './components/layout/Footer';
-import { SpiderCursor } from './components/ui/SpiderCursor';
 import './styles/grimoire-animation.css';
 
 // Lazy load heavy components for better performance
