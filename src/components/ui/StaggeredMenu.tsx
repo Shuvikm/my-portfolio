@@ -3,11 +3,7 @@ import { gsap } from 'gsap';
 import './StaggeredMenu.css';
 import { InteractiveHoverLinks, INTERACTIVE_LINKS } from './InteractiveHoverLinks';
 
-interface MenuItem {
-    label: string;
-    link: string;
-    ariaLabel?: string;
-}
+
 
 interface SocialItem {
     label: string;
@@ -17,10 +13,8 @@ interface SocialItem {
 interface StaggeredMenuProps {
     position?: 'left' | 'right';
     colors?: string[];
-    items?: MenuItem[];
     socialItems?: SocialItem[];
     displaySocials?: boolean;
-    displayItemNumbering?: boolean;
     className?: string;
     logoUrl?: string;
     menuButtonColor?: string;
@@ -36,10 +30,8 @@ interface StaggeredMenuProps {
 export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     position = 'right',
     colors = ['#B19EEF', '#5227FF'],
-    items = [],
     socialItems = [],
     displaySocials = true,
-    displayItemNumbering = true,
     className,
     logoUrl = '/images/profile.jpg',
     menuButtonColor = '#fff',

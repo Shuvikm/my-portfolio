@@ -3,23 +3,32 @@ import { Toaster } from 'react-hot-toast';
 import Lenis from 'lenis';
 import Navigation from './components/layout/Navigation';
 import Hero from './components/sections/Hero';
-import About from './components/sections/About';
-import Skills from './components/sections/Skills';
-import Projects from './components/sections/Projects';
-import Journey from './components/sections/Journey';
-import GitHubActivity from './components/sections/GitHubActivity';
-import DesertHorse from './components/sections/DesertHorse';
-import Contact from './components/sections/Contact';
 import Footer from './components/layout/Footer';
 import ErrorBoundary from './components/layout/ErrorBoundary';
 import './styles/grimoire-animation.css';
 
 // Lazy load heavy components for better performance
+const About = lazy(() => import('./components/sections/About'));
+const Skills = lazy(() => import('./components/sections/Skills'));
+const Projects = lazy(() => import('./components/sections/Projects'));
+const Journey = lazy(() => import('./components/sections/Journey'));
+const GitHubActivity = lazy(() => import('./components/sections/GitHubActivity'));
+const DesertHorse = lazy(() => import('./components/sections/DesertHorse'));
+const Contact = lazy(() => import('./components/sections/Contact'));
 const GrimoireOrbital = lazy(() => import('./components/features/grimoire/GrimoireOrbital'));
 const Ribbons = lazy(() => import('./components/ui/Ribbons'));
 
 // Import SpiderCursor
 import { SpiderCursor } from './components/ui/SpiderCursor';
+
+function SectionLoader() {
+  return (
+    <div className="min-h-[40vh] flex flex-col items-center justify-center space-y-4">
+      <div className="w-12 h-12 border-4 border-[#fbbf24] border-t-transparent rounded-full animate-spin" />
+      <div className="text-[#fbbf24] font-bold tracking-widest text-sm animate-pulse">LOADING CHAPTER...</div>
+    </div>
+  );
+}
 
 function App() {
   useEffect(() => {
@@ -112,7 +121,7 @@ function App() {
 
         {/* Main Content */}
         <main className="manga-page">
-          <Suspense fallback={<div className="min-h-[80vh] flex items-center justify-center"><div className="text-2xl">Loading...</div></div>}>
+          <Suspense fallback={<SectionLoader />}>
             <GrimoireOrbital
               images={[
                 '/images/grimoire/manga-1.jpg',
@@ -130,25 +139,24 @@ function App() {
               ]}
               grimoireImage="/images/grimoire/grimoire-book.jpg"
             />
-          </Suspense>
+            <About />
+            <Skills />
+            <Projects />
+            <Journey />
+            <GitHubActivity />
+            <DesertHorse />
 
-          <About />
-          <Skills />
-          <Projects />
-          <Journey />
-          <GitHubActivity />
-          <DesertHorse />
-
-          {/* Contact Section */}
-          <div className="parallax parallax-contact">
-            <div className="parallax-content">
-              <h3 className="manga-title text-4xl text-center" style={{ textShadow: '2px 2px 0 white, 4px 4px 0 #1a1a1a' }}>
-                💬 CONTACT 💬
-              </h3>
+            {/* Contact Section Preview */}
+            <div className="parallax parallax-contact">
+              <div className="parallax-content">
+                <h3 className="manga-title text-4xl text-center" style={{ textShadow: '2px 2px 0 white, 4px 4px 0 #1a1a1a' }}>
+                  💬 CONTACT 💬
+                </h3>
+              </div>
             </div>
-          </div>
 
-          <Contact />
+            <Contact />
+          </Suspense>
           <Footer />
         </main>
       </div>

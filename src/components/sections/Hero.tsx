@@ -1,4 +1,3 @@
-import { Github, Linkedin, Mail, Code2 } from 'lucide-react';
 import { useRef, useLayoutEffect, useState } from 'react';
 import gsap from 'gsap';
 import Shuffle from '../ui/Shuffle';
@@ -51,16 +50,7 @@ export default function Hero() {
           duration: 0.5,
           stagger: 0.1,
           ease: 'back.out(1.5)',
-        }, '-=0.4')
-        // 5. Social Icons Fade & Slide
-        .from('.social-icon', {
-          y: 10,
-          opacity: 0,
-          duration: 0.4,
-          stagger: 0.05,
-          ease: 'power1.out',
-        }, '-=0.2');
-
+        }, '-=0.4');
     }, comp);
 
     return () => ctx.revert();
@@ -134,28 +124,7 @@ export default function Hero() {
               <div className="space-y-3">
                 {showTamil ? (
                   <>
-                    {/* Tamil Version */}
-                    <div className="overflow-visible space-y-2 mb-3">
-                      <Shuffle
-                        text="Theyvaththaan Aakaa Theninum Muyarsidhan"
-                        tag="p"
-                        className="text-[#fbbf24] font-tamil font-black text-[32px] tracking-wide break-words"
-                        duration={0.4}
-                        stagger={0.02}
-                        triggerOnHover={true}
-                        triggerOnce={false}
-                      />
-                      <Shuffle
-                        text="Meyvaruththak Kooli Tharum"
-                        tag="p"
-                        className="text-[#fbbf24] font-tamil font-black text-[32px] tracking-wide break-words"
-                        duration={0.4}
-                        stagger={0.02}
-                        triggerOnHover={true}
-                        triggerOnce={false}
-                      />
-                    </div>
-                    {/* Tamil Meaning */}
+                    {/* Tamil Script Only */}
                     <Shuffle
                       text="தெய்வத்தின் அருளாலே கைகூடாது போனாலும், ஒருவனுடைய முயற்சியானது, தன் உடல் வருத்தத்தின் கூலியைத் தப்பாமல் தந்துவிடும் (௬௱௰௯)"
                       tag="p"
@@ -167,21 +136,21 @@ export default function Hero() {
                   </>
                 ) : (
                   <>
-                    {/* English Version of Kural */}
+                    {/* English Mode: Phonetics (Large) + English Meaning */}
                     <div className="overflow-visible space-y-2 mb-3">
                       <Shuffle
-                        text="Theyvaththaan Aakaa Theninum Muyarsidhan"
+                        text="THEYVATHTHAAN AAKAA THENINUM MUYARSIDHAN"
                         tag="p"
-                        className="text-[#fbbf24] font-heading font-black text-[22px] italic tracking-wide break-words"
+                        className="text-[#fbbf24] font-heading font-black text-[32px] tracking-wide break-words leading-tight"
                         duration={0.4}
                         stagger={0.02}
                         triggerOnHover={true}
                         triggerOnce={false}
                       />
                       <Shuffle
-                        text="Meyvaruththak Kooli Tharum"
+                        text="MEYVARUTHTHAK KOOLI THARUM"
                         tag="p"
-                        className="text-[#fbbf24] font-heading font-black text-[22px] italic tracking-wide break-words"
+                        className="text-[#fbbf24] font-heading font-black text-[32px] tracking-wide break-words leading-tight"
                         duration={0.4}
                         stagger={0.02}
                         triggerOnHover={true}
@@ -191,10 +160,15 @@ export default function Hero() {
 
                     {/* English Meaning */}
                     <div>
-                      <p className="text-white/40 text-xs font-heading mb-2">Meaning:</p>
-                      <p className="text-[#fbbf24] font-heading font-black text-[20px] leading-relaxed max-w-2xl mx-auto lg:mx-0 break-words">
-                        Even though God be against, Effort is bound to pay the wages of labour.
-                      </p>
+                      <p className="text-white/40 text-xs font-heading mb-2 lowercase tracking-widest">meaning</p>
+                      <Shuffle
+                        text="Even though God be against, Effort is bound to pay the wages of labour."
+                        tag="p"
+                        className="text-[#fbbf24] font-heading font-black text-[18px] leading-relaxed max-w-2xl mx-auto lg:mx-0 break-words"
+                        duration={0.5}
+                        stagger={0.01}
+                        triggerOnHover={false}
+                      />
                     </div>
                   </>
                 )}
