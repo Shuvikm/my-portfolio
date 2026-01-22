@@ -137,7 +137,7 @@ export default function Hero() {
                     {/* Tamil Version */}
                     <div className="overflow-visible space-y-2 mb-3">
                       <Shuffle
-                        text="தெய்வத்தான் ஆகா தெனினும் முயற்சிதன்"
+                        text="Theyvaththaan Aakaa Theninum Muyarsidhan"
                         tag="p"
                         className="text-[#fbbf24] font-tamil font-black text-[32px] tracking-wide break-words"
                         duration={0.4}
@@ -146,7 +146,7 @@ export default function Hero() {
                         triggerOnce={false}
                       />
                       <Shuffle
-                        text="மெய்வருத்தக் கூலி தரும். (௬௱௰௯)"
+                        text="Meyvaruththak Kooli Tharum"
                         tag="p"
                         className="text-[#fbbf24] font-tamil font-black text-[32px] tracking-wide break-words"
                         duration={0.4}
