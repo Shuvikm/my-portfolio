@@ -170,7 +170,7 @@ export default function Hero() {
                     {/* English Version of Kural */}
                     <div className="overflow-visible space-y-2 mb-3">
                       <Shuffle
-                        text="Theyvatthan Aaka Theninum Muyarchiтhan"
+                        text="Theyvaththaan Aakaa Theninum Muyarsidhan"
                         tag="p"
                         className="text-[#fbbf24] font-heading font-black text-[22px] italic tracking-wide break-words"
                         duration={0.4}
