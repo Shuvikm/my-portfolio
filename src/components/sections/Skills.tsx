@@ -1,5 +1,4 @@
 import { Code, Database, Wrench, Palette } from 'lucide-react';
-import Shuffle from '../ui/Shuffle';
 import GlitchText from '../ui/GlitchText';
 
 const skills = {
@@ -30,18 +29,12 @@ export default function Skills() {
             <div className="p-2 bg-[#dc2626]">
               <Code className="w-5 h-5 text-white" />
             </div>
-            <Shuffle
-              text="Languages"
-              tag="h3"
-              className="font-black uppercase text-sm"
-              shuffleDirection="right"
-              duration={0.3}
-            />
+            <h3 className="font-black uppercase text-sm">Languages</h3>
           </div>
           <div className="flex flex-wrap gap-2">
             {skills.languages.map((skill) => (
               <div key={skill} className="thought-bubble py-2 px-4 text-sm font-bold">
-                <Shuffle text={skill} duration={0.3} stagger={0.02} />
+                {skill}
               </div>
             ))}
           </div>
@@ -53,18 +46,12 @@ export default function Skills() {
             <div className="p-2 bg-[#fbbf24]">
               <Palette className="w-5 h-5 text-[#1a1a1a]" />
             </div>
-            <Shuffle
-              text="Frontend"
-              tag="h3"
-              className="font-black uppercase text-sm"
-              shuffleDirection="right"
-              duration={0.3}
-            />
+            <h3 className="font-black uppercase text-sm">Frontend</h3>
           </div>
           <div className="flex flex-wrap gap-2">
             {skills.frontend.map((skill) => (
               <div key={skill} className="thought-bubble py-2 px-4 text-sm font-bold">
-                <Shuffle text={skill} duration={0.3} stagger={0.02} />
+                {skill}
               </div>
             ))}
           </div>
@@ -76,18 +63,12 @@ export default function Skills() {
             <div className="p-2 bg-[#22c55e]">
               <Database className="w-5 h-5 text-white" />
             </div>
-            <Shuffle
-              text="Databases"
-              tag="h3"
-              className="font-black uppercase text-sm"
-              shuffleDirection="right"
-              duration={0.3}
-            />
+            <h3 className="font-black uppercase text-sm">Databases</h3>
           </div>
           <div className="flex flex-wrap gap-2">
             {skills.databases.map((skill) => (
               <div key={skill} className="thought-bubble py-2 px-4 text-sm font-bold">
-                <Shuffle text={skill} duration={0.3} stagger={0.02} />
+                {skill}
               </div>
             ))}
           </div>
@@ -99,18 +80,12 @@ export default function Skills() {
             <div className="p-2 bg-[#22d3ee]">
               <Wrench className="w-5 h-5 text-[#1a1a1a]" />
             </div>
-            <Shuffle
-              text="Tools"
-              tag="h3"
-              className="font-black uppercase text-sm"
-              shuffleDirection="right"
-              duration={0.3}
-            />
+            <h3 className="font-black uppercase text-sm">Tools</h3>
           </div>
           <div className="flex flex-wrap gap-2">
             {skills.tools.map((skill) => (
               <div key={skill} className="thought-bubble py-2 px-4 text-sm font-bold">
-                <Shuffle text={skill} duration={0.3} stagger={0.02} />
+                {skill}
               </div>
             ))}
           </div>
@@ -119,16 +94,11 @@ export default function Skills() {
 
       {/* Tech Summary */}
       <div className="manga-panel p-6">
-        <Shuffle
-          text="Full Stack"
-          tag="h3"
-          className="manga-subtitle text-sm mb-3 text-center"
-          duration={0.4}
-        />
+        <h3 className="manga-subtitle text-sm mb-3 text-center">Full Stack</h3>
         <div className="flex flex-wrap justify-center gap-2">
           {[...skills.languages, ...skills.frontend, ...skills.databases, ...skills.tools].map((tech, i) => (
             <span key={i} className="bg-white border-2 border-[#fbbf24] text-[#1a1a1a] px-3 py-1 text-xs font-bold uppercase hover:bg-[#fbbf24] hover:text-white transition-colors cursor-default">
-              <Shuffle text={tech} duration={0.2} />
+              {tech}
             </span>
           ))}
         </div>

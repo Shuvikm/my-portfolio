@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Tamil Font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;700;900&display=swap');
+
 /* ===== SMOOTH SCROLL ===== */
 html.lenis {
 	height: auto;
@@ -35,7 +38,143 @@ html.lenis {
 	--space-dark: #0f0f23;
 	--space-blue: #16213e;
 	--space-purple: #1a1a2e;
+
+	/* Font System */
+	--font-heading: 'Space Grotesk', sans-serif;
+	--font-body: 'Inter', system-ui, sans-serif;
+	--font-tamil: 'Noto Sans Tamil', 'Latha', 'Tamil Sangam MN', sans-serif;
 }
+
+/* ===== TRANSLATION TOGGLE SWITCH ===== */
+.switch {
+	width: 4em;
+	height: 2em;
+	flex-shrink: 0;
+	font-size: 16px;
+}
+
+.switch>input[type="checkbox"] {
+	display: none;
+}
+
+.switch>input[type="checkbox"]:checked+.switch-background {
+	background-color: #18b510;
+}
+
+.switch>input[type="checkbox"]:checked+.switch-background:before {
+	transform: translateX(2em);
+}
+
+.switch-background {
+	background-color: rgba(207, 207, 207, 0.75);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	overflow: hidden;
+	box-shadow: 0.2em 0.2em 0.4em rgba(0, 0, 0, 0.25) inset;
+	border-radius: 25% / 50%;
+	backdrop-filter: blur(2em);
+	transition: background-color 128ms ease-out;
+}
+
+.switch-background:before {
+	content: "";
+	background-color: #f2f2f2;
+	width: 1.6em;
+	height: 1.6em;
+	margin: 0.2em;
+	border-radius: 50%;
+	box-shadow: 0.1em 0.2em 0.2em rgba(0, 0, 0, 0.15),
+		0.2em -0.4em 0.4em rgba(0, 0, 0, 0.25) inset;
+	transition: transform 128ms ease-out;
+}
+
+/* ===== TAMIL FONT ===== */
+.font-tamil {
+	font-family: var(--font-tamil);
+}
+
+/* ===== HERO ANIMATIONS ===== */
+/* Pop-up animation for SOFTWARE DEVELOPER tag */
+@keyframes popupBounce {
+	0% {
+		transform: scale(0);
+		opacity: 0;
+	}
+
+	50% {
+		transform: scale(1.15);
+	}
+
+	70% {
+		transform: scale(0.95);
+	}
+
+	85% {
+		transform: scale(1.05);
+	}
+
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes pulse {
+
+	0%,
+	100% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.05);
+	}
+}
+
+.animate-popup {
+	animation: popupBounce 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
+		pulse 2s ease-in-out 1s infinite;
+	transform-origin: center;
+}
+
+.exclaim-box {
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	background: var(--manga-accent);
+	color: var(--manga-black);
+	border: 3px solid var(--manga-black);
+	font-weight: 900;
+	text-transform: uppercase;
+	box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
+	position: relative;
+}
+
+.exclaim-box::after {
+	content: '';
+	position: absolute;
+	bottom: -10px;
+	left: 20px;
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 10px solid var(--manga-accent);
+}
+
+.exclaim-box::before {
+	content: '';
+	position: absolute;
+	bottom: -13px;
+	left: 17px;
+	width: 0;
+	height: 0;
+	border-left: 13px solid transparent;
+	border-right: 13px solid transparent;
+	border-top: 13px solid var(--manga-black);
+}
+
+
 
 /* ===== MANGA GALLERY (In-Page Section) ===== */
 .manga-gallery-display {
@@ -1293,7 +1432,7 @@ html.lenis {
 }
 
 body {
-	font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 	background: #001026;
 	color: #ffffff;
 	overflow-x: hidden;
@@ -1304,36 +1443,36 @@ body {
 }
 
 h1 {
-	font-family: 'Space Mono', monospace !important;
+	font-family: 'Space Grotesk', sans-serif !important;
 	color: #fbbf24 !important;
 	font-weight: 700 !important;
 	font-size: 3.5rem;
 	line-height: 1.2;
-	letter-spacing: 0.3em;
+	letter-spacing: 0.05em;
 }
 
 h2 {
-	font-family: 'Space Mono', monospace !important;
+	font-family: 'Space Grotesk', sans-serif !important;
 	color: #fbbf24 !important;
 	font-weight: 700 !important;
 	font-size: 3rem;
 	line-height: 1.3;
-	letter-spacing: 0.25em;
+	letter-spacing: 0.05em;
 }
 
 h3 {
-	font-family: 'Space Mono', monospace !important;
+	font-family: 'Space Grotesk', sans-serif !important;
 	color: #fbbf24 !important;
 	font-weight: 700 !important;
 	font-size: 2rem;
 	line-height: 1.4;
-	letter-spacing: 0.2em;
+	letter-spacing: 0.05em;
 }
 
 h4,
 h5,
 h6 {
-	font-family: 'DM Sans', sans-serif !important;
+	font-family: 'Inter', sans-serif !important;
 	color: #fbbf24 !important;
 	font-weight: 600 !important;
 }
@@ -2391,10 +2530,10 @@ h6 {
 
 /* ===== SECTION SPACING ===== */
 .manga-section {
-	margin-bottom: 40px;
+	margin-bottom: 30px;
 	background: transparent;
 	color: #ffffff;
-	padding: 2rem 0;
+	padding: 1rem 0;
 }
 
 .section-title {
@@ -2619,7 +2758,9 @@ h6 {
 	background: #1a1a1a;
 	border-top: 3px solid #fbbf24;
 	border-bottom: 3px solid #fbbf24;
-	padding: 10px 0;
+	padding: 15px 0;
+	display: flex;
+	align-items: center;
 }
 
 .moving-text-strip {
@@ -2631,6 +2772,7 @@ h6 {
 	font-weight: 900;
 	text-transform: uppercase;
 	letter-spacing: 0.15em;
+	line-height: 1;
 }
 
 .moving-text-strip span {

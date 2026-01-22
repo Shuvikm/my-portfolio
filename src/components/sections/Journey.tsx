@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Trophy, ZoomIn, Medal, X, Maximize2 } from 'lucide-react';
-import Shuffle from '../ui/Shuffle';
 import GlitchText from '../ui/GlitchText';
 import CertificateModal from '../modals/CertificateModal';
 
@@ -73,12 +72,7 @@ export default function Journey() {
 
       {/* Achievements */}
       <div className="manga-panel p-6 mb-4">
-        <Shuffle
-          text="Achievements"
-          tag="h3"
-          className="manga-subtitle text-lg mb-4"
-          duration={0.3}
-        />
+        <h3 className="manga-subtitle text-lg mb-4">Achievements</h3>
         <div className="space-y-4">
           {achievements.map((achievement, i) => (
             <div
@@ -102,18 +96,16 @@ export default function Journey() {
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <h4 className="font-black uppercase">
-                      <Shuffle text={achievement.title} duration={0.4} />
-                    </h4>
+                    <h4 className="font-black uppercase">{achievement.title}</h4>
                     <span className="text-xs font-bold bg-[#1a1a1a] text-[#fbbf24] px-2 py-0.5">
-                      <Shuffle text={achievement.year} duration={0.3} />
+                      {achievement.year}
                     </span>
                   </div>
                   <div className="thought-bubble text-sm">
-                    <Shuffle text={achievement.desc} duration={0.5} stagger={0.01} />
+                    {achievement.desc}
                     {achievement.image && (
                       <span className="block mt-1 text-[#fbbf24] text-xs font-bold">
-                        <Shuffle text="📷 Click to view!" duration={0.3} />
+                        📷 Click to view!
                       </span>
                     )}
                   </div>
@@ -136,26 +128,18 @@ export default function Journey() {
             className="manga-panel p-5 cursor-pointer hover:shadow-lg transition-shadow"
           >
             <div className="mb-3">
-              <span className="text-xs font-bold bg-[#fbbf24] text-[#1a1a1a] px-2 py-1">
-                <Shuffle text="CERTIFIED" duration={0.2} />
-              </span>
+              <span className="text-xs font-bold bg-[#fbbf24] text-[#1a1a1a] px-2 py-1">CERTIFIED</span>
             </div>
             <div className="thought-bubble mb-4">
-              <h4 className="font-black uppercase text-sm leading-tight mb-1">
-                <Shuffle text={cert.name} duration={0.4} />
-              </h4>
-              <p className="text-xs text-[#4a4a4a]">
-                <Shuffle text={cert.issuer} duration={0.3} />
-              </p>
+              <h4 className="font-black uppercase text-sm leading-tight mb-1">{cert.name}</h4>
+              <p className="text-xs text-[#4a4a4a]">{cert.issuer}</p>
               {cert.code && (
-                <p className="text-xs text-[#4a4a4a]">
-                  <Shuffle text={`Code: ${cert.code}`} duration={0.3} />
-                </p>
+                <p className="text-xs text-[#4a4a4a]">Code: {cert.code}</p>
               )}
             </div>
             <button className="manga-button w-full py-2 text-xs flex items-center justify-center gap-2">
               <ZoomIn className="w-4 h-4" />
-              <Shuffle text="View Certificate" duration={0.3} />
+              <span>View Certificate</span>
             </button>
           </div>
         ))}
@@ -167,17 +151,10 @@ export default function Journey() {
           <div className="p-2 bg-[#fbbf24]">
             <Trophy className="w-5 h-5 text-[#1a1a1a]" />
           </div>
-          <Shuffle
-            text="Activities"
-            tag="h3"
-            className="font-black uppercase text-[#fbbf24]"
-            duration={0.3}
-          />
+          <h3 className="font-black uppercase text-[#fbbf24]">Activities</h3>
         </div>
         <div className="flex flex-wrap gap-3">
-          <div className="thought-bubble">
-            <Shuffle text="Member - Rotaract Club" duration={0.3} />
-          </div>
+          <div className="thought-bubble">Member - Rotaract Club</div>
           <div
             className="thought-bubble cursor-pointer hover:border-[#dc2626]"
             onClick={() => {
@@ -188,7 +165,7 @@ export default function Journey() {
               setShowModal(true);
             }}
           >
-            <Shuffle text="🩸 Blood Donor (2 donations) - Click to view cert!" duration={0.4} />
+            🩸 Blood Donor (2 donations) - Click to view cert!
           </div>
         </div>
       </div>

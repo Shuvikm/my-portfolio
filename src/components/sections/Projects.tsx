@@ -1,5 +1,4 @@
 import { ExternalLink, Gamepad2 } from 'lucide-react';
-import Shuffle from '../ui/Shuffle';
 import GlitchText from '../ui/GlitchText';
 
 const projects = [
@@ -64,7 +63,7 @@ export default function Projects() {
             {/* Header */}
             <div className={`${proj.isGame ? 'bg-[#fbbf24]' : 'bg-[#1a1a1a]'} px-4 py-2`}>
               <span className={`${proj.isGame ? 'text-[#1a1a1a]' : 'text-[#fbbf24]'} text-xs font-bold uppercase`}>
-                <Shuffle text={proj.role} duration={0.3} />
+                {proj.role}
               </span>
             </div>
 
@@ -72,19 +71,19 @@ export default function Projects() {
             <div className="p-5">
               <h3 className="font-black text-lg uppercase mb-3 flex items-center gap-2">
                 {proj.isGame && <Gamepad2 className="w-5 h-5 text-[#fbbf24]" />}
-                <Shuffle text={proj.title} duration={0.4} />
+                {proj.title}
               </h3>
 
               {/* Description - Thought Bubble */}
               <div className="thought-bubble mb-4 text-sm">
-                <Shuffle text={proj.desc} duration={0.5} stagger={0.01} />
+                {proj.desc}
               </div>
 
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {proj.tags.map((t) => (
                   <span key={t} className="text-xs font-bold border border-[#1a1a1a] px-2 py-0.5 uppercase bg-white text-black">
-                    <Shuffle text={t} duration={0.2} />
+                    {t}
                   </span>
                 ))}
               </div>

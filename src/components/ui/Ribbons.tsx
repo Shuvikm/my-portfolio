@@ -2,7 +2,22 @@ import { useEffect, useRef } from 'react';
 import { Renderer, Transform, Vec3, Color, Polyline } from 'ogl';
 import './Ribbons.css';
 
-const Ribbons = ({
+interface RibbonsProps {
+    colors?: string[];
+    baseSpring?: number;
+    baseFriction?: number;
+    baseThickness?: number;
+    offsetFactor?: number;
+    maxAge?: number;
+    pointCount?: number;
+    speedMultiplier?: number;
+    enableFade?: boolean;
+    enableShaderEffect?: boolean;
+    effectAmplitude?: number;
+    backgroundColor?: number[];
+}
+
+const Ribbons: React.FC<RibbonsProps> = ({
     colors = ['#FC8EAC'],
     baseSpring = 0.03,
     baseFriction = 0.9,
@@ -111,6 +126,7 @@ const Ribbons = ({
     `;
 
         function resize() {
+            if (!container) return;
             const width = container.clientWidth;
             const height = container.clientHeight;
             renderer.setSize(width, height);
@@ -167,6 +183,7 @@ const Ribbons = ({
 
         const mouse = new Vec3();
         function updateMouse(e: any) {
+            if (!container) return;
             let x, y;
             const rect = container.getBoundingClientRect();
             if (e.changedTouches && e.changedTouches.length) {

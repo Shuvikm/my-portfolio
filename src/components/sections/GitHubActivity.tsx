@@ -1,5 +1,5 @@
-import Shuffle from '../ui/Shuffle';
 import { Github } from 'lucide-react';
+import GlitchText from '../ui/GlitchText';
 
 export default function GitHubActivity() {
     const username = 'Shuvikm';
@@ -12,26 +12,15 @@ export default function GitHubActivity() {
                     <div className="exclaim-box" style={{ background: '#fbbf24', color: '#1a1a1a' }}>
                         <Github className="w-6 h-6" />
                     </div>
-                    <Shuffle
-                        text="GITHUB ACTIVITY"
-                        tag="h2"
-                        className="manga-title text-3xl sm:text-4xl tracking-widest"
-                        shuffleDirection="right"
-                        duration={0.4}
-                        stagger={0.03}
-                    />
+                    <h2 className="manga-title text-3xl sm:text-4xl tracking-widest">
+                        <GlitchText speed={0.8} enableOnHover={false}>GITHUB ACTIVITY</GlitchText>
+                    </h2>
                 </div>
             </div>
 
             {/* Contribution Graph */}
             <div className="manga-panel p-6 sm:p-8">
-                <Shuffle
-                    text="Contribution Activity"
-                    tag="h3"
-                    className="manga-subtitle text-lg sm:text-xl mb-6"
-                    shuffleDirection="right"
-                    duration={0.4}
-                />
+                <h3 className="manga-subtitle text-lg sm:text-xl mb-6">Contribution Activity</h3>
                 <div className="flex justify-center overflow-x-auto pb-4">
                     <img
                         src={`https://ghchart.rshah.org/${username}`}

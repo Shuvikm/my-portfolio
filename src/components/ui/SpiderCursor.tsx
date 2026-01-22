@@ -9,7 +9,7 @@ export function SpiderCursor() {
         const canvas = canvasRef.current
         if (!canvas) return
 
-        let w: number, h: number
+        let w: number = window.innerWidth, h: number = window.innerHeight
         const ctx = canvas.getContext("2d")!
         const { sin, cos, PI, hypot, min, max } = Math
 
@@ -20,6 +20,7 @@ export function SpiderCursor() {
                     y: rnd(window.innerHeight),
                     len: 0,
                     r: 0,
+                    t: 0,
                 }
             })
 
@@ -97,11 +98,14 @@ export function SpiderCursor() {
         }
 
         function anim(t: number) {
+            if (!canvas) return
             if (w !== window.innerWidth) w = canvas.width = window.innerWidth
             if (h !== window.innerHeight) h = canvas.height = window.innerHeight
-            ctx.fillStyle = "#000"
-            drawCircle(0, 0, w * 10)
-            ctx.fillStyle = ctx.strokeStyle = "#fff"
+            // Clear canvas with transparency instead of black background
+            ctx.clearRect(0, 0, w, h)
+            // Use gold/amber color for symbiote effect
+            ctx.fillStyle = ctx.strokeStyle = "#fbbf24"
+            ctx.globalAlpha = 0.6
             t /= 1000
             spiders.forEach((spider) => spider.tick(t))
             requestAnimationFrame(anim)
