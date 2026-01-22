@@ -23,10 +23,9 @@ export default function GitHubActivity() {
                 <h3 className="manga-subtitle text-lg sm:text-xl mb-6">Contribution Activity</h3>
                 <div className="flex justify-center overflow-x-auto pb-4">
                     <img
-                        src={`https://ghchart.rshah.org/${username}`}
+                        src={`https://ghchart.rshah.org/fbbf24/Shuvikm`}
                         alt="GitHub Contribution Chart"
-                        className="w-full max-w-4xl"
-                        style={{ filter: 'grayscale(0%)' }}
+                        className="w-full max-w-4xl shadow-md rounded-lg"
                     />
                 </div>
 
