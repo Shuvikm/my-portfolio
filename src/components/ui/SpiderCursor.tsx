@@ -38,8 +38,8 @@ export function SpiderCursor() {
             let y = rnd(window.innerHeight)
             const kx = rnd(0.5, 0.5)
             const ky = rnd(0.5, 0.5)
-            const walkRadius = pt(rnd(20, 20), rnd(20, 20))
-            const r = window.innerWidth / rnd(300, 400)
+            const walkRadius = pt(rnd(35, 35), rnd(35, 35))
+            const r = window.innerWidth / rnd(180, 220)
 
             function paintPt(pt: any) {
                 pts2.forEach((pt2) => {
@@ -74,9 +74,9 @@ export function SpiderCursor() {
                         const dx = pt.x - x,
                             dy = pt.y - y
                         const len = hypot(dx, dy)
-                        let r = min(2, window.innerWidth / len / 10)
+                        let r = min(2, window.innerWidth / len / 7)
                         pt.t = 0
-                        const increasing = len < window.innerWidth / 20 && i++ < 8
+                        const increasing = len < window.innerWidth / 15 && i++ < 8
                         const dir = increasing ? 0.1 : -0.1
                         if (increasing) {
                             r *= 1.5
