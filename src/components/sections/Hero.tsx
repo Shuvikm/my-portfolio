@@ -128,7 +128,7 @@ export default function Hero() {
                     <Shuffle
                       text="தெய்வத்தின் அருளாலே கைகூடாது போனாலும், ஒருவனுடைய முயற்சியானது, தன் உடல் வருத்தத்தின் கூலியைத் தப்பாமல் தந்துவிடும் (௬௱௰௯)"
                       tag="p"
-                      className="text-[#fbbf24] font-tamil font-black text-[26px] leading-relaxed max-w-2xl mx-auto lg:mx-0 break-words"
+                      className="text-[#fbbf24] font-tamil font-black text-[20px] leading-relaxed max-w-2xl mx-auto lg:mx-0 break-words"
                       duration={0.5}
                       stagger={0.01}
                       triggerOnHover={false}
@@ -141,7 +141,7 @@ export default function Hero() {
                       <Shuffle
                         text="THEYVATHTHAAN AAKAA THENINUM MUYARSIDHAN"
                         tag="p"
-                        className="text-[#fbbf24] font-heading font-black text-[32px] tracking-wide break-words leading-tight"
+                        className="text-[#fbbf24] font-heading font-black text-[22px] tracking-wide break-words leading-tight"
                         duration={0.4}
                         stagger={0.02}
                         triggerOnHover={true}
@@ -150,7 +150,7 @@ export default function Hero() {
                       <Shuffle
                         text="MEYVARUTHTHAK KOOLI THARUM"
                         tag="p"
-                        className="text-[#fbbf24] font-heading font-black text-[32px] tracking-wide break-words leading-tight"
+                        className="text-[#fbbf24] font-heading font-black text-[22px] tracking-wide break-words leading-tight"
                         duration={0.4}
                         stagger={0.02}
                         triggerOnHover={true}
@@ -164,7 +164,7 @@ export default function Hero() {
                       <Shuffle
                         text="Even though God be against, Effort is bound to pay the wages of labour."
                         tag="p"
-                        className="text-[#fbbf24] font-heading font-black text-[18px] leading-relaxed max-w-2xl mx-auto lg:mx-0 break-words"
+                        className="text-[#fbbf24] font-heading font-black text-[15px] leading-relaxed max-w-2xl mx-auto lg:mx-0 break-words"
                         duration={0.5}
                         stagger={0.01}
                         triggerOnHover={false}
