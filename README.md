@@ -11,7 +11,7 @@ cd C:\projects\project
 npm run install:all
 ```
 
-2. Create `.env` for the server (copy from example):
+2. Create .env for the server (copy from example):
 
 ```powershell
 cd server
