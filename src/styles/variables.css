@@ -1,0 +1,24 @@
+/* CSS variable optimization and management */
+
+:root {
+    /* Colors */
+    --color-accent: #fbbf24;
+    --color-dark: #1a1a1a;
+    --color-light: #ffffff;
+
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 4rem;
+
+    /* Typography */
+    --font-primary: 'Space Grotesk', system-ui, sans-serif;
+    --font-secondary: 'Inter', system-ui, sans-serif;
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 300ms ease;
+    --transition-slow: 500ms ease;
+}
