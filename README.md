@@ -6,7 +6,7 @@ This repository contains a Vite + React frontend and an Express + MongoDB backen
 
 1. Install dependencies (root + server):
 
-```powershell
+```powershell..
 cd C:\projects\project
 npm run install:all
 ```
