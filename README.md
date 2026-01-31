@@ -29,7 +29,7 @@ npm run dev
 
 4. Start frontend (point to backend API):
 
-```powershell
+```powershell..
 cd C:\projects\project
 $env:VITE_API_URL='http://localhost:5001/api'
 npm run dev
