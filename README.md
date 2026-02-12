@@ -6,12 +6,12 @@ This repository contains a Vite + React frontend and an Express + MongoDB backen
 
 1. Install dependencies (root + server):
 
-```powershell
+```powershell..
 cd C:\projects\project
 npm run install:all
 ```
 
-2. Create `.env` for the server (copy from example):
+2. Create .env for the server (copy from example):
 
 ```powershell
 cd server
@@ -29,7 +29,7 @@ npm run dev
 
 4. Start frontend (point to backend API):
 
-```powershell
+```powershell..
 cd C:\projects\project
 $env:VITE_API_URL='http://localhost:5001/api'
 npm run dev
@@ -86,7 +86,7 @@ You can also run the npm script that runs the helper:
 
 powershell
 cd server
-npm run free-port -- 5001
+npm run free-port -- 5001.
 
 The script will display the PID found and kill it. Use with caution — only run when you know which process you're terminating.
 
