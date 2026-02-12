@@ -21,3 +21,7 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Temporary output files
+tsc_output.txt
+build_check.txt
