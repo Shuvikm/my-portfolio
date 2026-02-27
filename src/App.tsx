@@ -1,9 +1,8 @@
 import { useEffect, lazy, Suspense } from 'react';
 import { Toaster } from 'react-hot-toast';
 import Lenis from 'lenis';
-import Navigation from './components/layout/Navigation';
-import Hero from './components/sections/Hero';
-import Footer from './components/layout/Footer';
+import BrutalLayout from './components/layout/BrutalLayout';
+import BrutalHero from './components/sections/BrutalHero';
 import ErrorBoundary from './components/layout/ErrorBoundary';
 import './styles/grimoire-animation.css';
 
@@ -78,48 +77,52 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <div className="min-h-screen relative overflow-x-hidden">
-        {/* Spider Symbiote Background - Lowest layer */}
-        <SpiderCursor />
+      <BrutalLayout overlay={
+        <>
+          <SpiderCursor />
+          <Suspense fallback={null}>
+            <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', zIndex: 5, pointerEvents: 'none' }}>
+              <Ribbons
+                baseThickness={25}
+                colors={["#fbbf24", "#ffffff", "#dc2626"]}
+                speedMultiplier={0.9}
+                maxAge={400}
+                enableFade={true}
+                enableShaderEffect={false}
+                pointCount={30}
+              />
+            </div>
+          </Suspense>
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              duration: 3000,
+              style: {
+                background: '#1a1a1a',
+                color: '#fafaff',
+                border: '2px solid #fbbf24',
+                fontWeight: 'bold',
+              },
+            }}
+          />
+        </>
+      }>
+        <BrutalHero />
 
-        {/* Full-Page Ribbons - Above particles, below content */}
-        <Suspense fallback={null}>
-          <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', zIndex: 5, pointerEvents: 'none' }}>
-            <Ribbons
-              baseThickness={25}
-              colors={["#fbbf24", "#ffffff", "#dc2626"]}
-              speedMultiplier={0.9}
-              maxAge={400}
-              enableFade={true}
-              enableShaderEffect={false}
-              pointCount={30}
-            />
-          </div>
-        </Suspense>
+        <section className="section-dark">
+          <p className="big-text">
+            WE BUILD <span>DIGITAL EXPERIENCES</span> THAT DEFY GRAVITY. NO TEMPLATES. NO LIMITS. JUST <span>PURE
+              CODE</span> AND <span>RAW AESTHETICS</span>.
+          </p>
+        </section>
 
-        <Toaster
-          position="top-right"
-          toastOptions={{
-            duration: 3000,
-            style: {
-              background: '#1a1a1a',
-              color: '#fafaff',
-              border: '2px solid #fbbf24',
-              fontWeight: 'bold',
-            },
-          }}
-        />
+        <section className="section-dark" style={{ justifyContent: 'flex-end', textAlign: 'right' }}>
+          <p className="big-text">
+            INTERACTION<br />
+            <span>REDEFINED</span>
+          </p>
+        </section>
 
-        <Navigation />
-
-        {/* Hero Section */}
-        <div className="parallax parallax-hero">
-          <div className="manga-page">
-            <Hero />
-          </div>
-        </div>
-
-        {/* Main Content */}
         <main className="manga-page">
           <Suspense fallback={<SectionLoader />}>
             <GrimoireOrbital
@@ -157,9 +160,13 @@ function App() {
 
             <Contact />
           </Suspense>
-          <Footer />
         </main>
-      </div>
+
+        <footer style={{ height: '40vh', background: 'var(--fg)', color: 'var(--bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+          <h2 style={{ fontFamily: "'Syncopate'", fontSize: '3rem', marginBottom: '1rem' }}><a href="https://www.alerak.studio" style={{ color: 'inherit', textDecoration: 'none' }}>ALERAK</a></h2>
+          <p>© 2026</p>
+        </footer>
+      </BrutalLayout>
     </ErrorBoundary>
   );
 }
