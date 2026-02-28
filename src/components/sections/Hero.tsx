@@ -142,8 +142,8 @@ export default function Hero() {
                         text="THEYVATHTHAAN AAKAA THENINUM MUYARSIDHAN"
                         tag="p"
                         className="text-[#fbbf24] font-heading font-black text-[16px] tracking-wide break-words leading-tight"
-                        duration={0.4}
-                        stagger={0.02}
+                        duration={0.2}
+                        stagger={0.01}
                         triggerOnHover={true}
                         triggerOnce={false}
                       />
@@ -151,8 +151,8 @@ export default function Hero() {
                         text="MEYVARUTHTHAK KOOLI THARUM"
                         tag="p"
                         className="text-[#fbbf24] font-heading font-black text-[16px] tracking-wide break-words leading-tight"
-                        duration={0.4}
-                        stagger={0.02}
+                        duration={0.2}
+                        stagger={0.01}
                         triggerOnHover={true}
                         triggerOnce={false}
                       />
