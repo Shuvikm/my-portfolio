@@ -1,15 +1,34 @@
 import { GraduationCap, School, Target } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import GlitchText from '../ui/GlitchText';
 
 export default function About() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="about" className="manga-section py-12">
+    <section id="about" ref={sectionRef} className="manga-section py-12">
       {/* Section Header */}
       <div className="manga-panel p-8 mb-8">
         <div className="flex items-center gap-8">
           <div className="exclaim-box" style={{ background: '#fbbf24', color: '#1a1a1a' }}>01</div>
           <h2 className="manga-title text-3xl sm:text-4xl tracking-widest">
-            <GlitchText speed={0.8} enableOnHover={false}>WHOAMI</GlitchText>
+            {isVisible ? <GlitchText speed={0.8} enableOnHover={false}>WHOAMI</GlitchText> : <span>WHOAMI</span>}
           </h2>
         </div>
       </div>
