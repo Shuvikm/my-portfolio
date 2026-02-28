@@ -1,10 +1,10 @@
-import React from 'react';
+
 
 export default function BrutalNav() {
     return (
         <nav className="brutal-nav">
-            <a href="https://www.alerak.studio" className="nav-logo magnetic" style={{ textDecoration: 'none' }}>
-                ALERAK
+            <a href="#home" className="nav-logo magnetic" style={{ textDecoration: 'none' }}>
+                SHUVIK M
             </a>
             <ul className="nav-menu">
                 <li><a href="#" className="nav-link magnetic" data-text="WORK">WORK</a></li>
