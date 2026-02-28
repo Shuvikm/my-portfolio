@@ -36,8 +36,9 @@ function App() {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
       wheelMultiplier: 1.0, // Increased from 0.8 for more direct control
-      touchMultiplier: 1.5,
+      touchMultiplier: 2.0, // Increased for smoother touch response
       infinite: false,
+      syncTouch: true, // Native-like touch sync and perf
     });
 
     let rafId: number;
