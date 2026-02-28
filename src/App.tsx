@@ -17,8 +17,7 @@ const Contact = lazy(() => import('./components/sections/Contact'));
 const GrimoireOrbital = lazy(() => import('./components/features/grimoire/GrimoireOrbital'));
 const Ribbons = lazy(() => import('./components/ui/Ribbons'));
 
-// Import SpiderCursor
-import { SpiderCursor } from './components/ui/SpiderCursor';
+
 
 function SectionLoader() {
   return (
@@ -41,12 +40,13 @@ function App() {
       infinite: false,
     });
 
+    let rafId: number;
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     // Smooth scroll for anchor links
     const handleAnchorClick = (e: MouseEvent) => {
@@ -70,6 +70,7 @@ function App() {
     document.addEventListener('click', handleAnchorClick);
 
     return () => {
+      cancelAnimationFrame(rafId);
       lenis.destroy();
       document.removeEventListener('click', handleAnchorClick);
     };
@@ -79,17 +80,16 @@ function App() {
     <ErrorBoundary>
       <BrutalLayout overlay={
         <>
-          <SpiderCursor />
           <Suspense fallback={null}>
             <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', zIndex: 5, pointerEvents: 'none' }}>
               <Ribbons
-                baseThickness={25}
+                baseThickness={20}
                 colors={["#fbbf24", "#ffffff", "#dc2626"]}
-                speedMultiplier={0.9}
-                maxAge={400}
+                speedMultiplier={0.7}
+                maxAge={200}
                 enableFade={true}
                 enableShaderEffect={false}
-                pointCount={30}
+                pointCount={18}
               />
             </div>
           </Suspense>
@@ -163,7 +163,7 @@ function App() {
         </main>
 
         <footer style={{ height: '40vh', background: 'var(--fg)', color: 'var(--bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-          <h2 style={{ fontFamily: "'Syncopate'", fontSize: '3rem', marginBottom: '1rem' }}><a href="https://www.alerak.studio" style={{ color: 'inherit', textDecoration: 'none' }}>ALERAK</a></h2>
+          <h2 style={{ fontFamily: "'Syncopate'", fontSize: '3rem', marginBottom: '1rem' }}><a href="https://github.com/Shuvikm" style={{ color: 'inherit', textDecoration: 'none' }}>SHUVIK M</a></h2>
           <p>© 2026</p>
         </footer>
       </BrutalLayout>
