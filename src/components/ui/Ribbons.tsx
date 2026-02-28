@@ -37,7 +37,7 @@ const Ribbons: React.FC<RibbonsProps> = ({
         const container = containerRef.current;
         if (!container) return;
 
-        const renderer = new Renderer({ dpr: window.devicePixelRatio || 2, alpha: true });
+        const renderer = new Renderer({ dpr: Math.min(window.devicePixelRatio || 1, 1), alpha: true });
         const gl = renderer.gl;
         if (Array.isArray(backgroundColor) && backgroundColor.length === 4) {
             gl.clearColor(backgroundColor[0], backgroundColor[1], backgroundColor[2], backgroundColor[3]);
