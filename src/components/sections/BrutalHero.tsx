@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 export default function BrutalHero() {
     const renderWord = (word: string) => (
@@ -20,8 +20,8 @@ export default function BrutalHero() {
 
             <div className="tape-wrapper">
                 <div className="tape-text">
-                    ALERAK DIGITAL ✦ SCROLL VELOCITY ✦ INTERACTIVE SYSTEMS ✦ ALERAK DIGITAL ✦ SCROLL VELOCITY ✦
-                    INTERACTIVE SYSTEMS ✦
+                    SHUVIK M ✦ SOFTWARE DEVELOPER ✦ FULL STACK ✦ SHUVIK M ✦ SOFTWARE DEVELOPER ✦
+                    FULL STACK ✦
                 </div>
             </div>
         </section>
