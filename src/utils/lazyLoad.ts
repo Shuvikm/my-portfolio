@@ -20,7 +20,10 @@ export const setupLazyLoading = () => {
 
         const images = document.querySelectorAll('img.lazy');
         images.forEach(img => imageObserver.observe(img));
+
+        return () => imageObserver.disconnect();
     }
+    return () => { };
 };
 
 export const preloadImage = (src: string): Promise<void> => {
