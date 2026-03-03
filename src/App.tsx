@@ -3,6 +3,7 @@ import { Toaster } from 'react-hot-toast';
 import Lenis from 'lenis';
 import BrutalLayout from './components/layout/BrutalLayout';
 import BrutalHero from './components/sections/BrutalHero';
+import Footer from './components/layout/Footer';
 import ErrorBoundary from './components/layout/ErrorBoundary';
 import './styles/grimoire-animation.css';
 
@@ -14,31 +15,28 @@ const Journey = lazy(() => import('./components/sections/Journey'));
 const GitHubActivity = lazy(() => import('./components/sections/GitHubActivity'));
 const DesertHorse = lazy(() => import('./components/sections/DesertHorse'));
 const Contact = lazy(() => import('./components/sections/Contact'));
-const GrimoireOrbital = lazy(() => import('./components/features/grimoire/GrimoireOrbital'));
 const Ribbons = lazy(() => import('./components/ui/Ribbons'));
-
-
 
 function SectionLoader() {
   return (
     <div className="min-h-[40vh] flex flex-col items-center justify-center space-y-4">
       <div className="w-12 h-12 border-4 border-[#fbbf24] border-t-transparent rounded-full animate-spin" />
-      <div className="text-[#fbbf24] font-bold tracking-widest text-sm animate-pulse">LOADING CHAPTER...</div>
+      <div className="text-[#fbbf24] font-bold tracking-widest text-sm animate-pulse">LOADING...</div>
     </div>
   );
 }
 
 function App() {
   useEffect(() => {
-    // Initialize Lenis smooth scroll with optimized settings
+    // Initialize Lenis smooth scroll
     const lenis = new Lenis({
-      duration: 0.8, // Reduced from 1.0 for faster response
+      duration: 0.8,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      wheelMultiplier: 1.0, // Increased from 0.8 for more direct control
-      touchMultiplier: 2.0, // Increased for smoother touch response
+      wheelMultiplier: 1.0,
+      touchMultiplier: 2.0,
       infinite: false,
-      syncTouch: true, // Native-like touch sync and perf
+      syncTouch: true,
     });
 
     let rafId: number;
@@ -46,7 +44,6 @@ function App() {
       lenis.raf(time);
       rafId = requestAnimationFrame(raf);
     }
-
     rafId = requestAnimationFrame(raf);
 
     // Smooth scroll for anchor links
@@ -59,15 +56,11 @@ function App() {
         if (href) {
           const element = document.querySelector(href);
           if (element) {
-            lenis.scrollTo(element as HTMLElement, {
-              offset: -80,
-              duration: 1.0, // Reduced from 1.2 for snappier navigation
-            });
+            lenis.scrollTo(element as HTMLElement, { offset: -80, duration: 1.0 });
           }
         }
       }
     };
-
     document.addEventListener('click', handleAnchorClick);
 
     return () => {
@@ -108,65 +101,24 @@ function App() {
           />
         </>
       }>
+        {/* Hero */}
         <BrutalHero />
 
-        <section className="section-dark">
-          <p className="big-text">
-            WE BUILD <span>DIGITAL EXPERIENCES</span> THAT DEFY GRAVITY. NO TEMPLATES. NO LIMITS. JUST <span>PURE
-              CODE</span> AND <span>RAW AESTHETICS</span>.
-          </p>
-        </section>
-
-        <section className="section-dark" style={{ justifyContent: 'flex-end', textAlign: 'right' }}>
-          <p className="big-text">
-            INTERACTION<br />
-            <span>REDEFINED</span>
-          </p>
-        </section>
-
-        <main className="manga-page">
+        {/* Sections */}
+        <main className="manga-page" id="home">
           <Suspense fallback={<SectionLoader />}>
-            <GrimoireOrbital
-              images={[
-                '/images/grimoire/manga-1.jpg',
-                '/images/grimoire/manga-2.jpg',
-                '/images/grimoire/manga-3.jpg',
-                '/images/grimoire/manga-5.jpg',
-                '/images/grimoire/manga-7.jpg',
-                '/images/grimoire/manga-9.jpg',
-                '/images/grimoire/manga-11.jpg',
-                '/images/grimoire/manga-13.jpg',
-                '/images/grimoire/manga-15.jpg',
-                '/images/grimoire/manga-17.jpg',
-                '/images/grimoire/manga-18.jpg',
-                '/images/grimoire/manga-19.jpg',
-              ]}
-              grimoireImage="/images/grimoire/grimoire-book.jpg"
-            />
             <About />
             <Skills />
             <Projects />
             <Journey />
             <GitHubActivity />
             <DesertHorse />
-
-            {/* Contact Section Preview */}
-            <div className="parallax parallax-contact">
-              <div className="parallax-content">
-                <h3 className="manga-title text-4xl text-center" style={{ textShadow: '2px 2px 0 white, 4px 4px 0 #1a1a1a' }}>
-                  💬 CONTACT 💬
-                </h3>
-              </div>
-            </div>
-
             <Contact />
           </Suspense>
         </main>
 
-        <footer style={{ height: '40vh', background: 'var(--fg)', color: 'var(--bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-          <h2 style={{ fontFamily: "'Syncopate'", fontSize: '3rem', marginBottom: '1rem' }}><a href="https://github.com/Shuvikm" style={{ color: 'inherit', textDecoration: 'none' }}>SHUVIK M</a></h2>
-          <p>© 2026</p>
-        </footer>
+        {/* Footer */}
+        <Footer />
       </BrutalLayout>
     </ErrorBoundary>
   );
