@@ -7,11 +7,11 @@ export default function BrutalNav() {
                 SHUVIK M
             </a>
             <ul className="nav-menu">
-                <li><a href="#" className="nav-link magnetic" data-text="WORK">WORK</a></li>
-                <li><a href="#" className="nav-link magnetic" data-text="ABOUT">ABOUT</a></li>
-                <li><a href="#" className="nav-link magnetic" data-text="LABS">LABS</a></li>
+                <li><a href="#projects" className="nav-link magnetic" data-text="WORK">WORK</a></li>
+                <li><a href="#about" className="nav-link magnetic" data-text="ABOUT">ABOUT</a></li>
+                <li><a href="#game" className="nav-link magnetic" data-text="LABS">LABS</a></li>
             </ul>
-            <button className="cta-btn magnetic"><span>LET'S TALK</span></button>
+            <a href="#contact" className="cta-btn magnetic" style={{ textDecoration: 'none', display: 'inline-block' }}><span>LET'S TALK</span></a>
         </nav>
     );
 }
