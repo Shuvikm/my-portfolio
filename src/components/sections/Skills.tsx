@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Code, Database, Wrench, Palette } from 'lucide-react';
 import GlitchText from '../ui/GlitchText';
 
@@ -8,7 +9,7 @@ const skills = {
   tools: ['Git', 'GitHub', 'VS Code'],
 };
 
-export default function Skills() {
+const Skills = memo(function Skills() {
   return (
     <section id="skills" className="manga-section">
       {/* Section Header */}
@@ -105,4 +106,6 @@ export default function Skills() {
       </div>
     </section>
   );
-}
+});
+
+export default Skills;

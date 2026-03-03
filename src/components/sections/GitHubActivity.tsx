@@ -1,11 +1,29 @@
+import { useEffect, useRef, useState, memo } from 'react';
 import { Github } from 'lucide-react';
 import GlitchText from '../ui/GlitchText';
 
-export default function GitHubActivity() {
-    const username = 'Shuvikm';
+const USERNAME = 'Shuvikm';
+
+const GitHubActivity = memo(function GitHubActivity() {
+    const sectionRef = useRef<HTMLElement>(null);
+    const [inView, setInView] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setInView(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.1 }
+        );
+        if (sectionRef.current) observer.observe(sectionRef.current);
+        return () => observer.disconnect();
+    }, []);
 
     return (
-        <section id="github-activity" className="manga-section">
+        <section id="github-activity" className="manga-section" ref={sectionRef}>
             {/* Section Header */}
             <div className="manga-panel p-8 mb-4">
                 <div className="flex items-center gap-8">
@@ -18,21 +36,29 @@ export default function GitHubActivity() {
                 </div>
             </div>
 
-            {/* Contribution Graph */}
+            {/* Contribution Graph — only rendered when section is visible */}
             <div className="manga-panel p-6 sm:p-8">
                 <h3 className="manga-subtitle text-lg sm:text-xl mb-6">Contribution Activity</h3>
                 <div className="flex justify-center overflow-x-auto pb-4">
-                    <img
-                        src={`https://ghchart.rshah.org/fbbf24/Shuvikm`}
-                        alt="GitHub Contribution Chart"
-                        className="w-full max-w-4xl shadow-md rounded-lg"
-                    />
+                    {inView ? (
+                        <img
+                            src={`https://ghchart.rshah.org/fbbf24/${USERNAME}`}
+                            alt="GitHub Contribution Chart"
+                            loading="lazy"
+                            decoding="async"
+                            width={800}
+                            height={128}
+                            className="w-full max-w-4xl shadow-md rounded-lg"
+                        />
+                    ) : (
+                        <div className="w-full max-w-4xl h-32 bg-[#1a1a1a] animate-pulse rounded-lg" />
+                    )}
                 </div>
 
                 {/* View Profile Link */}
                 <div className="mt-6 text-center">
                     <a
-                        href={`https://github.com/${username}`}
+                        href={`https://github.com/${USERNAME}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="manga-button inline-flex items-center gap-2"
@@ -44,4 +70,6 @@ export default function GitHubActivity() {
             </div>
         </section>
     );
-}
+});
+
+export default GitHubActivity;

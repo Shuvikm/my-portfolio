@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { ExternalLink, Gamepad2 } from 'lucide-react';
 import GlitchText from '../ui/GlitchText';
 
@@ -40,7 +41,7 @@ const projects = [
   },
 ];
 
-export default function Projects() {
+const Projects = memo(function Projects() {
   return (
     <section id="projects" className="manga-section">
       {/* Section Header */}
@@ -112,4 +113,6 @@ export default function Projects() {
       </div>
     </section>
   );
-}
+});
+
+export default Projects;
