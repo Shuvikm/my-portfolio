@@ -15,7 +15,31 @@ const Journey = lazy(() => import('./components/sections/Journey'));
 const GitHubActivity = lazy(() => import('./components/sections/GitHubActivity'));
 const DesertHorse = lazy(() => import('./components/sections/DesertHorse'));
 const Contact = lazy(() => import('./components/sections/Contact'));
+const GrimoireOrbital = lazy(() => import('./components/features/grimoire/GrimoireOrbital'));
 const Ribbons = lazy(() => import('./components/ui/Ribbons'));
+
+// All manga panels that exist in public/images/grimoire
+const MANGA_IMAGES = [
+  '/images/grimoire/manga-1.jpg',
+  '/images/grimoire/manga-2.jpg',
+  '/images/grimoire/manga-3.jpg',
+  '/images/grimoire/manga-4.jpg',
+  '/images/grimoire/manga-5.jpg',
+  '/images/grimoire/manga-6.jpg',
+  '/images/grimoire/manga-7.jpg',
+  '/images/grimoire/manga-8.jpg',
+  '/images/grimoire/manga-9.jpg',
+  '/images/grimoire/manga-10.jpg',
+  '/images/grimoire/manga-11.jpg',
+  '/images/grimoire/manga-12.jpg',
+  '/images/grimoire/manga-13.jpg',
+  '/images/grimoire/manga-14.jpg',
+  '/images/grimoire/manga-15.jpg',
+  '/images/grimoire/manga-16.jpg',
+  '/images/grimoire/manga-17.jpg',
+  '/images/grimoire/manga-18.jpg',
+  '/images/grimoire/manga-19.jpg',
+];
 
 function SectionLoader() {
   return (
@@ -28,7 +52,6 @@ function SectionLoader() {
 
 function App() {
   useEffect(() => {
-    // Initialize Lenis smooth scroll
     const lenis = new Lenis({
       duration: 0.8,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -46,7 +69,6 @@ function App() {
     }
     rafId = requestAnimationFrame(raf);
 
-    // Smooth scroll for anchor links
     const handleAnchorClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const anchor = target.closest('a[href^="#"]');
@@ -104,9 +126,14 @@ function App() {
         {/* Hero */}
         <BrutalHero />
 
-        {/* Sections */}
+        {/* Main content */}
         <main className="manga-page" id="home">
           <Suspense fallback={<SectionLoader />}>
+            {/* Manga Grimoire Panel — restored! */}
+            <GrimoireOrbital
+              images={MANGA_IMAGES}
+              grimoireImage="/images/grimoire/grimoire-book.jpg"
+            />
             <About />
             <Skills />
             <Projects />
@@ -117,7 +144,6 @@ function App() {
           </Suspense>
         </main>
 
-        {/* Footer */}
         <Footer />
       </BrutalLayout>
     </ErrorBoundary>
