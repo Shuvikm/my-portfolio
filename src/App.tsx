@@ -12,6 +12,7 @@ const About = lazy(() => import('./components/sections/About'));
 const Skills = lazy(() => import('./components/sections/Skills'));
 const Projects = lazy(() => import('./components/sections/Projects'));
 const Journey = lazy(() => import('./components/sections/Journey'));
+const FavMangaPanel = lazy(() => import('./components/sections/FavMangaPanel'));
 const GitHubActivity = lazy(() => import('./components/sections/GitHubActivity'));
 const DesertHorse = lazy(() => import('./components/sections/DesertHorse'));
 const Contact = lazy(() => import('./components/sections/Contact'));
@@ -73,6 +74,7 @@ function App() {
             <Skills />
             <Projects />
             <Journey />
+            <FavMangaPanel />
             <GitHubActivity />
             <DesertHorse />
             <Contact />
