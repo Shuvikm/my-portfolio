@@ -1,13 +1,13 @@
-import { useEffect, lazy, Suspense } from 'react';
-import { Toaster } from 'react-hot-toast';
+import { useEffect, Suspense, lazy } from 'react';
 import Lenis from 'lenis';
 import BrutalLayout from './components/layout/BrutalLayout';
 import BrutalHero from './components/sections/BrutalHero';
 import Footer from './components/layout/Footer';
 import ErrorBoundary from './components/layout/ErrorBoundary';
+import SectionLoader from './components/ui/SectionLoader';
 import './styles/grimoire-animation.css';
 
-// Lazy load heavy components for better performance
+// Lazy load heavy section components
 const About = lazy(() => import('./components/sections/About'));
 const Skills = lazy(() => import('./components/sections/Skills'));
 const Projects = lazy(() => import('./components/sections/Projects'));
@@ -15,40 +15,8 @@ const Journey = lazy(() => import('./components/sections/Journey'));
 const GitHubActivity = lazy(() => import('./components/sections/GitHubActivity'));
 const DesertHorse = lazy(() => import('./components/sections/DesertHorse'));
 const Contact = lazy(() => import('./components/sections/Contact'));
-const GrimoireOrbital = lazy(() => import('./components/features/grimoire/GrimoireOrbital'));
-const Ribbons = lazy(() => import('./components/ui/Ribbons'));
 
-// All manga panels that exist in public/images/grimoire
-const MANGA_IMAGES = [
-  '/images/grimoire/manga-1.jpg',
-  '/images/grimoire/manga-2.jpg',
-  '/images/grimoire/manga-3.jpg',
-  '/images/grimoire/manga-4.jpg',
-  '/images/grimoire/manga-5.jpg',
-  '/images/grimoire/manga-6.jpg',
-  '/images/grimoire/manga-7.jpg',
-  '/images/grimoire/manga-8.jpg',
-  '/images/grimoire/manga-9.jpg',
-  '/images/grimoire/manga-10.jpg',
-  '/images/grimoire/manga-11.jpg',
-  '/images/grimoire/manga-12.jpg',
-  '/images/grimoire/manga-13.jpg',
-  '/images/grimoire/manga-14.jpg',
-  '/images/grimoire/manga-15.jpg',
-  '/images/grimoire/manga-16.jpg',
-  '/images/grimoire/manga-17.jpg',
-  '/images/grimoire/manga-18.jpg',
-  '/images/grimoire/manga-19.jpg',
-];
 
-function SectionLoader() {
-  return (
-    <div className="min-h-[40vh] flex flex-col items-center justify-center space-y-4">
-      <div className="w-12 h-12 border-4 border-[#fbbf24] border-t-transparent rounded-full animate-spin" />
-      <div className="text-[#fbbf24] font-bold tracking-widest text-sm animate-pulse">LOADING...</div>
-    </div>
-  );
-}
 
 function App() {
   useEffect(() => {
@@ -94,46 +62,13 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <BrutalLayout overlay={
-        <>
-          <Suspense fallback={null}>
-            <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', zIndex: 5, pointerEvents: 'none' }}>
-              <Ribbons
-                baseThickness={20}
-                colors={["#fbbf24", "#ffffff", "#dc2626"]}
-                speedMultiplier={0.7}
-                maxAge={200}
-                enableFade={true}
-                enableShaderEffect={false}
-                pointCount={18}
-              />
-            </div>
-          </Suspense>
-          <Toaster
-            position="top-right"
-            toastOptions={{
-              duration: 3000,
-              style: {
-                background: '#1a1a1a',
-                color: '#fafaff',
-                border: '2px solid #fbbf24',
-                fontWeight: 'bold',
-              },
-            }}
-          />
-        </>
-      }>
+      <BrutalLayout>
         {/* Hero */}
         <BrutalHero />
 
         {/* Main content */}
         <main className="manga-page" id="home">
           <Suspense fallback={<SectionLoader />}>
-            {/* Manga Grimoire Panel — restored! */}
-            <GrimoireOrbital
-              images={MANGA_IMAGES}
-              grimoireImage="/images/grimoire/grimoire-book.jpg"
-            />
             <About />
             <Skills />
             <Projects />

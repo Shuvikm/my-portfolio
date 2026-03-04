@@ -3,3 +3,8 @@
     height: 100%;
     position: relative;
 }
+
+.ribbons-container canvas {
+    will-change: transform;
+    contain: strict;
+}

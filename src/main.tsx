@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App.tsx';
 import NotFound from './components/pages/NotFound.tsx';
 import './styles/index.css';
-import './styles/performance-optimizations.css';
 
 // Enable global text smoothing
 (document.documentElement.style as any).WebkitFontSmoothing = 'antialiased';
