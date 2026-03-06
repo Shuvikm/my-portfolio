@@ -73,7 +73,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 <span className="hidden sm:inline">PDF</span>
             </a>
 
-            {/* Scrollable content */}
+            {/* PDF viewer */}
             <div
                 className="min-h-screen flex flex-col items-center py-24 px-4"
                 onClick={(e) => e.stopPropagation()}
@@ -83,25 +83,19 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                     SHUVIK M - RESUME
                 </h3>
 
-                {/* Resume image - enhanced for 8K quality */}
-                <div className="manga-panel bg-white p-6 max-w-5xl w-full shadow-2xl">
-                    <img
-                        src="/resume.png"
-                        alt="Shuvik M Resume"
-                        className="w-full h-auto"
-                        style={{
-                            imageRendering: 'crisp-edges',
-                            maxWidth: '100%',
-                            height: 'auto',
-                        }}
-                        loading="eager"
-                        decoding="async"
+                {/* Embedded PDF */}
+                <div className="manga-panel bg-white p-2 max-w-5xl w-full shadow-2xl">
+                    <iframe
+                        src="/resume.pdf#toolbar=0&view=FitH"
+                        title="Shuvik M Resume"
+                        className="w-full rounded"
+                        style={{ height: '85vh', border: 'none' }}
                     />
                 </div>
 
-                {/* Scroll hint at bottom */}
+                {/* Hint */}
                 <div className="mt-6 text-white/70 text-sm text-center space-y-2">
-                    <p className="text-[#fbbf24] font-semibold">↕ Scroll to see full resume</p>
+                    <p className="text-[#fbbf24] font-semibold">Scroll inside the viewer · Pinch/zoom supported</p>
                     <p>Press ESC, click X, or BACK to close</p>
                 </div>
             </div>
