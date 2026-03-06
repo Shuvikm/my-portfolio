@@ -13,11 +13,25 @@ interface MangaEntry {
    styled placeholder automatically — no crashes.
 --------------------------------------------------------------- */
 const MANGA_PANELS: MangaEntry[] = [
-    { src: '/images/manga/panel-1.jpg', title: 'Panel 01', series: 'My Favourite' },
-    { src: '/images/manga/panel-2.jpg', title: 'Panel 02', series: 'My Favourite' },
-    { src: '/images/manga/panel-3.jpg', title: 'Panel 03', series: 'My Favourite' },
-    { src: '/images/manga/panel-4.jpg', title: 'Panel 04', series: 'My Favourite' },
-    { src: '/images/manga/panel-5.jpg', title: 'Panel 05', series: 'My Favourite' },
+    { src: '/images/grimoire/manga-1.jpg', title: 'Panel 01', series: 'My Favourites' },
+    { src: '/images/grimoire/manga-2.jpg', title: 'Panel 02', series: 'My Favourites' },
+    { src: '/images/grimoire/manga-3.jpg', title: 'Panel 03', series: 'My Favourites' },
+    { src: '/images/grimoire/manga-4.jpg', title: 'Panel 04', series: 'My Favourites' },
+    { src: '/images/grimoire/manga-5.jpg', title: 'Panel 05', series: 'My Favourites' },
+    { src: '/images/grimoire/manga-6.jpg', title: 'Panel 06', series: 'My Favourites' },
+    { src: '/images/grimoire/manga-7.jpg', title: 'Panel 07', series: 'My Favourites' },
+    { src: '/images/grimoire/manga-8.jpg', title: 'Panel 08', series: 'My Favourites' },
+    { src: '/images/grimoire/manga-9.jpg', title: 'Panel 09', series: 'My Favourites' },
+    { src: '/images/grimoire/manga-10.jpg', title: 'Panel 10', series: 'My Favourites' },
+    { src: '/images/grimoire/manga-11.jpg', title: 'Panel 11', series: 'My Favourites' },
+    { src: '/images/grimoire/manga-12.jpg', title: 'Panel 12', series: 'My Favourites' },
+    { src: '/images/grimoire/manga-13.jpg', title: 'Panel 13', series: 'My Favourites' },
+    { src: '/images/grimoire/manga-14.jpg', title: 'Panel 14', series: 'My Favourites' },
+    { src: '/images/grimoire/manga-15.jpg', title: 'Panel 15', series: 'My Favourites' },
+    { src: '/images/grimoire/manga-16.jpg', title: 'Panel 16', series: 'My Favourites' },
+    { src: '/images/grimoire/manga-17.jpg', title: 'Panel 17', series: 'My Favourites' },
+    { src: '/images/grimoire/manga-18.jpg', title: 'Panel 18', series: 'My Favourites' },
+    { src: '/images/grimoire/manga-19.jpg', title: 'Panel 19', series: 'My Favourites' },
 ];
 
 type CardPos = 'center' | 'up-1' | 'up-2' | 'down-1' | 'down-2' | 'hidden-card';
