@@ -1,10 +1,10 @@
 {
-    "username": "Shuvikm",
-    "followers": 0,
-    "public_repos": 0,
-    "total_stars": 0,
-    "total_forks": 0,
-    "top_languages": "JavaScript, TypeScript, Python, CSS, HTML",
-    "latest_repo": "my-portfolio",
-    "updated_at": "2026-03-06T00:00:00Z"
+  "username": "Shuvikm",
+  "followers": 1,
+  "public_repos": 21,
+  "total_stars": 31,
+  "total_forks": 0,
+  "top_languages": "TypeScript", "Python", "JavaScript", "Rust",
+  "latest_repo": "my-portfolio",
+  "updated_at": "2026-03-06T19:07:36Z"
 }
